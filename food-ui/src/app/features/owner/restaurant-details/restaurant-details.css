@@ -20,7 +20,7 @@
 
 /* Large-screen composition: use the available viewport instead of a narrow
    centered column, while keeping the same quiet palette and soft surfaces. */
-.owner-page{max-width:1600px;padding:38px clamp(28px,5vw,86px) 42px}
+.owner-page{max-width:1600px;padding:52px clamp(28px,5vw,86px) 42px}
 .topbar{margin-bottom:76px}
 .breadcrumb,.owner-chip{font-size:12px}
 .breadcrumb-home{width:38px;height:38px;border-radius:12px}
@@ -78,7 +78,7 @@
   .hero-art{right:0;opacity:.65}
 }
 @media(max-width:560px){
-  .owner-page{padding:18px 16px 25px}
+  .owner-page{padding:26px 16px 25px}
   .topbar{margin-bottom:35px}
   .intro h1{font-size:44px;letter-spacing:-2.5px}
   .intro p{font-size:12px}

@@ -1,0 +1,20 @@
+<div class="owner-shell">
+  <aside class="owner-navigation">
+    <app-sidebar-nav [items]="navigation" active="Restaurant" />
+  </aside>
+  <main class="owner-content">
+    @if (data.error(); as error) {
+      <div class="shell-notification error" role="alert">
+        <i class="bi bi-exclamation-circle"></i>
+        <span>{{ error }}</span>
+        <button type="button" (click)="data.loadRestaurant()">Retry</button>
+      </div>
+    } @else if (data.loading()) {
+      <div class="shell-notification loading" role="status">
+        <span class="loader"></span>
+        <span>Loading restaurant details...</span>
+      </div>
+    }
+    <router-outlet />
+  </main>
+</div>

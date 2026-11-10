@@ -1,6 +1,10 @@
 import { Routes } from '@angular/router';
-import { RestaurantDetailsComponent } from './features/owner/restaurant-details/restaurant-details';
 
 export const routes: Routes = [
-  { path: 'owner/restaurant', component: RestaurantDetailsComponent },
+  {
+    path: 'owner',
+    loadChildren: () => import('./features/owner/owner.routes').then((module) => module.OWNER_ROUTES),
+  },
+  { path: '', pathMatch: 'full', redirectTo: 'owner/restaurant' },
+  { path: '**', redirectTo: 'owner/restaurant' },
 ];

@@ -35,7 +35,20 @@ export class OwnerRestaurantService {
   private config?: AppConfig;
 
   readonly ownerId = signal<number | null>(null);
-  readonly restaurant = signal<RestaurantDetails>(null!);
+  readonly restaurant = signal<RestaurantDetails>({
+    id: '',
+    name: '',
+    address: '',
+    capacity: 0,
+    dateOfAdd: '',
+    status: 'closed',
+    timeOpen: '--:--',
+    timeClose: '--:--',
+    days: [],
+    offDays: [],
+    nationality: '',
+    budget: '',
+  });
   readonly loading = signal(false);
   readonly error = signal<string | null>(null);
 

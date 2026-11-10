@@ -1,10 +1,4 @@
 <main class="owner-page">
-  @if(data.error(); as error){<div class="api-alert" role="alert"><i class="bi bi-exclamation-circle"></i>{{error}}<button type="button" (click)="data.loadRestaurant()">Retry</button></div>}
-  <header class="topbar reveal">
-    <div class="breadcrumb"><span class="breadcrumb-home"><i class="bi bi-grid-fill"></i></span><span>Owner workspace</span><i class="bi bi-chevron-right"></i><b>Restaurant details</b></div>
-    <div class="owner-chip"><span class="owner-avatar">O</span><span><b>Owner #{{ data.ownerId() }}</b><small>Restaurant owner</small></span><i class="bi bi-chevron-down"></i></div>
-  </header>
-
   <section class="intro reveal">
     <div><span class="section-eyebrow"><i></i> Your place, at a glance</span><h1>Restaurant <em>details.</em></h1><p>Everything about your restaurant, gathered in one lovely place.</p></div>
     <div class="intro-mark" aria-hidden="true"><span>✦</span><small>EST. {{data.restaurant().dateOfAdd | date:'yyyy'}}</small></div>
