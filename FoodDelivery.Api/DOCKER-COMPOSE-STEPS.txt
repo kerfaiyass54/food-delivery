@@ -1,0 +1,60 @@
+FOOD DELIVERY DOCKER COMPOSE — LAUNCH STEPS
+===========================================
+
+Prerequisites
+-------------
+1. Install and start Docker Desktop.
+2. Open PowerShell in the FoodDelivery.Api repository folder:
+   D:\projects\food-delivery\FoodDelivery.Api
+3. Confirm that .env exists in this folder. It contains the local service
+   passwords and should not be shared or committed to Git.
+
+Start the services
+------------------
+Run these commands from the repository folder:
+
+   docker compose config --quiet
+   docker compose up -d
+   docker compose ps
+
+The first start downloads the container images and may take a few minutes.
+Wait until PostgreSQL and Kafka show as healthy before connecting to them.
+
+Open the services
+-----------------
+PostgreSQL:  localhost:5432
+pgAdmin:     http://localhost:5050
+Kafka:       localhost:9094
+Redis:       localhost:6379
+Prometheus:  http://localhost:9090
+Grafana:     http://localhost:3000
+Keycloak:    http://localhost:8080
+
+Use the matching values in .env to sign in to pgAdmin, Grafana, and Keycloak.
+For pgAdmin, add a server with host "postgres", port 5432, database
+"fooddelivery", and username "fooddelivery". Use FOODDELIVERY_DB_PASSWORD
+from .env as its password.
+
+Useful commands
+---------------
+Show service status:
+   docker compose ps
+
+Follow logs for all services:
+   docker compose logs -f
+
+Follow logs for one service (replace SERVICE with e.g. postgres or keycloak):
+   docker compose logs -f SERVICE
+
+Stop services and preserve their data:
+   docker compose down
+
+Start them again later:
+   docker compose up -d
+
+WARNING: Remove containers and all stored service data:
+   docker compose down -v
+
+The stack is configured for local development. Keycloak runs in development
+mode and Kafka uses unauthenticated plaintext listeners; do not expose these
+services to a public network.
