@@ -90,3 +90,33 @@ Change operating days and days off (Monday=1 through Sunday=7):
 Change opening hours (24-hour local times):
    PUT http://localhost:5115/api/restaurants/1/opening-hours
    {"opensAt":"08:00","closesAt":"22:00"}
+
+Restaurant chefs and candidatures
+---------------------------------
+List chefs (summary fields):
+   GET http://localhost:5115/api/restaurants/1/chefs
+
+Get one chef's full details:
+   GET http://localhost:5115/api/restaurants/1/chefs/3
+
+List candidatures received by the restaurant, including their status:
+   GET http://localhost:5115/api/restaurants/1/candidatures
+
+Create a candidature (body: {"chefId": 3, "salary": 2500}):
+   POST http://localhost:5115/api/restaurants/1/candidatures
+
+Get one candidature:
+   GET http://localhost:5115/api/restaurants/1/candidatures/7
+
+Get every chef field for the chef who made a candidature:
+   GET http://localhost:5115/api/restaurants/1/candidatures/7/chef
+
+Refuse a pending candidature:
+   PUT http://localhost:5115/api/restaurants/1/candidatures/7/refuse
+
+Assign an existing, unassigned chef to the restaurant:
+   POST http://localhost:5115/api/restaurants/1/chefs/3
+
+Refusing a candidature that is no longer pending, or assigning a chef who
+already belongs to another restaurant, returns HTTP 409 Conflict. IDs in
+these examples must refer to existing database records.

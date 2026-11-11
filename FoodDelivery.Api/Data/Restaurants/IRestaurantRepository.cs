@@ -6,6 +6,7 @@ public interface IRestaurantRepository
 {
     Task<Restaurant?> GetByIdAsync(int restaurantId, CancellationToken cancellationToken);
     Task<Restaurant?> GetByOwnerIdAsync(int ownerId, CancellationToken cancellationToken);
+    Task<bool> RestaurantExistsAsync(int restaurantId, CancellationToken cancellationToken);
     Task<bool> AllDaysExistAsync(IReadOnlyCollection<int> dayIds, CancellationToken cancellationToken);
     Task<bool> UpdateCapacityAsync(int restaurantId, int capacity, CancellationToken cancellationToken);
     Task<bool> UpdateDaysAsync(int restaurantId, IReadOnlyCollection<int> operatingDayIds,

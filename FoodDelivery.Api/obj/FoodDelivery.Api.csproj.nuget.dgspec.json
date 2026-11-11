@@ -24,6 +24,7 @@
         },
         "frameworks": {
           "net6.0": {
+            "framework": "net6.0",
             "targetAlias": "net6.0",
             "projectReferences": {}
           }
@@ -32,10 +33,17 @@
           "warnAsError": [
             "NU1605"
           ]
-        }
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.400"
       },
       "frameworks": {
         "net6.0": {
+          "framework": "net6.0",
           "targetAlias": "net6.0",
           "dependencies": {
             "Microsoft.EntityFrameworkCore.Design": {
@@ -64,6 +72,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.36, 6.0.36]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[6.0.36, 6.0.36]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.36, 6.0.36]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.36, 6.0.36]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -72,7 +98,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.428\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Users\\Yassine KERFAI\\.dotnet\\sdk\\10.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     }

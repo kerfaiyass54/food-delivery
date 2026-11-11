@@ -23,7 +23,8 @@ public sealed class RestaurantsController : ControllerBase
     public async Task<ActionResult<RestaurantDetailsDto>> GetById(int id, CancellationToken cancellationToken)
     {
         _logger.LogInformation("Received restaurant lookup for {RestaurantId}", id);
-        return ToActionResult(await _restaurantService.GetByIdAsync(id, cancellationToken));
+        return ControllerResultMapper.Map(this,
+            await _restaurantService.GetByIdAsync(id, cancellationToken), _logger);
     }
 
     [HttpPut("{id:int}/capacity")]
@@ -34,7 +35,8 @@ public sealed class RestaurantsController : ControllerBase
         [FromBody] UpdateRestaurantCapacityRequest request, CancellationToken cancellationToken)
     {
         _logger.LogInformation("Received capacity update for restaurant {RestaurantId}", id);
-        return ToActionResult(await _restaurantService.UpdateCapacityAsync(id, request.Capacity, cancellationToken));
+        return ControllerResultMapper.Map(this,
+            await _restaurantService.UpdateCapacityAsync(id, request.Capacity, cancellationToken), _logger);
     }
 
     [HttpPut("{id:int}/days")]
@@ -45,8 +47,8 @@ public sealed class RestaurantsController : ControllerBase
         [FromBody] UpdateRestaurantDaysRequest request, CancellationToken cancellationToken)
     {
         _logger.LogInformation("Received schedule-day update for restaurant {RestaurantId}", id);
-        return ToActionResult(await _restaurantService.UpdateDaysAsync(
-            id, request.OperatingDayIds, request.OffDayIds, cancellationToken));
+        return ControllerResultMapper.Map(this, await _restaurantService.UpdateDaysAsync(
+            id, request.OperatingDayIds, request.OffDayIds, cancellationToken), _logger);
     }
 
     [HttpPut("{id:int}/opening-hours")]
@@ -57,32 +59,7 @@ public sealed class RestaurantsController : ControllerBase
         [FromBody] UpdateRestaurantOpeningHoursRequest request, CancellationToken cancellationToken)
     {
         _logger.LogInformation("Received opening-hours update for restaurant {RestaurantId}", id);
-        return ToActionResult(await _restaurantService.UpdateOpeningHoursAsync(
-            id, request.OpensAt, request.ClosesAt, cancellationToken));
-    }
-
-    private ActionResult<RestaurantDetailsDto> ToActionResult(ServiceResult<RestaurantDetailsDto> result)
-    {
-        if (result.NotFound)
-        {
-            return NotFound(new ProblemDetails
-            {
-                Title = "Restaurant not found",
-                Status = StatusCodes.Status404NotFound
-            });
-        }
-
-        if (!result.Succeeded)
-        {
-            _logger.LogWarning("Restaurant request rejected: {Error}", result.Error);
-            return BadRequest(new ProblemDetails
-            {
-                Title = "Invalid restaurant request",
-                Detail = result.Error,
-                Status = StatusCodes.Status400BadRequest
-            });
-        }
-
-        return Ok(result.Value);
+        return ControllerResultMapper.Map(this, await _restaurantService.UpdateOpeningHoursAsync(
+            id, request.OpensAt, request.ClosesAt, cancellationToken), _logger);
     }
 }

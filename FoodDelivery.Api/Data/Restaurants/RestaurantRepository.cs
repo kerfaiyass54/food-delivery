@@ -48,6 +48,19 @@ public sealed class RestaurantRepository : IRestaurantRepository
         }
     }
 
+    public async Task<bool> RestaurantExistsAsync(int restaurantId, CancellationToken cancellationToken)
+    {
+        try
+        {
+            return await _dbContext.Restaurants.AnyAsync(x => x.Id == restaurantId, cancellationToken);
+        }
+        catch (Exception exception)
+        {
+            _logger.LogError(exception, "Failed to check restaurant {RestaurantId}", restaurantId);
+            throw;
+        }
+    }
+
     public async Task<bool> AllDaysExistAsync(IReadOnlyCollection<int> dayIds, CancellationToken cancellationToken)
     {
         if (dayIds.Count == 0)

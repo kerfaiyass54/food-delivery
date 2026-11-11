@@ -1,4 +1,6 @@
 using FoodDelivery.Api.Data;
+using FoodDelivery.Api.Data.Candidatures;
+using FoodDelivery.Api.Data.Chefs;
 using FoodDelivery.Api.Data.Restaurants;
 using FoodDelivery.Api.Services;
 using Microsoft.EntityFrameworkCore;
@@ -15,7 +17,11 @@ if (string.IsNullOrWhiteSpace(connectionString))
 builder.Services.AddControllers();
 builder.Services.AddDbContext<FoodDeliveryDbContext>(options => options.UseNpgsql(connectionString));
 builder.Services.AddScoped<IRestaurantRepository, RestaurantRepository>();
+builder.Services.AddScoped<IChefRepository, ChefRepository>();
+builder.Services.AddScoped<ICandidatureRepository, CandidatureRepository>();
 builder.Services.AddScoped<IRestaurantService, RestaurantService>();
+builder.Services.AddScoped<IChefService, ChefService>();
+builder.Services.AddScoped<ICandidatureService, CandidatureService>();
 builder.Services.AddScoped<IOwnerService, OwnerService>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

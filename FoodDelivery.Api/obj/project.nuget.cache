@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "2SXRAlTzDY7XgHzZQInetdIbVR2JRuYYgXAWvu91I1+f8+Yj1xWhas3YJpSUTjn7LIcCQl3pEAe5jobLG+hLcA==",
+  "dgSpecHash": "+9+eIsBY6fM=",
   "success": true,
   "projectFilePath": "D:\\projects\\food-delivery\\FoodDelivery.Api\\FoodDelivery.Api.csproj",
   "expectedPackageFiles": [
@@ -29,7 +29,11 @@
     "C:\\Users\\Yassine KERFAI\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.5.0\\swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512",
     "C:\\Users\\Yassine KERFAI\\.nuget\\packages\\system.collections.immutable\\6.0.1\\system.collections.immutable.6.0.1.nupkg.sha512",
     "C:\\Users\\Yassine KERFAI\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.2\\system.diagnostics.diagnosticsource.6.0.2.nupkg.sha512",
-    "C:\\Users\\Yassine KERFAI\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+    "C:\\Users\\Yassine KERFAI\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\Yassine KERFAI\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.36\\microsoft.netcore.app.ref.6.0.36.nupkg.sha512",
+    "C:\\Users\\Yassine KERFAI\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.36\\microsoft.windowsdesktop.app.ref.6.0.36.nupkg.sha512",
+    "C:\\Users\\Yassine KERFAI\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.36\\microsoft.aspnetcore.app.ref.6.0.36.nupkg.sha512",
+    "C:\\Users\\Yassine KERFAI\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.36\\microsoft.netcore.app.host.win-x64.6.0.36.nupkg.sha512"
   ],
   "logs": []
 }

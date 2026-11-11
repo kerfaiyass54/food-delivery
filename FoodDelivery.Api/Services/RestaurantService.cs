@@ -68,7 +68,8 @@ public sealed class RestaurantService : IRestaurantService
         var allDayIds = operatingDayIds.Concat(offDayIds).ToArray();
         if (!await _restaurantRepository.AllDaysExistAsync(allDayIds, cancellationToken))
         {
-            return ServiceResult<RestaurantDetailsDto>.Invalid("One or more day IDs do not exist. Valid IDs are 1 through 7.");
+            return ServiceResult<RestaurantDetailsDto>.Invalid(
+                "One or more day IDs do not exist. Valid IDs are 1 through 7.");
         }
 
         if (!await _restaurantRepository.UpdateDaysAsync(restaurantId, operatingDayIds, offDayIds, cancellationToken))
