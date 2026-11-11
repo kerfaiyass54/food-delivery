@@ -1,11 +1,12 @@
 import { Component, inject, signal } from '@angular/core';
 import { DatePipe, NgClass } from '@angular/common';
 import { OwnerRestaurantService } from '../../../core/services/owner/owner-restaurant.service';
+import { RestaurantService } from '../../../core/services/restaurant.service';
 import { ConfirmOperationDialogComponent } from '../confirm-operation-dialog/confirm-operation-dialog';
 import { IncreaseCapacityDialogComponent } from '../increase-capacity-dialog/increase-capacity-dialog';
 import { UpdateDaysDialogComponent } from '../update-days-dialog/update-days-dialog';
 import { UpdateHoursDialogComponent } from '../update-hours-dialog/update-hours-dialog';
-import { RestaurantDetails } from '../owner.models';
+import { RestaurantDetails } from '../../../shared/models/owner.models';
 
 type DialogKind = 'capacity' | 'hours' | 'days';
 interface PendingOperation { kind: DialogKind; title: string; message: string; changes: Partial<RestaurantDetails>; }
@@ -13,6 +14,7 @@ interface PendingOperation { kind: DialogKind; title: string; message: string; c
 @Component({ selector:'app-restaurant-details', standalone:true, imports:[DatePipe,NgClass,IncreaseCapacityDialogComponent,UpdateHoursDialogComponent,UpdateDaysDialogComponent,ConfirmOperationDialogComponent], templateUrl:'./restaurant-details.html' })
 export class RestaurantDetailsComponent {
   readonly data = inject(OwnerRestaurantService);
+  readonly restaurantService = inject(RestaurantService);
   readonly activeDialog = signal<DialogKind | null>(null);
   readonly pendingOperation = signal<PendingOperation | null>(null);
 
@@ -34,11 +36,11 @@ export class RestaurantDetailsComponent {
 
     try {
       if (pending.kind === 'capacity') {
-        await this.data.updateCapacity(pending.changes.capacity!);
+        await this.restaurantService.updateCapacity(pending.changes.capacity!);
       } else if (pending.kind === 'hours') {
-        await this.data.updateOpeningHours(pending.changes.timeOpen!, pending.changes.timeClose!);
+        await this.restaurantService.updateOpeningHours(pending.changes.timeOpen!, pending.changes.timeClose!);
       } else {
-        await this.data.updateDays(pending.changes.days!, pending.changes.offDays!);
+        await this.restaurantService.updateDays(pending.changes.days!, pending.changes.offDays!);
       }
       this.pendingOperation.set(null);
     } catch {

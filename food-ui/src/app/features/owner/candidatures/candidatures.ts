@@ -1,15 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
+import { DatePipe } from '@angular/common';
+import { ConfirmOperationDialogComponent } from '../confirm-operation-dialog/confirm-operation-dialog';
+import { CandidatureDetailsDialogComponent } from './candidature-details-dialog';
+import { CandidatureService } from '../../../core/services/candidature.service';
+import { Candidature } from '../../../shared/models/owner.models';
 
 @Component({
   selector: 'app-candidatures',
   standalone: true,
-  template: `
-    <section class="owner-placeholder">
-      <span class="eyebrow">OWNER WORKSPACE</span>
-      <h1>Candidatures</h1>
-      <p>Review applications for your restaurant team.</p>
-    </section>
-  `,
-  styles: [`.owner-placeholder{max-width:900px;margin:12vh auto;padding:48px;border:1px solid #e0e9df;border-radius:28px;background:#fff;box-shadow:0 20px 50px #3248350d}.eyebrow{color:#7c9b7e;font-size:10px;font-weight:800;letter-spacing:1.5px}.owner-placeholder h1{margin:14px 0 8px;color:#29392e;font-size:clamp(38px,5vw,64px);letter-spacing:-3px}.owner-placeholder p{color:#829082;font-size:14px}`],
+  imports: [DatePipe, ConfirmOperationDialogComponent, CandidatureDetailsDialogComponent],
+  templateUrl: './candidatures.html',
+  styleUrl: './candidatures.css',
 })
-export class CandidaturesComponent {}
+export class CandidaturesComponent {
+  readonly data = inject(CandidatureService);
+  readonly pendingAction = signal<{ item: Candidature; action: 'approve' | 'refuse' } | null>(null);
+  readonly selectedCandidature = signal<Candidature | null>(null);
+
+  constructor() { void this.data.load(); }
+  ask(item: Candidature, action: 'approve' | 'refuse'): void { this.pendingAction.set({ item, action }); }
+  showDetails(item: Candidature): void { this.selectedCandidature.set(item); }
+  closeDialog(): void { this.pendingAction.set(null); this.selectedCandidature.set(null); }
+  async applyAction(): Promise<void> {
+    const pending = this.pendingAction();
+    if (!pending) return;
+    try {
+      if (pending.action === 'approve') await this.data.accept(pending.item);
+      else await this.data.refuse(pending.item.id);
+      this.pendingAction.set(null);
+    } catch { /* the service exposes the message in the page notification */ }
+  }
+}

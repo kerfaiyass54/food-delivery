@@ -1,15 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
+import { ConfirmOperationDialogComponent } from '../confirm-operation-dialog/confirm-operation-dialog';
+import { ChefDetailsDialogComponent } from './chef-details-dialog';
+import { ChefService } from '../../../core/services/chef.service';
+import { ChefDetails, ChefSummary } from '../../../shared/models/owner.models';
 
 @Component({
   selector: 'app-chefs',
   standalone: true,
-  template: `
-    <section class="owner-placeholder">
-      <span class="eyebrow">OWNER WORKSPACE</span>
-      <h1>Chefs</h1>
-      <p>Manage the chefs connected to your restaurant.</p>
-    </section>
-  `,
-  styles: [`.owner-placeholder{max-width:900px;margin:12vh auto;padding:48px;border:1px solid #e0e9df;border-radius:28px;background:#fff;box-shadow:0 20px 50px #3248350d}.eyebrow{color:#7c9b7e;font-size:10px;font-weight:800;letter-spacing:1.5px}.owner-placeholder h1{margin:14px 0 8px;color:#29392e;font-size:clamp(38px,5vw,64px);letter-spacing:-3px}.owner-placeholder p{color:#829082;font-size:14px}`],
+  imports: [ConfirmOperationDialogComponent, ChefDetailsDialogComponent],
+  templateUrl: './chefs.html',
+  styleUrl: './chefs.css',
 })
-export class ChefsComponent {}
+export class ChefsComponent {
+  readonly data = inject(ChefService);
+  readonly selectedChef = signal<ChefDetails | null>(null);
+  readonly chefToRemove = signal<ChefSummary | null>(null);
+
+  constructor() { void this.data.load(); }
+  async showDetails(chef: ChefSummary): Promise<void> { this.selectedChef.set(await this.data.getDetails(chef.id)); }
+  askRemove(chef: ChefSummary): void { this.chefToRemove.set(chef); }
+  closeDialogs(): void { this.selectedChef.set(null); this.chefToRemove.set(null); }
+  removeChef(): void {
+    const chef = this.chefToRemove();
+    if (chef) this.data.removeLocally(chef.id);
+    this.chefToRemove.set(null);
+  }
+}
