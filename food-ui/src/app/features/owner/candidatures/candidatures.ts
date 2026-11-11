@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { ConfirmOperationDialogComponent } from '../confirm-operation-dialog/confirm-operation-dialog';
 import { CandidatureDetailsDialogComponent } from './candidature-details-dialog';
@@ -14,6 +14,8 @@ import { Candidature } from '../../../shared/models/owner.models';
 })
 export class CandidaturesComponent {
   readonly data = inject(CandidatureService);
+  readonly pendingCount = computed(() => this.data.candidatures().filter((item) => item.status === 'pending').length);
+  readonly acceptedCount = computed(() => this.data.candidatures().filter((item) => item.status === 'accepted').length);
   readonly pendingAction = signal<{ item: Candidature; action: 'approve' | 'refuse' } | null>(null);
   readonly selectedCandidature = signal<Candidature | null>(null);
 

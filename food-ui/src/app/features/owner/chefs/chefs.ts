@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { ConfirmOperationDialogComponent } from '../confirm-operation-dialog/confirm-operation-dialog';
 import { ChefDetailsDialogComponent } from './chef-details-dialog';
 import { ChefService } from '../../../core/services/chef.service';
@@ -13,6 +13,7 @@ import { ChefDetails, ChefSummary } from '../../../shared/models/owner.models';
 })
 export class ChefsComponent {
   readonly data = inject(ChefService);
+  readonly specialtyCount = computed(() => new Set(this.data.chefs().map((chef) => chef.speciality)).size);
   readonly selectedChef = signal<ChefDetails | null>(null);
   readonly chefToRemove = signal<ChefSummary | null>(null);
 
