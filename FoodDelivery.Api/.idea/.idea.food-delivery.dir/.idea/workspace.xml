@@ -5,79 +5,95 @@
     <projectFile profileName="IIS Express">FoodDelivery.Api.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="938e46b2-f6a8-4651-95ef-fe39483e6fdc" name="Änderungen" comment="" />
+    <list default="true" id="938e46b2-f6a8-4651-95ef-fe39483e6fdc" name="Änderungen" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.food-delivery.dir/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.food-delivery.dir/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.food-delivery.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.food-delivery.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/FoodDelivery.Api.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/FoodDelivery.Api.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/FoodDelivery.Api.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/FoodDelivery.Api.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/apphost.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/obj/rider.project.restore.info" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CopilotPersistence">
+    <persistenceIdMap>
+      <entry key="_D:/projects/food-delivery/FoodDelivery.Api" value="3LydU4poqRjF8HO7Cc2OqTLCrj2" />
+    </persistenceIdMap>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0072663053216053" />
-      <entry key="MS500" value="2.5345506175211217" />
-      <entry key="S2" value="7.351232134481138" />
-      <entry key="S5" value="10.820041342957385" />
-      <entry key="S10" value="12.642138265560005" />
-      <entry key="S30" value="14.413023219723323" />
-      <entry key="S60" value="15.723632459307757" />
-      <entry key="M2" value="17.312377086474388" />
-      <entry key="M5" value="23.60562852911217" />
-      <entry key="M10" value="36.23843814723107" />
-      <entry key="M15" value="45.06076990515881" />
-      <entry key="M30" value="58.24618651435744" />
-      <entry key="H1" value="67.12608901184166" />
-      <entry key="H2" value="72.28765783513106" />
-      <entry key="H4" value="75.07141500764921" />
-      <entry key="D1" value="77.50152713367748" />
-      <entry key="W1" value="77.92853124899749" />
+      <entry key="MS100" value="1.13539665957734" />
+      <entry key="MS500" value="2.2406563111945523" />
+      <entry key="S2" value="6.666542476375344" />
+      <entry key="S5" value="10.820454018732553" />
+      <entry key="S10" value="13.62798367168382" />
+      <entry key="S30" value="25.46212015375143" />
+      <entry key="S60" value="43.77693356723088" />
+      <entry key="M2" value="65.510645441487" />
+      <entry key="M5" value="91.11758590730592" />
+      <entry key="M10" value="111.69098762311941" />
+      <entry key="M15" value="123.82429276903281" />
+      <entry key="M30" value="141.24059087304647" />
+      <entry key="H1" value="152.8251535749694" />
+      <entry key="H2" value="159.55043343008367" />
+      <entry key="H4" value="163.1793808215465" />
+      <entry key="D1" value="166.34944404111928" />
+      <entry key="W1" value="166.9067194335556" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
-      <entry key="S2" value="2.3950687802870627E-159" />
-      <entry key="S5" value="3.5622729730141906E-64" />
-      <entry key="S10" value="1.887398466941782E-32" />
-      <entry key="S30" value="2.6624892685783067E-11" />
-      <entry key="S60" value="5.159931461345498E-6" />
-      <entry key="M2" value="0.0022715482520398933" />
-      <entry key="M5" value="0.08760497834354608" />
-      <entry key="M10" value="0.29598138175153194" />
-      <entry key="M15" value="0.4441294740895299" />
-      <entry key="M30" value="0.6664303970329759" />
-      <entry key="H1" value="0.8163518830951368" />
-      <entry key="H2" value="0.9035219328246197" />
-      <entry key="H4" value="0.9505377072081991" />
-      <entry key="D1" value="0.991581064918509" />
-      <entry key="W1" value="0.9987929327371747" />
+      <entry key="S2" value="1.3927277515358069E-182" />
+      <entry key="S5" value="1.809449603773695E-73" />
+      <entry key="S10" value="4.253762574208492E-37" />
+      <entry key="S30" value="7.520691056985006E-13" />
+      <entry key="S60" value="8.672191797339927E-7" />
+      <entry key="M2" value="9.312460360903494E-4" />
+      <entry key="M5" value="0.06132333633092947" />
+      <entry key="M10" value="0.24763549085486417" />
+      <entry key="M15" value="0.3943440190024871" />
+      <entry key="M30" value="0.6279681671888205" />
+      <entry key="H1" value="0.7924444252998574" />
+      <entry key="H2" value="0.8901934763296431" />
+      <entry key="H4" value="0.943500649883" />
+      <entry key="D1" value="0.9903537885085788" />
+      <entry key="W1" value="0.9986162386301394" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.049502906633448605" />
-      <entry key="MS500" value="2.058522052821578" />
-      <entry key="S2" value="7.191266425403953" />
-      <entry key="S5" value="10.747698297643037" />
-      <entry key="S10" value="12.60385989103466" />
-      <entry key="S30" value="14.399659754678487" />
-      <entry key="S60" value="15.716822968338407" />
-      <entry key="M2" value="17.31115863635877" />
-      <entry key="M5" value="23.691438606131186" />
-      <entry key="M10" value="36.53305305974839" />
-      <entry key="M15" value="45.5037664624228" />
-      <entry key="M30" value="58.91188389761339" />
-      <entry key="H1" value="67.94201819853238" />
-      <entry key="H2" value="73.19095207922615" />
-      <entry key="H4" value="76.0218344630276" />
-      <entry key="D1" value="78.49308784862079" />
-      <entry key="W1" value="78.92732125849555" />
+      <entry key="MS100" value="1.1043480359973996" />
+      <entry key="MS500" value="2.227562499134668" />
+      <entry key="S2" value="6.651127313943408" />
+      <entry key="S5" value="10.80826731131743" />
+      <entry key="S10" value="13.619572553583742" />
+      <entry key="S30" value="25.4517418966238" />
+      <entry key="S60" value="43.76371566822213" />
+      <entry key="M2" value="65.49994480893425" />
+      <entry key="M5" value="91.17194807016335" />
+      <entry key="M10" value="111.93428120310084" />
+      <entry key="M15" value="124.21541476911315" />
+      <entry key="M30" value="141.86671664081908" />
+      <entry key="H1" value="153.61660057590896" />
+      <entry key="H2" value="160.44010616257185" />
+      <entry key="H4" value="164.12261516728466" />
+      <entry key="D1" value="167.3397525829463" />
+      <entry key="W1" value="167.9053291867232" />
     </decayedShown>
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 7
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="3LyVdzbcGM758JZBMhEKOSTLJgh" />
+  <component name="ProjectSessionTemplates">
+    <option name="version" value="1" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -87,12 +103,19 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "cidr.known.project.marker": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "feature/retaurant-management",
-    "nodejs_package_manager_path": "npm"
+    "copilot.chat.legacySessionMetadata.migrated": "true",
+    "git-widget-placeholder": "hotfix/pages-styling",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "python.packages.toolwindow.project.migrated.to.right.top.v2": "true"
   }
 }]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.FoodDelivery.Api">
