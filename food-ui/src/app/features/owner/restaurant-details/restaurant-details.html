@@ -1,0 +1,41 @@
+<main class="owner-page">
+  <section class="intro reveal">
+    <div><span class="section-eyebrow"><i></i> Your place, at a glance</span><h1>Restaurant <em>details.</em></h1><p>Everything about your restaurant, gathered in one lovely place.</p></div>
+    <div class="intro-mark" aria-hidden="true"><span>✦</span><small>EST. {{data.restaurant().dateOfAdd | date:'yyyy'}}</small></div>
+  </section>
+
+  <section class="restaurant-hero reveal">
+    <div class="hero-copy">
+      <div class="hero-id"><span class="pulse-dot"></span>{{data.restaurant().id}}<span>/</span> EST. {{data.restaurant().dateOfAdd | date:'yyyy'}}</div>
+      <h2>{{data.restaurant().name}}</h2>
+      <p class="hero-address"><i class="bi bi-geo-alt-fill"></i>{{data.restaurant().address}}</p>
+      <div class="hero-pills"><span class="status-pill" [ngClass]="'status-' + data.restaurant().status"><i class="bi bi-circle-fill"></i>{{statusLabel(data.restaurant().status)}}</span><span><i class="bi bi-egg-fried"></i>{{data.restaurant().nationality}} cuisine</span><span><i class="bi bi-cash-coin"></i>{{data.restaurant().budget}}</span></div>
+    </div>
+    <div class="hero-art" aria-hidden="true"><div class="art-glow"></div><div class="hero-orbit orbit-one"></div><div class="hero-orbit orbit-two"></div><div class="hero-dish"><span class="dish-leaf leaf-one"></span><span class="dish-leaf leaf-two"></span><span class="dish-tomato"></span><span class="dish-olive olive-one"></span><span class="dish-olive olive-two"></span><span class="dish-pasta"></span></div><span class="hero-star star-one">✳</span><span class="hero-star star-two">✦</span></div>
+    <div class="hero-bottom"><span><i class="bi bi-calendar-heart"></i> Added {{data.restaurant().dateOfAdd | date:'MMMM d, y'}}</span><span>A table with a story <b>✳</b></span></div>
+  </section>
+
+  <section class="quick-stats reveal" aria-label="Restaurant at a glance">
+    <article class="quick-stat stat-green"><div class="stat-top"><span class="quick-icon"><i class="bi bi-people"></i></span><span class="stat-index">01</span></div><span class="quick-label">GUEST CAPACITY</span><strong>{{data.restaurant().capacity}}</strong><span class="quick-note">seats around the table</span><button type="button" class="text-action" (click)="activeDialog.set('capacity')">Increase capacity <i class="bi bi-arrow-up-right"></i></button></article>
+    <article class="quick-stat stat-orange"><div class="stat-top"><span class="quick-icon"><i class="bi bi-clock"></i></span><span class="stat-index">02</span></div><span class="quick-label">DAILY HOURS</span><strong class="hours-value">{{data.restaurant().timeOpen}} <span>—</span> {{data.restaurant().timeClose}}</strong><span class="quick-note">local restaurant time</span><button type="button" class="text-action" (click)="activeDialog.set('hours')">Edit hours <i class="bi bi-arrow-up-right"></i></button></article>
+    <article class="quick-stat stat-purple"><div class="stat-top"><span class="quick-icon"><i class="bi bi-calendar-week"></i></span><span class="stat-index">03</span></div><span class="quick-label">SERVICE DAYS</span><strong>{{data.restaurant().days.length}} <small>/ 7</small></strong><span class="quick-note">{{data.restaurant().offDays.length ? data.restaurant().offDays.join(', ') + ' off' : 'Open all week'}}</span><button type="button" class="text-action" (click)="activeDialog.set('days')">Manage days <i class="bi bi-arrow-up-right"></i></button></article>
+  </section>
+
+  <div class="content-grid">
+    <section class="detail-card place-card reveal"><div class="card-heading"><div><span class="card-kicker">01 / THE PLACE</span><h3>About your restaurant</h3></div><span class="heading-icon"><i class="bi bi-shop-window"></i></span></div><div class="detail-list">
+      <div class="detail-row"><span class="detail-symbol"><i class="bi bi-hash"></i></span><span class="detail-meta"><small>Restaurant ID</small><b>{{data.restaurant().id}}</b></span><span class="row-tail">{{data.restaurant().dateOfAdd | date:'MMM y'}}</span></div>
+      <div class="detail-row"><span class="detail-symbol"><i class="bi bi-geo-alt"></i></span><span class="detail-meta"><small>Address</small><b>{{data.restaurant().address}}</b></span></div>
+      <div class="detail-row"><span class="detail-symbol"><i class="bi bi-globe2"></i></span><span class="detail-meta"><small>Cuisine & origin</small><b>{{data.restaurant().nationality}} cuisine</b></span></div>
+      <div class="detail-row"><span class="detail-symbol"><i class="bi bi-wallet2"></i></span><span class="detail-meta"><small>Price range</small><b>{{data.restaurant().budget}}</b></span></div>
+    </div></section>
+
+    <section class="detail-card schedule-card reveal"><div class="card-heading"><div><span class="card-kicker">02 / WHEN TO FIND US</span><h3>Weekly schedule</h3></div><button class="round-edit" type="button" aria-label="Edit weekly schedule" (click)="activeDialog.set('days')"><i class="bi bi-pencil"></i></button></div><div class="week-list">@for(day of ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']; track day){<div class="week-row"><span><i class="day-dot"></i>{{day}}</span>@if(data.restaurant().days.includes(day)){<span class="week-open"><i class="bi bi-clock"></i>{{data.restaurant().timeOpen}} – {{data.restaurant().timeClose}}</span>}@else{<span class="week-off">Day off</span>}</div>}</div><button class="schedule-edit" type="button" (click)="activeDialog.set('hours')"><i class="bi bi-clock-history"></i> Update opening hours <i class="bi bi-arrow-up-right"></i></button></section>
+  </div>
+
+  <footer class="owner-footer"><span>Made for the people who make the good food. <b>✳</b></span><span>Restaurant profile <i class="bi bi-check-circle-fill"></i></span></footer>
+</main>
+
+@if(activeDialog() === 'capacity'){<app-increase-capacity-dialog [currentCapacity]="data.restaurant().capacity" (requested)="stageCapacity($event)" (cancelled)="closeDialogs()"/>}
+@if(activeDialog() === 'hours'){<app-update-hours-dialog [opening]="data.restaurant().timeOpen" [closing]="data.restaurant().timeClose" (requested)="stageHours($event)" (cancelled)="closeDialogs()"/>}
+@if(activeDialog() === 'days'){<app-update-days-dialog [days]="data.restaurant().days" [offDays]="data.restaurant().offDays" (requested)="stageDays($event)" (cancelled)="closeDialogs()"/>}
+@if(pendingOperation(); as operation){<app-confirm-operation-dialog [title]="operation.title" [message]="operation.message" (confirmed)="confirmOperation()" (cancelled)="closeDialogs()"/>}

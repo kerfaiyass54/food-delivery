@@ -1,0 +1,27 @@
+<main class="management-page">
+  @if(data.error(); as error){<div class="page-notification error"><i class="bi bi-exclamation-circle"></i>{{error}}</div>}
+  <header class="management-header">
+    <div><span class="eyebrow"><i></i> Talent inbox</span><h1>Candidatures</h1><p>Meet the people who want to join your kitchen.</p></div>
+    <div class="count-card"><strong>{{ data.candidatures().length }}</strong><span>applications</span></div>
+  </header>
+  <section class="application-list" aria-label="Chef applications">
+    @for (item of data.candidatures(); track item.id) {
+      <article class="application-card" tabindex="0" role="button" (click)="showDetails(item)" (keydown.enter)="showDetails(item)" (keydown.space)="showDetails(item); $event.preventDefault()">
+        <div class="candidate-avatar"><i class="bi bi-file-earmark-person"></i></div>
+        <div class="candidate-main"><h2>Candidature #{{ item.id }}</h2><p><i class="bi bi-person-check"></i> Connected chef: {{ item.chefName }}</p></div>
+        <div class="application-salary"><small>SALARY</small><b>${{ item.salary }}</b></div>
+        <div class="application-date"><small>DATE</small><b>{{ item.date | date:'mediumDate' }}</b></div>
+        <span class="application-status" [class]="'status-' + item.status">{{ item.status }}</span>
+        @if (item.status === 'pending') {
+          <div class="application-actions"><button type="button" class="approve-button" (click)="$event.stopPropagation(); ask(item, 'approve')"><i class="bi bi-check2"></i>Approve</button><button type="button" class="refuse-button" (click)="$event.stopPropagation(); ask(item, 'refuse')"><i class="bi bi-x-lg"></i>Refuse</button></div>
+        } @else {
+          <span class="completed-label"><i class="bi bi-check-circle"></i> {{ item.status }}</span>
+        }
+      </article>
+    }
+  </section>
+</main>
+@if (selectedCandidature(); as candidature) { <app-candidature-details-dialog [candidature]="candidature" (closed)="closeDialog()" /> }
+@if (pendingAction(); as action) {
+  <app-confirm-operation-dialog [title]="action.action === 'approve' ? 'Approve this application?' : 'Refuse this application?'" [message]="action.action === 'approve' ? 'Accept candidature #' + action.item.id + '.' : 'Refuse candidature #' + action.item.id + '.'" (confirmed)="applyAction()" (cancelled)="closeDialog()" />
+}

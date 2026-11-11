@@ -1,0 +1,21 @@
+<main class="management-page">
+  @if(data.error(); as error){<div class="page-notification error"><i class="bi bi-exclamation-circle"></i>{{error}}</div>}
+  <header class="management-header">
+    <div><span class="eyebrow"><i></i> Kitchen team</span><h1>Your chefs</h1><p>Keep an eye on the people behind every plate.</p></div>
+    <div class="count-card"><strong>{{ data.chefs().length }}</strong><span>active chefs</span></div>
+  </header>
+  <section class="chef-list" aria-label="Chefs">
+    @for (chef of data.chefs(); track chef.id) {
+      <article class="chef-card">
+        <div class="chef-avatar">{{ chef.name.slice(0, 2).toUpperCase() }}</div>
+        <div class="chef-main"><h2>{{ chef.name }}</h2><p>ID #{{ chef.id }} <span>·</span> {{ chef.speciality }} <span>·</span> {{ chef.experience }} years</p></div>
+        <span class="chef-status status-connected"><i></i>Connected</span>
+        <div class="chef-actions"><button type="button" class="details-button" (click)="showDetails(chef)">View details <i class="bi bi-arrow-up-right"></i></button><button type="button" class="remove-button" aria-label="Remove chef" (click)="askRemove(chef)"><i class="bi bi-trash3"></i></button></div>
+      </article>
+    } @empty {
+      <div class="empty-state"><i class="bi bi-people"></i><h2>No chefs yet</h2><p>Your kitchen team will appear here.</p></div>
+    }
+  </section>
+</main>
+@if (selectedChef(); as chef) { <app-chef-details-dialog [chef]="chef" (closed)="closeDialogs()" /> }
+@if (chefToRemove(); as chef) { <app-confirm-operation-dialog title="Remove this chef?" [message]="'Remove ' + chef.name + ' from your restaurant team?'" (confirmed)="removeChef()" (cancelled)="closeDialogs()" /> }

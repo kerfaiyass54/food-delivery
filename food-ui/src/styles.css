@@ -1,6 +1,31 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap');
-:root { color-scheme:light; font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-synthesis:none; text-rendering:optimizeLegibility; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; font-optical-sizing:auto; font-weight:400; background:#f7f8f5; }
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+:root { color-scheme:light; font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-synthesis:none; text-rendering:optimizeLegibility; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; font-optical-sizing:auto; font-weight:400; background:#f6f8fc; --blue:#1455d9; --blue-dark:#0d2f73; --blue-soft:#eaf1ff; --red:#dc3d4b; --red-soft:#fff0f2; --ink:#10254a; --muted:#70809d; }
 * { box-sizing:border-box; }
-body { margin:0; min-width:320px; min-height:100vh; }
+body { margin:0; min-width:320px; min-height:100vh; background:#f6f8fc; color:var(--ink); }
+html { scroll-behavior:smooth; }
 button,input,select { font:inherit; }
-::selection { color:#315b3a; background:#dcebd9; }
+button { font-family:inherit; }
+::selection { color:#fff; background:var(--blue); }
+
+/* Shared owner palette: component-level styles keep their motion while inheriting
+   the same blue/red/white visual language. */
+.sidebar { background:#fff !important; border-color:#e4eaf5 !important; }
+.brand { color:var(--ink) !important; }
+.brand-mark { color:var(--blue) !important; background:var(--blue-soft) !important; }
+.brand-dot { color:var(--red) !important; }
+.nav-link { color:#71809a !important; }
+.nav-link:hover { color:var(--blue) !important; background:var(--blue-soft) !important; }
+.nav-link.active { color:var(--blue) !important; background:var(--blue-soft) !important; }
+.help-card { background:linear-gradient(145deg,#eef4ff,#fff) !important; }
+.help-icon,.help-card a { color:var(--blue) !important; }
+.management-page,.owner-page { background:#f6f8fc !important; }
+.management-header h1,.intro h1,.restaurant-hero h2,.card-heading h3 { color:var(--ink) !important; }
+.eyebrow,.section-eyebrow,.card-kicker { color:#5f76a1 !important; }
+.eyebrow i,.section-eyebrow i { background:var(--red) !important; box-shadow:0 0 0 4px var(--red-soft) !important; }
+.restaurant-hero { border-color:#cddafb !important; background:linear-gradient(112deg,#eaf1ff,#fff 55%,#fff0f2) !important; }
+.quick-stat,.detail-card,.chef-card,.count-card { border-color:#e0e7f3 !important; }
+.chef-avatar { background:linear-gradient(145deg,#eaf1ff,#dce7ff) !important; color:var(--blue) !important; }
+.details-button,.heading-icon,.round-edit { background:var(--blue-soft) !important; color:var(--blue) !important; }
+.remove-button { background:var(--red-soft) !important; color:var(--red) !important; }
+.dialog-done { background:var(--blue) !important; }
+.status-accepted { background:#e8f4e9 !important; color:#2f7a55 !important; }
