@@ -2,7 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { ChefPortalService } from '../../../core/services/chef-portal.service';
+import { ChefProfileService } from '../../../core/services/chef/chef-profile';
 
 @Component({
   selector: 'app-chef-details',
@@ -12,7 +12,7 @@ import { ChefPortalService } from '../../../core/services/chef-portal.service';
   styleUrls: ['./chef-details.css'],
 })
 export class ChefDetailsComponent {
-  readonly data = inject(ChefPortalService);
+  readonly data = inject(ChefProfileService);
   readonly editing = signal(false);
   readonly saved = signal(false);
   draft = { speciality: '', experience: 0, requiredSalary: 0 };

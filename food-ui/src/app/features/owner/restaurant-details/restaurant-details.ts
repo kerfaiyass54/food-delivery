@@ -1,7 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { DatePipe, NgClass } from '@angular/common';
 import { OwnerRestaurantService } from '../../../core/services/owner/owner-restaurant.service';
-import { RestaurantService } from '../../../core/services/restaurant.service';
+import { RestaurantService } from '../../../core/services/owner/restaurant.service';
 import { ConfirmOperationDialogComponent } from '../confirm-operation-dialog/confirm-operation-dialog';
 import { IncreaseCapacityDialogComponent } from '../increase-capacity-dialog/increase-capacity-dialog';
 import { UpdateDaysDialogComponent } from '../update-days-dialog/update-days-dialog';

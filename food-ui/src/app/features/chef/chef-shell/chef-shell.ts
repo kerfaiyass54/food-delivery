@@ -1,7 +1,7 @@
 import { Component, computed, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SidebarNavComponent } from '../../../shared/components/sidebar-nav/sidebar-nav';
-import { ChefPortalService } from '../../../core/services/chef-portal.service';
+import { ChefProfileService } from '../../../core/services/chef/chef-profile';
 
 @Component({
   selector: 'app-chef-shell',
@@ -11,7 +11,7 @@ import { ChefPortalService } from '../../../core/services/chef-portal.service';
   styleUrl: './chef-shell.css',
 })
 export class ChefShellComponent {
-  readonly data = inject(ChefPortalService);
+  readonly data = inject(ChefProfileService);
   readonly name = computed(() => this.data.profile()?.name ?? 'Chef profile');
   readonly navigation = [
     { label: 'My details', icon: 'person', route: '/chef/details' },

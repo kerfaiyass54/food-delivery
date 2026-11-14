@@ -1,9 +1,9 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable, inject, signal } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
-import { ApiConfigService } from './api-config.service';
-import { OwnerRestaurantService } from './owner/owner-restaurant.service';
-import { ChefDetails, ChefSummary } from '../../shared/models/owner.models';
+import { ApiConfigService } from '../api-config.service';
+import { OwnerRestaurantService } from './owner-restaurant.service';
+import { ChefDetails, ChefSummary } from '../../../shared/models/owner.models';
 
 @Injectable({ providedIn: 'root' })
 export class ChefService {
