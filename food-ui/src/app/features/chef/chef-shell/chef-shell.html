@@ -1,4 +1,12 @@
 <div class="chef-shell">
-  <aside class="chef-navigation"><app-sidebar-nav [items]="navigation" active="My details" [profileName]="name()" profileRole="Professional chef" brandSubtitle="CHEF STUDIO" brandLink="/chef/details" /></aside>
+  <aside class="chef-navigation">
+    <app-sidebar-nav
+      [items]="navigation"
+      active="My details"
+      [profileName]="name()"
+      profileRole="Professional chef"
+      brandSubtitle="CHEF STUDIO"
+      brandLink="/chef/details" />
+  </aside>
   <main class="chef-content"><router-outlet /></main>
 </div>

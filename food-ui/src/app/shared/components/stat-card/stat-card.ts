@@ -12,4 +12,3 @@ import { IconComponent } from '../icon/icon';
 export class StatCardComponent {
   stat = input.required<DashboardStat>();
 }
-

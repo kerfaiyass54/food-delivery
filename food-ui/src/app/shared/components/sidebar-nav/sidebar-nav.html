@@ -1,8 +1,35 @@
 <aside class="sidebar">
-  <a class="brand" [routerLink]="brandLink()"><span class="brand-mark"><app-icon name="house-door-fill" [size]="22"/></span><span>crumb<span class="brand-dot">.</span><small>{{brandSubtitle()}}</small></span></a>
+  <a class="brand" [routerLink]="brandLink()"
+    ><span class="brand-mark"><app-icon name="house-door-fill" [size]="22" /></span
+    ><span
+      >crumb<span class="brand-dot">.</span><small>{{ brandSubtitle() }}</small></span
+    ></a
+  >
   <div class="nav-caption">WORKSPACE</div>
-  <nav>@for (item of items(); track item.label) { <a class="nav-link" [routerLink]="item.route" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><app-icon [name]="iconName(item.icon)" [size]="19"/><span>{{ item.label }}</span>@if(item.badge){<span class="nav-badge">{{item.badge}}</span>}</a> }</nav>
+  <nav>
+    @for (item of items(); track item.label) {
+      <a
+        class="nav-link"
+        [routerLink]="item.route"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        ><app-icon [name]="iconName(item.icon)" [size]="19" /><span>{{ item.label }}</span>
+        @if (item.badge) {
+          <span class="nav-badge">{{ item.badge }}</span>
+        }
+      </a>
+    }
+  </nav>
   <div class="sidebar-spacer"></div>
-  <div class="help-card"><span class="help-icon">✳</span><b>Need a hand?</b><p>Our team is one tap away.</p><a href="#support">Visit help centre <span>↗</span></a></div>
-  <button class="profile"><span class="avatar">{{profileName().slice(0,2).toUpperCase()}}</span><span class="profile-name">{{profileName()}}<small>{{profileRole()}}</small></span><span class="profile-more">···</span></button>
+  <div class="help-card">
+    <span class="help-icon">✳</span><b>Need a hand?</b>
+    <p>Our team is one tap away.</p>
+    <a href="#support">Visit help centre <span>↗</span></a>
+  </div>
+  <button class="profile">
+    <span class="avatar">{{ profileName().slice(0, 2).toUpperCase() }}</span><span
+      class="profile-name"
+      >{{ profileName() }}<small>{{ profileRole() }}</small></span
+    ><span class="profile-more">···</span>
+  </button>
 </aside>

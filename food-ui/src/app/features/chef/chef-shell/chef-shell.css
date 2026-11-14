@@ -1,1 +1,73 @@
-:host{display:block;min-height:100vh}.chef-shell{display:grid;grid-template-columns:235px minmax(0,1fr);min-height:100vh;background:#f4f7f2}.chef-navigation{position:sticky;top:0;height:100vh}.chef-content{min-width:0}@media(max-width:760px){.chef-shell{display:block}.chef-navigation{position:relative;height:auto}.chef-navigation app-sidebar-nav{display:block}.chef-content{min-height:calc(100vh - 76px)}}
+:host {
+  display: block;
+  min-height: 100vh;
+}
+.chef-shell {
+  display: grid;
+  grid-template-columns: 235px minmax(0, 1fr);
+  min-height: 100vh;
+  background: #f4f7f2;
+}
+.chef-navigation {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+.chef-content {
+  min-width: 0;
+}
+@media (max-width: 760px) {
+  .chef-shell {
+    display: block;
+  }
+  .chef-navigation {
+    position: relative;
+    height: auto;
+  }
+  .chef-navigation app-sidebar-nav {
+    display: block;
+  }
+  .chef-content {
+    min-height: calc(100vh - 76px);
+  }
+}
+
+.chef-shell {
+  background: #f6f8fc;
+}
+.chef-content {
+  position: relative;
+  overflow: hidden;
+}
+.chef-content::before {
+  content: '';
+  position: fixed;
+  z-index: -1;
+  inset: 0;
+  background:
+    radial-gradient(circle at 85% 4%, #e5edff 0, transparent 28%),
+    radial-gradient(circle at 10% 70%, #fff0f2 0, transparent 24%);
+  pointer-events: none;
+}
+.chef-navigation {
+  z-index: 2;
+}
+.chef-content > router-outlet + * {
+  display: block;
+  animation: chef-route-enter 0.55s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+@keyframes chef-route-enter {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chef-content > router-outlet + * {
+    animation: none;
+  }
+}
