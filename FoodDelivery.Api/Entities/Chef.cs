@@ -24,4 +24,6 @@ public class Chef
     public Restaurant? Restaurant { get; set; }
 
     public ICollection<Candidature> Candidatures { get; set; } = new List<Candidature>();
+    public ICollection<Product> Products { get; set; } = new List<Product>();
+    public ICollection<FoodOrder> Orders { get; set; } = new List<FoodOrder>();
 }

@@ -90,6 +90,47 @@ namespace FoodDelivery.Api.Migrations
                     b.ToTable("Chefs");
                 });
 
+            modelBuilder.Entity("FoodDelivery.Api.Entities.Client", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal>("Budget")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("numeric(18,2)");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("character varying(150)");
+
+                    b.Property<string>("Nationality")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("character varying(20)");
+
+                    b.Property<decimal>("Weight")
+                        .HasPrecision(8, 2)
+                        .HasColumnType("numeric(8,2)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Clients");
+                });
+
             modelBuilder.Entity("FoodDelivery.Api.Entities.Day", b =>
                 {
                     b.Property<int>("Id")
@@ -148,6 +189,58 @@ namespace FoodDelivery.Api.Migrations
                         });
                 });
 
+            modelBuilder.Entity("FoodDelivery.Api.Entities.FoodOrder", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ChefId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("ClientId")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTimeOffset>("Date")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("character varying(20)");
+
+                    b.Property<TimeOnly>("Time")
+                        .HasColumnType("time without time zone");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ChefId");
+
+                    b.HasIndex("ClientId");
+
+                    b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("FoodDelivery.Api.Entities.OrderProduct", b =>
+                {
+                    b.Property<int>("OrderId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("integer");
+
+                    b.HasKey("OrderId", "ProductId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("OrderProducts");
+                });
+
             modelBuilder.Entity("FoodDelivery.Api.Entities.Owner", b =>
                 {
                     b.Property<int>("Id")
@@ -180,6 +273,75 @@ namespace FoodDelivery.Api.Migrations
                         .IsUnique();
 
                     b.ToTable("Owners");
+                });
+
+            modelBuilder.Entity("FoodDelivery.Api.Entities.Product", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ChefId")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTimeOffset>("CookDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("character varying(150)");
+
+                    b.Property<int>("Stock")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ChefId", "Name");
+
+                    b.ToTable("Products");
+
+                    b.HasCheckConstraint("CK_Products_Stock_NonNegative", "\"Stock\" >= 0");
+                });
+
+            modelBuilder.Entity("FoodDelivery.Api.Entities.Purchase", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ClientId")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTimeOffset>("Date")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<decimal>("Price")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("numeric(18,2)");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClientId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("Purchases");
                 });
 
             modelBuilder.Entity("FoodDelivery.Api.Entities.Restaurant", b =>
@@ -295,6 +457,74 @@ namespace FoodDelivery.Api.Migrations
                     b.Navigation("Restaurant");
                 });
 
+            modelBuilder.Entity("FoodDelivery.Api.Entities.FoodOrder", b =>
+                {
+                    b.HasOne("FoodDelivery.Api.Entities.Chef", "Chef")
+                        .WithMany("Orders")
+                        .HasForeignKey("ChefId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("FoodDelivery.Api.Entities.Client", "Client")
+                        .WithMany("Orders")
+                        .HasForeignKey("ClientId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Chef");
+
+                    b.Navigation("Client");
+                });
+
+            modelBuilder.Entity("FoodDelivery.Api.Entities.OrderProduct", b =>
+                {
+                    b.HasOne("FoodDelivery.Api.Entities.FoodOrder", "Order")
+                        .WithMany("Products")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FoodDelivery.Api.Entities.Product", "Product")
+                        .WithMany("OrderProducts")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Order");
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("FoodDelivery.Api.Entities.Product", b =>
+                {
+                    b.HasOne("FoodDelivery.Api.Entities.Chef", "Chef")
+                        .WithMany("Products")
+                        .HasForeignKey("ChefId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Chef");
+                });
+
+            modelBuilder.Entity("FoodDelivery.Api.Entities.Purchase", b =>
+                {
+                    b.HasOne("FoodDelivery.Api.Entities.Client", "Client")
+                        .WithMany("Purchases")
+                        .HasForeignKey("ClientId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("FoodDelivery.Api.Entities.Product", "Product")
+                        .WithMany("Purchases")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Client");
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("FoodDelivery.Api.Entities.Restaurant", b =>
                 {
                     b.HasOne("FoodDelivery.Api.Entities.Owner", "Owner")
@@ -347,6 +577,17 @@ namespace FoodDelivery.Api.Migrations
             modelBuilder.Entity("FoodDelivery.Api.Entities.Chef", b =>
                 {
                     b.Navigation("Candidatures");
+
+                    b.Navigation("Orders");
+
+                    b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("FoodDelivery.Api.Entities.Client", b =>
+                {
+                    b.Navigation("Orders");
+
+                    b.Navigation("Purchases");
                 });
 
             modelBuilder.Entity("FoodDelivery.Api.Entities.Day", b =>
@@ -356,9 +597,21 @@ namespace FoodDelivery.Api.Migrations
                     b.Navigation("RestaurantsOff");
                 });
 
+            modelBuilder.Entity("FoodDelivery.Api.Entities.FoodOrder", b =>
+                {
+                    b.Navigation("Products");
+                });
+
             modelBuilder.Entity("FoodDelivery.Api.Entities.Owner", b =>
                 {
                     b.Navigation("Restaurant");
+                });
+
+            modelBuilder.Entity("FoodDelivery.Api.Entities.Product", b =>
+                {
+                    b.Navigation("OrderProducts");
+
+                    b.Navigation("Purchases");
                 });
 
             modelBuilder.Entity("FoodDelivery.Api.Entities.Restaurant", b =>

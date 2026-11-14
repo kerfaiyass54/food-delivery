@@ -14,7 +14,25 @@
     <configurations />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="938e46b2-f6a8-4651-95ef-fe39483e6fdc" name="Änderungen" comment="" />
+    <list default="true" id="938e46b2-f6a8-4651-95ef-fe39483e6fdc" name="Änderungen" comment="">
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.food-delivery.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.food-delivery.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/FoodDeliveryDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Data/FoodDeliveryDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entities/Chef.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Entities/Chef.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Migrations/FoodDeliveryDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Migrations/FoodDeliveryDbContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/net6.0/FoodDelivery.Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net6.0/FoodDelivery.Api.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/net6.0/FoodDelivery.Api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net6.0/FoodDelivery.Api.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/FoodDelivery.Api.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/FoodDelivery.Api.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/FoodDelivery.Api.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/FoodDelivery.Api.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/FoodDelivery.Api.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/FoodDelivery.Api.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/FoodDelivery.Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/FoodDelivery.Api.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/FoodDelivery.Api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/FoodDelivery.Api.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/ref/FoodDelivery.Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/ref/FoodDelivery.Api.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/refint/FoodDelivery.Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/refint/FoodDelivery.Api.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/staticwebassets.pack.sentinel" beforeDir="false" afterPath="$PROJECT_DIR$/obj/staticwebassets.pack.sentinel" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -110,13 +128,14 @@
     "cidr.known.project.marker": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "copilot.chat.legacySessionMetadata.migrated": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "chore/database-chef-owner",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "python.packages.toolwindow.project.migrated.to.right.top.v2": "true",
-    "settings.editor.selected.configurable": "editor.preferences.tabs"
+    "settings.editor.selected.configurable": "editor.preferences.tabs",
+    "studio.ml.bot.history.legacyLocationsMigrated": "true"
   }
 }]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.FoodDelivery.Api">
