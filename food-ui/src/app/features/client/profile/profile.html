@@ -1,0 +1,92 @@
+<main class="owner-page commerce-page client-profile-page">
+  <header class="topbar">
+    <div class="breadcrumb">
+      <a class="breadcrumb-home" routerLink="/client/shop"><i class="bi bi-house"></i></a>
+      <span>Client space</span><i class="bi bi-chevron-right"></i><b>Your profile</b>
+    </div>
+    <div class="commerce-status"><i class="bi bi-person-heart"></i> YOUR ACCOUNT</div>
+  </header>
+
+  <section class="intro commerce-intro">
+    <div>
+      <span class="section-eyebrow"><i></i> A LITTLE ABOUT YOU</span>
+      <h1>Make yourself <em>at home.</em></h1>
+      <p>Create a client profile to place orders and keep your purchases in one place.</p>
+    </div>
+    <div class="intro-mark profile-mark" aria-hidden="true">
+      <span><i class="bi bi-person-heart"></i></span><small>WELCOME</small>
+    </div>
+  </section>
+
+  @if (data.clientId(); as clientId) {
+    <section class="profile-ready">
+      <div class="ready-icon"><i class="bi bi-check2"></i></div>
+      <div>
+        <span class="section-eyebrow"><i></i> YOU’RE ALL SET</span>
+        <h2>{{ data.client()?.name || 'Your client profile is ready' }}</h2>
+        <p>Client account <b>#{{ clientId }}</b> is connected to this browser.</p>
+      </div>
+      <a routerLink="/client/shop" class="commerce-button primary-button">
+        Browse the menu <i class="bi bi-arrow-up-right"></i>
+      </a>
+    </section>
+  } @else {
+    <section class="profile-form-card">
+      <div class="profile-form-heading">
+        <span class="form-orbit"><i class="bi bi-person-fill"></i></span>
+        <div>
+          <span class="card-kicker">YOUR TABLE / 01</span>
+          <h2>Set up your client profile</h2>
+          <p>Your details help us keep your orders and food preferences together.</p>
+        </div>
+      </div>
+
+      @if (error()) {
+        <div class="commerce-alert" role="alert"><i class="bi bi-exclamation-circle"></i>{{ error() }}</div>
+      }
+      @if (success()) {
+        <div class="commerce-success" role="status">
+          <i class="bi bi-check-circle-fill"></i> Profile created. Your account is ready to order.
+        </div>
+      }
+
+      <form class="profile-form" (ngSubmit)="createProfile()">
+        <label class="commerce-field">
+          <span>Your name</span>
+          <input name="name" [(ngModel)]="draft.name" maxlength="150" required placeholder="e.g. Alex Morgan" />
+        </label>
+        <label class="commerce-field">
+          <span>City</span>
+          <input name="city" [(ngModel)]="draft.city" maxlength="100" required placeholder="Where should we find you?" />
+        </label>
+        <label class="commerce-field">
+          <span>Nationality</span>
+          <input name="nationality" [(ngModel)]="draft.nationality" maxlength="100" required placeholder="Your food heritage" />
+        </label>
+        <label class="commerce-field">
+          <span>Available budget</span>
+          <div class="input-with-unit"><span>¤</span><input name="budget" type="number" min="0" step="0.01" [(ngModel)]="draft.budget" required /></div>
+        </label>
+        <label class="commerce-field">
+          <span>Weight preference</span>
+          <div class="input-with-unit"><input name="weight" type="number" min="0" step="0.1" [(ngModel)]="draft.weight" required /><span>kg</span></div>
+        </label>
+        <label class="commerce-field">
+          <span>Food preference</span>
+          <select name="status" [(ngModel)]="draft.status" required>
+            <option [ngValue]="ClientStatus.Normal">No special preference</option>
+            <option [ngValue]="ClientStatus.Diet">Diet-conscious</option>
+            <option [ngValue]="ClientStatus.Sick">Gentle meals</option>
+          </select>
+        </label>
+        <div class="form-submit-row">
+          <p><i class="bi bi-shield-check"></i> Your profile is used to manage your orders.</p>
+          <button class="commerce-button primary-button" type="submit" [disabled]="saving()">
+            {{ saving() ? 'Creating profile…' : 'Create my profile' }}
+            <i class="bi bi-arrow-right"></i>
+          </button>
+        </div>
+      </form>
+    </section>
+  }
+</main>

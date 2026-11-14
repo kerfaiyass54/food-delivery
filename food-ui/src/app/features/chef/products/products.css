@@ -1,0 +1,85 @@
+.chef-products-page { --chef-accent: #517957; --chef-dark: #344537; min-height: 100vh; color: var(--chef-dark); }
+.chef-products-page .topbar,.cook-card,.kitchen-note,.products-heading,.chef-product-card { animation: chef-commerce-rise 0.6s both; }
+.chef-products-page .topbar { margin-bottom: 40px; }
+.chef-commerce-status { display: flex; align-items: center; gap: 7px; color: #779278; font-size: 9px; font-weight: 750; letter-spacing: 1px; }
+.chef-commerce-intro h1 em { color: #6c936d; font-family: 'DM Serif Display', Georgia, serif; font-weight: 400; }
+.chef-commerce-intro p { color: #849087; }
+.product-mark { color: #668a64; background: #edf3e9; }
+.product-mark > span { display: grid; width: 64px; height: 64px; place-items: center; border: 1px solid #d5e3d0; border-radius: 22px; background: linear-gradient(140deg,#fff,#e7f0e3); box-shadow: 0 15px 35px #45603e12; font-size: 27px; animation: chef-float 4s ease-in-out infinite; }
+.chef-commerce-alert,.chef-commerce-success { display: flex; align-items: center; gap: 8px; margin-bottom: 15px; padding: 11px 13px; border: 1px solid #edc9bd; border-radius: 12px; background: #fff5ef; color: #a65e4e; font-size: 10px; }
+.chef-commerce-alert button { margin-left: auto; border: 0; background: transparent; color: inherit; font: inherit; font-weight: 700; cursor: pointer; }
+.chef-commerce-success { border-color: #cde2ce; background: #f2faf1; color: #54805b; }
+.cook-layout { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(230px, 0.7fr); gap: 15px; }
+.cook-card,.kitchen-note { border: 1px solid #e5ebe1; border-radius: 21px; background: #ffffffdf; box-shadow: 0 16px 35px #34533809; backdrop-filter: blur(13px); }
+.cook-card { padding: 21px; animation-delay: 0.03s; }
+.cook-heading { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+.cook-icon { display: grid; width: 42px; height: 42px; place-items: center; border-radius: 14px; background: #eaf3e7; color: #5e8a5d; font-size: 17px; }
+.card-kicker { color: #8fa18a; font-size: 8px; font-weight: 800; letter-spacing: 1px; }
+.cook-heading h2 { margin: 4px 0 2px; color: #354638; font-family: 'DM Serif Display', Georgia, serif; font-size: 22px; }
+.cook-heading p { margin: 0; color: #92a092; font-size: 9px; }
+.cook-form { display: grid; grid-template-columns: 1.2fr 1fr 0.6fr auto; align-items: end; gap: 10px; }
+.chef-commerce-field { display: grid; gap: 6px; color: #718071; font-size: 9px; font-weight: 700; }
+.chef-commerce-field input { min-width: 0; height: 38px; padding: 0 10px; border: 1px solid #e5ece2; border-radius: 10px; outline: 0; background: #fcfdfa; color: #3f5140; font: inherit; font-weight: 500; transition: border-color 0.2s, box-shadow 0.2s; }
+.chef-commerce-field input:focus { border-color: #a4c2a0; box-shadow: 0 0 0 3px #edf5eb; }
+.cook-submit { display: inline-flex; align-items: center; justify-content: center; gap: 7px; height: 38px; padding: 0 12px; border: 0; border-radius: 10px; background: linear-gradient(120deg,#739871,#4f7858); box-shadow: 0 7px 15px #4e765222; color: #fff; font-size: 8px; font-weight: 750; white-space: nowrap; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; }
+.cook-submit:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 10px 19px #4e765233; }
+.cook-submit:disabled { opacity: 0.55; cursor: wait; }
+.cook-footnote { margin-top: 13px; color: #9ca99a; font-size: 8px; }
+.cook-footnote i { margin-right: 4px; color: #8ea989; }
+.kitchen-note { position: relative; overflow: hidden; padding: 20px; background: linear-gradient(145deg,#f0f5ec,#faf7e9); animation-delay: 0.1s; }
+.kitchen-note:after { position: absolute; right: -42px; bottom: -64px; width: 180px; height: 180px; border: 1px solid #819a722e; border-radius: 50%; box-shadow: 0 0 0 18px #819a7210,0 0 0 39px #819a720b; content: ''; }
+.note-spark { margin-bottom: 10px; color: #87a37c; font-size: 22px; animation: spark-turn 14s linear infinite; transform-origin: 50% 50%; }
+.kitchen-note h3 { max-width: 240px; margin: 7px 0; color: #4c614b; font-family: 'DM Serif Display', Georgia, serif; font-size: 21px; line-height: 1.13; }
+.kitchen-note p { max-width: 235px; color: #899786; font-size: 9px; line-height: 1.6; }
+.note-lines { display: flex; gap: 5px; margin-top: 16px; }
+.note-lines span { width: 20px; height: 3px; border-radius: 9px; background: #9bb694; }
+.note-lines span:nth-child(2) { width: 9px; opacity: 0.6; }
+.note-lines span:nth-child(3) { width: 5px; opacity: 0.35; }
+.products-heading { display: flex; align-items: end; justify-content: space-between; margin: 31px 0 15px; animation-delay: 0.12s; }
+.products-heading h2 { margin: 6px 0 0; color: #394a3b; font-family: 'DM Serif Display', Georgia, serif; font-size: 27px; }
+.section-eyebrow { color: #8da08b; font-size: 8px; font-weight: 800; letter-spacing: 1.1px; }
+.section-eyebrow i { display: inline-block; width: 5px; height: 5px; margin: 0 6px 1px 0; border-radius: 50%; background: #85a37d; box-shadow: 0 0 0 4px #edf4ea; }
+.product-total { display: flex; align-items: center; gap: 5px; color: #91a08e; font-size: 9px; }
+.product-total b { color: #5f825e; font-size: 16px; }
+.product-total button { display: grid; width: 29px; height: 29px; margin-left: 7px; place-items: center; border: 1px solid #e2eade; border-radius: 9px; background: #fff; color: #799276; cursor: pointer; }
+.product-total button:disabled { opacity: 0.55; }
+.product-total button .spinning { animation: chef-spin 0.7s linear infinite; }
+.chef-product-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 15px; }
+.chef-product-card { overflow: hidden; border: 1px solid #e4ebe1; border-radius: 19px; background: #fff; box-shadow: 0 12px 27px #36523a08; animation-delay: calc(var(--card-index,0) * 45ms); transition: transform 0.23s, box-shadow 0.23s; }
+.chef-product-card:hover { transform: translateY(-4px); box-shadow: 0 19px 35px #36523a14; }
+.product-top-art { position: relative; display: grid; height: 116px; place-items: center; overflow: hidden; background: linear-gradient(135deg,#e9f0e3,#f4f5e9); color: #668664; }
+.flavor-1 { background: linear-gradient(135deg,#f2e9dd,#f7f2e9); color: #a7835b; }
+.flavor-2 { background: linear-gradient(135deg,#e5edf0,#f0f5f3); color: #61868a; }
+.flavor-3 { background: linear-gradient(135deg,#eee7f1,#f6f0f5); color: #8f7896; }
+.product-top-art > i { z-index: 1; font-size: 39px; filter: drop-shadow(0 8px 6px #344b2c24); transition: transform 0.25s; }
+.chef-product-card:hover .product-top-art > i { transform: scale(1.11) rotate(-7deg); }
+.art-ring { position: absolute; width: 94px; height: 94px; border: 1px solid currentColor; border-radius: 50%; opacity: 0.22; box-shadow: 0 0 0 16px #ffffff16,0 0 0 34px #ffffff10; }
+.product-number { position: absolute; top: 13px; left: 14px; color: #899989; font-size: 7px; font-weight: 800; letter-spacing: 0.8px; }
+.stock-bubble { position: absolute; right: 10px; bottom: 10px; display: grid; min-width: 45px; justify-items: center; padding: 5px 8px; border: 1px solid #ffffffa8; border-radius: 10px; background: #ffffffdc; color: #537554; backdrop-filter: blur(7px); }
+.stock-bubble b { font-size: 13px; line-height: 1; }
+.stock-bubble small { margin-top: 3px; color: #92a28e; font-size: 6px; letter-spacing: 0.5px; }
+.chef-product-body { padding: 13px 14px 11px; }
+.chef-product-type { color: #90a18d; font-size: 7px; font-weight: 800; letter-spacing: 0.7px; text-transform: uppercase; }
+.chef-product-body h3 { margin: 3px 0 5px; color: #394a3b; font-size: 14px; font-weight: 750; }
+.chef-product-body p { margin: 0 0 12px; color: #9ba69a; font-size: 8px; }
+.chef-product-body p i { margin-right: 3px; }
+.chef-product-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 9px; border-top: 1px solid #eff3ed; }
+.chef-product-footer > span { color: #99a598; font-size: 8px; }
+.chef-product-footer > span i { margin-right: 4px; color: #789276; }
+.chef-product-footer button { display: flex; align-items: center; gap: 4px; padding: 5px 7px; border: 1px solid #f0d9d3; border-radius: 8px; background: #fff; color: #ae6c5f; font-size: 7px; font-weight: 700; cursor: pointer; }
+.chef-product-footer button:hover:not(:disabled) { background: #fff3ef; }
+.chef-product-footer button:disabled { opacity: 0.5; }
+.chef-products-empty { display: grid; justify-items: center; padding: 35px; border: 1px dashed #dce7d8; border-radius: 20px; background: #ffffff9c; text-align: center; }
+.chef-products-empty > span { display: grid; width: 49px; height: 49px; place-items: center; border-radius: 16px; background: #edf4ea; color: #63855f; font-size: 20px; }
+.chef-products-empty h3 { margin: 11px 0 4px; color: #4b5f4c; font-family: 'DM Serif Display', Georgia, serif; font-size: 22px; }
+.chef-products-empty p { margin: 0; color: #8e9c8c; font-size: 9px; }
+.chef-commerce-loading { display: flex; align-items: center; justify-content: center; gap: 9px; padding: 33px; color: #879785; font-size: 10px; }
+.chef-commerce-loading span { width: 14px; height: 14px; border: 2px solid #dce8d7; border-top-color: #678c65; border-radius: 50%; animation: chef-spin 0.7s linear infinite; }
+@keyframes chef-commerce-rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes chef-float { 0%,100% { transform: translateY(0) rotate(-4deg); } 50% { transform: translateY(-6px) rotate(4deg); } }
+@keyframes chef-spin { to { transform: rotate(360deg); } }
+@keyframes spark-turn { to { transform: rotate(360deg); } }
+@media (max-width: 1050px) { .cook-form { grid-template-columns: repeat(2,minmax(0,1fr)); } .cook-submit { width: 100%; } .chef-product-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+@media (max-width: 700px) { .cook-layout { grid-template-columns: 1fr; } .kitchen-note { display: none; } }
+@media (max-width: 560px) { .chef-product-grid { grid-template-columns: 1fr; } .cook-form { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .chef-products-page .topbar,.cook-card,.kitchen-note,.products-heading,.chef-product-card,.product-mark > span,.note-spark,.chef-commerce-loading span,.product-total button .spinning { animation: none; } .chef-product-card,.product-top-art > i,.cook-submit { transition: none; } }

@@ -1,0 +1,67 @@
+.client-orders-page { --commerce-accent: #d75a43; --commerce-dark: #3d2924; min-height: 100vh; color: var(--commerce-dark); }
+.client-orders-page .topbar,.activity-overview,.activity-card { animation: activity-rise 0.6s both; }
+.client-orders-page .topbar { margin-bottom: 40px; }
+.commerce-status { display: flex; align-items: center; gap: 7px; color: #bd7866; font-size: 9px; font-weight: 750; letter-spacing: 1px; }
+.commerce-intro h1 em { color: var(--commerce-accent); font-family: 'DM Serif Display', Georgia, serif; font-weight: 400; }
+.commerce-intro p { color: #9c8580; }
+.history-mark { color: #d75a43; background: #fff0eb; }
+.history-mark > span { display: grid; width: 64px; height: 64px; place-items: center; border: 1px solid #f1c7ba; border-radius: 22px; background: linear-gradient(140deg,#fff,#ffe8df); box-shadow: 0 15px 35px #bc54351c; font-size: 26px; animation: history-float 4s ease-in-out infinite; }
+.activity-overview,.activity-card { max-width: 1120px; margin: 0 auto 17px; border: 1px solid #f0e1dc; border-radius: 22px; background: #ffffffdf; box-shadow: 0 18px 45px #743b2c0b; backdrop-filter: blur(14px); }
+.activity-overview { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 22px 25px; background: linear-gradient(110deg,#fff1e9,#fff9f3 58%,#f8eee8); }
+.section-eyebrow { color: #bd9286; font-size: 8px; font-weight: 800; letter-spacing: 1.1px; }
+.section-eyebrow i { display: inline-block; width: 5px; height: 5px; margin: 0 6px 1px 0; border-radius: 50%; background: #e4775f; box-shadow: 0 0 0 4px #fbe8e2; }
+.activity-overview h2,.activity-heading h2 { margin: 7px 0 3px; color: #49342c; font-family: 'DM Serif Display', Georgia, serif; font-size: 23px; }
+.activity-overview p { margin: 0; color: #a18a80; font-size: 9px; }
+.activity-counts { display: flex; gap: 9px; }
+.activity-counts span { display: grid; min-width: 70px; justify-items: center; padding: 10px; border: 1px solid #f1dfd6; border-radius: 13px; background: #ffffffb5; }
+.activity-counts b { color: #c4513f; font-size: 19px; line-height: 1; }
+.activity-counts small { margin-top: 5px; color: #a68d82; font-size: 7px; letter-spacing: 0.4px; }
+.activity-card { overflow: hidden; animation-delay: 0.08s; }
+.activity-heading { display: flex; align-items: center; justify-content: space-between; gap: 15px; padding: 21px 24px 15px; }
+.refresh-button { display: flex; align-items: center; gap: 6px; padding: 8px 11px; border: 1px solid #f0e2dc; border-radius: 9px; background: #fff; color: #9a7c70; font-size: 9px; font-weight: 700; cursor: pointer; }
+.refresh-button:hover { background: #fff3ed; color: #c4513f; }
+.refresh-button:disabled { opacity: 0.6; }
+.refresh-button .spinning { animation: refresh-spin 0.7s linear infinite; }
+.activity-tabs { display: flex; gap: 20px; padding: 0 24px; border-bottom: 1px solid #f1e9e5; }
+.activity-tabs button { position: relative; display: flex; align-items: center; gap: 7px; padding: 11px 0; border: 0; background: transparent; color: #a18c83; font-size: 10px; font-weight: 700; cursor: pointer; }
+.activity-tabs button:after { position: absolute; right: 0; bottom: -1px; left: 0; height: 2px; content: ''; background: transparent; transition: background 0.2s; }
+.activity-tabs button.active { color: #c4513f; }
+.activity-tabs button.active:after { background: #d75a43; }
+.activity-tabs button span { padding: 2px 6px; border-radius: 99px; background: #f8efeb; color: #9e8278; font-size: 8px; }
+.activity-list { padding: 0 24px; }
+.activity-row { display: flex; align-items: center; gap: 13px; padding: 15px 0; border-bottom: 1px solid #f3ece8; animation: activity-row-in 0.4s both; }
+.activity-row:last-child { border-bottom: 0; }
+.activity-icon { display: grid; flex: 0 0 auto; width: 39px; height: 39px; place-items: center; border-radius: 13px; background: #fff0eb; color: #d75a43; font-size: 17px; }
+.purchase-icon { background: #f2f3e8; color: #788651; }
+.activity-main { flex: 1; min-width: 0; }
+.activity-title { display: flex; align-items: center; gap: 9px; color: #49372f; font-size: 10px; }
+.activity-title strong { margin-left: auto; color: #7d8b61; font-size: 11px; }
+.activity-main p { margin: 4px 0; color: #958279; font-size: 9px; }
+.activity-main > small { color: #b09c93; font-size: 8px; }
+.activity-status { display: inline-flex; align-items: center; gap: 5px; padding: 4px 7px; border-radius: 99px; background: #fff3df; color: #b77c31; font-size: 7px; font-weight: 700; }
+.activity-status i { width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+.status-launched { background: #edf5e9; color: #648756; }
+.status-cancelled { background: #f9e9e6; color: #bd6251; }
+.order-items { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
+.order-items span { padding: 4px 7px; border-radius: 7px; background: #faf4f0; color: #8e776d; font-size: 8px; }
+.cancel-button { flex: 0 0 auto; padding: 7px 9px; border: 1px solid #f0d7d1; border-radius: 9px; background: #fff; color: #bd6251; font-size: 8px; font-weight: 700; cursor: pointer; }
+.cancel-button:hover:not(:disabled) { background: #fff2ef; }
+.cancel-button:disabled { opacity: 0.55; }
+.activity-empty,.activity-gate { display: grid; justify-items: center; padding: 39px 16px; text-align: center; }
+.activity-empty > span,.activity-gate > span { display: grid; width: 51px; height: 51px; place-items: center; border-radius: 17px; background: #fff0eb; color: #d75a43; font-size: 21px; }
+.activity-empty h3,.activity-gate h2 { margin: 12px 0 4px; color: #513a31; font-family: 'DM Serif Display', Georgia, serif; font-size: 22px; }
+.activity-empty p,.activity-gate p { margin: 0 0 10px; color: #a18b82; font-size: 9px; }
+.activity-empty a { color: #c4513f; font-size: 9px; font-weight: 750; text-decoration: none; }
+.activity-loading { display: flex; align-items: center; justify-content: center; gap: 9px; padding: 45px; color: #9b8379; font-size: 10px; }
+.activity-loading span { width: 15px; height: 15px; border: 2px solid #f3dcd3; border-top-color: #d75a43; border-radius: 50%; animation: refresh-spin 0.8s linear infinite; }
+.activity-gate { max-width: 500px; margin: 10px auto; border: 1px solid #f0e1dc; border-radius: 22px; background: #ffffffdf; box-shadow: 0 18px 45px #743b2c0b; }
+.primary-button { display: inline-flex; align-items: center; gap: 8px; min-height: 39px; padding: 0 15px; border-radius: 11px; background: linear-gradient(120deg,#e46a50,#c9473e); box-shadow: 0 8px 18px #d75a4328; color: #fff; font-size: 9px; font-weight: 750; text-decoration: none; }
+.commerce-alert { display: flex; align-items: center; gap: 8px; max-width: 1120px; margin: 0 auto 14px; padding: 11px 13px; border: 1px solid #f0c8bf; border-radius: 12px; background: #fff4f0; color: #a8493a; font-size: 10px; }
+.commerce-alert button { margin-left: auto; border: 0; background: transparent; color: inherit; font-size: 9px; font-weight: 700; cursor: pointer; }
+@keyframes activity-rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes activity-row-in { from { opacity: 0; transform: translateX(-8px); } to { opacity: 1; transform: none; } }
+@keyframes history-float { 0%,100% { transform: translateY(0) rotate(-4deg); } 50% { transform: translateY(-6px) rotate(4deg); } }
+@keyframes refresh-spin { to { transform: rotate(360deg); } }
+@media (max-width: 760px) { .activity-overview { align-items: flex-start; flex-direction: column; } .activity-counts { width: 100%; } .activity-counts span { flex: 1; } }
+@media (max-width: 560px) { .activity-heading { align-items: flex-start; padding: 17px 14px 13px; } .activity-tabs { padding: 0 14px; } .activity-list { padding: 0 14px; } .activity-row { align-items: flex-start; flex-wrap: wrap; } .activity-main { flex-basis: calc(100% - 53px); } .cancel-button { margin-left: 52px; } .activity-overview { padding: 18px; } }
+@media (prefers-reduced-motion: reduce) { .client-orders-page .topbar,.activity-overview,.activity-card,.activity-row,.history-mark > span,.activity-loading span,.refresh-button .spinning { animation: none; } .activity-tabs button:after,.refresh-button { transition: none; } }

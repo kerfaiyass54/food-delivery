@@ -1,0 +1,73 @@
+.chef-orders-page { --ticket-accent: #668b65; min-height: 100vh; color: #3b4c3d; }
+.chef-orders-page .topbar,.orders-summary,.ticket-card { animation: ticket-rise 0.58s both; }
+.chef-orders-page .topbar { margin-bottom: 39px; }
+.chef-commerce-status { display: flex; align-items: center; gap: 7px; color: #789578; font-size: 9px; font-weight: 750; letter-spacing: 1px; }
+.chef-commerce-intro h1 em { color: #6c936d; font-family: 'DM Serif Display', Georgia, serif; font-weight: 400; }
+.chef-commerce-intro p { color: #849087; }
+.orders-mark { color: #60845f; background: #edf3e9; }
+.orders-mark > span { display: grid; width: 64px; height: 64px; place-items: center; border: 1px solid #d7e4d2; border-radius: 22px; background: linear-gradient(140deg,#fff,#e8f0e4); box-shadow: 0 14px 34px #45603e12; font-size: 25px; animation: ticket-bell 3.2s ease-in-out infinite; }
+.orders-summary { display: flex; align-items: center; gap: 10px; max-width: 1100px; margin: 0 auto 17px; padding: 18px 21px; border: 1px solid #e2e9df; border-radius: 19px; background: linear-gradient(110deg,#edf4e9,#f8f6ea); box-shadow: 0 13px 29px #3d5b3b0a; animation-delay: 0.04s; }
+.section-eyebrow { color: #8da08b; font-size: 8px; font-weight: 800; letter-spacing: 1.1px; }
+.section-eyebrow i { display: inline-block; width: 5px; height: 5px; margin: 0 6px 1px 0; border-radius: 50%; background: #85a37d; box-shadow: 0 0 0 4px #edf4ea; }
+.orders-summary > div:first-child { flex: 1; }
+.orders-summary h2 { margin: 5px 0 2px; color: #425644; font-family: 'DM Serif Display', Georgia, serif; font-size: 22px; }
+.orders-summary p { margin: 0; color: #91a08f; font-size: 8px; }
+.ticket-count { display: flex; align-items: center; gap: 8px; min-width: 92px; padding: 7px 10px; border: 1px solid #dce8d9; border-radius: 11px; background: #ffffffb3; }
+.ticket-count b { color: #638560; font-size: 22px; }
+.ticket-count small { color: #92a18e; font-size: 6px; font-weight: 800; line-height: 1.35; letter-spacing: 0.4px; }
+.pending-count { border-color: #efe1c5; }
+.pending-count b { color: #c1944d; }
+.refresh-orders { display: grid; width: 33px; height: 33px; place-items: center; border: 1px solid #dce7d8; border-radius: 10px; background: #fff; color: #71916f; cursor: pointer; }
+.refresh-orders:disabled { opacity: 0.55; }
+.refresh-orders .spinning { animation: ticket-spin 0.7s linear infinite; }
+.ticket-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 15px; max-width: 1100px; margin: auto; }
+.ticket-card { position: relative; overflow: hidden; padding: 17px; border: 1px solid #e5ebe2; border-radius: 18px; background: #fff; box-shadow: 0 12px 28px #36523a08; animation-delay: calc(var(--card-index,0) * 55ms); transition: transform 0.22s, box-shadow 0.22s; }
+.ticket-card:hover { transform: translateY(-4px); box-shadow: 0 18px 35px #36523a13; }
+.ticket-card:before { position: absolute; top: 0; left: 0; width: 3px; height: 54px; border-radius: 0 0 4px; background: #83a17d; content: ''; }
+.ticket-top { display: flex; align-items: center; justify-content: space-between; }
+.ticket-id { display: flex; align-items: baseline; gap: 6px; }
+.ticket-id span,.ticket-items-heading > span { color: #97a493; font-size: 7px; font-weight: 800; letter-spacing: 0.9px; }
+.ticket-id b { color: #405441; font-size: 14px; }
+.ticket-status { display: flex; align-items: center; gap: 5px; padding: 5px 8px; border-radius: 99px; background: #fff4e4; color: #b5843e; font-size: 7px; font-weight: 750; }
+.ticket-status i { width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+.chef-order-launched { background: #edf6ea; color: #62885d; }
+.chef-order-cancelled { background: #f9ece8; color: #b97162; }
+.ticket-time { display: flex; align-items: center; gap: 9px; margin: 15px 0 4px; }
+.time-icon { display: grid; width: 34px; height: 34px; place-items: center; border-radius: 11px; background: #edf4e9; color: #688763; }
+.ticket-time div { display: grid; gap: 2px; }
+.ticket-time small { color: #9ba999; font-size: 6px; font-weight: 800; letter-spacing: 0.6px; }
+.ticket-time b { color: #4b604c; font-size: 15px; }
+.ticket-date { margin-left: auto; color: #9aa697; font-size: 8px; }
+.ticket-rule { display: flex; align-items: center; gap: 6px; margin: 12px 0; color: #c1d0ba; }
+.ticket-rule span { flex: 1; border-top: 1px dashed #dce6d9; }
+.ticket-rule i { font-size: 10px; }
+.ticket-items-heading { display: flex; justify-content: space-between; margin-bottom: 6px; }
+.ticket-items-heading small { color: #a1ada0; font-size: 7px; }
+.ticket-items { display: grid; gap: 5px; min-height: 38px; }
+.ticket-items div { display: flex; align-items: center; justify-content: space-between; gap: 8px; color: #667566; font-size: 9px; }
+.ticket-items b { color: #588259; }
+.ticket-items i { color: #a6b99e; }
+.ticket-client { display: flex; align-items: center; gap: 7px; margin-top: 13px; padding-top: 10px; border-top: 1px solid #eff3ed; color: #9aa699; font-size: 7px; }
+.client-avatar { display: grid; width: 24px; height: 24px; place-items: center; border-radius: 8px; background: #f1f4eb; color: #769070; font-size: 12px; }
+.ticket-client b { color: #62735f; }
+.ticket-chef { margin-left: auto; }
+.launch-order { display: flex; align-items: center; justify-content: center; gap: 7px; width: 100%; min-height: 36px; margin-top: 12px; border: 0; border-radius: 10px; background: linear-gradient(120deg,#789b73,#537b5b); box-shadow: 0 7px 15px #4e76521d; color: #fff; font-size: 9px; font-weight: 750; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; }
+.launch-order i:last-child { margin-left: auto; margin-right: 9px; }
+.launch-order:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 10px 18px #4e765233; }
+.launch-order:disabled { opacity: 0.6; cursor: wait; }
+.ticket-complete { display: flex; align-items: center; gap: 6px; margin-top: 13px; padding: 9px 10px; border-radius: 9px; background: #f2f7ef; color: #6f8c69; font-size: 8px; }
+.orders-empty { display: grid; justify-items: center; max-width: 600px; margin: 0 auto; padding: 43px 20px; border: 1px dashed #dce7d8; border-radius: 20px; background: #ffffff9c; text-align: center; }
+.orders-empty > span { display: grid; width: 51px; height: 51px; place-items: center; border-radius: 17px; background: #edf4ea; color: #688a63; font-size: 22px; }
+.orders-empty h3 { margin: 12px 0 3px; color: #4b5e4b; font-family: 'DM Serif Display', Georgia, serif; font-size: 23px; }
+.orders-empty p { color: #91a08f; font-size: 9px; }
+.orders-empty a { color: #5c815b; font-size: 9px; font-weight: 750; text-decoration: none; }
+.chef-commerce-alert { display: flex; align-items: center; gap: 8px; max-width: 1100px; margin: 0 auto 15px; padding: 11px 13px; border: 1px solid #edc9bd; border-radius: 12px; background: #fff5ef; color: #a65e4e; font-size: 10px; }
+.chef-commerce-alert button { margin-left: auto; border: 0; background: transparent; color: inherit; font: inherit; font-weight: 700; cursor: pointer; }
+.chef-orders-loading { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 35px; color: #879785; font-size: 9px; }
+.chef-orders-loading span { width: 14px; height: 14px; border: 2px solid #dce8d7; border-top-color: #678c65; border-radius: 50%; animation: ticket-spin 0.7s linear infinite; }
+@keyframes ticket-rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes ticket-bell { 0%,82%,100% { transform: rotate(0); } 85% { transform: rotate(9deg); } 89% { transform: rotate(-8deg); } 93% { transform: rotate(4deg); } }
+@keyframes ticket-spin { to { transform: rotate(360deg); } }
+@media (max-width: 1050px) { .ticket-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+@media (max-width: 700px) { .orders-summary { align-items: flex-start; flex-wrap: wrap; } .orders-summary > div:first-child { flex-basis: 100%; } .ticket-count { flex: 1; } .ticket-grid { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .chef-orders-page .topbar,.orders-summary,.ticket-card,.orders-mark > span,.refresh-orders .spinning,.chef-orders-loading span { animation: none; } .ticket-card,.launch-order { transition: none; } }

@@ -9,22 +9,11 @@
   <component name="ChangeListManager">
     <list default="true" id="04d54c95-db2a-4fde-b05b-c07329f27e89" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FoodDelivery.Api/.idea/.idea.food-delivery.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FoodDelivery.Api/.idea/.idea.food-delivery.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FoodDelivery.Api/Data/FoodDeliveryDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FoodDelivery.Api/Data/FoodDeliveryDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FoodDelivery.Api/Entities/Chef.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FoodDelivery.Api/Entities/Chef.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FoodDelivery.Api/Migrations/FoodDeliveryDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FoodDelivery.Api/Migrations/FoodDeliveryDbContextModelSnapshot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FoodDelivery.Api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FoodDelivery.Api/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FoodDelivery.Api/bin/Debug/net6.0/FoodDelivery.Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FoodDelivery.Api/bin/Debug/net6.0/FoodDelivery.Api.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FoodDelivery.Api/bin/Debug/net6.0/FoodDelivery.Api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/FoodDelivery.Api/bin/Debug/net6.0/FoodDelivery.Api.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FoodDelivery.Api/obj/Debug/net6.0/FoodDelivery.Api.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FoodDelivery.Api/obj/Debug/net6.0/FoodDelivery.Api.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FoodDelivery.Api/obj/Debug/net6.0/FoodDelivery.Api.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/FoodDelivery.Api/obj/Debug/net6.0/FoodDelivery.Api.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FoodDelivery.Api/obj/Debug/net6.0/FoodDelivery.Api.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/FoodDelivery.Api/obj/Debug/net6.0/FoodDelivery.Api.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FoodDelivery.Api/obj/Debug/net6.0/FoodDelivery.Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FoodDelivery.Api/obj/Debug/net6.0/FoodDelivery.Api.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FoodDelivery.Api/obj/Debug/net6.0/FoodDelivery.Api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/FoodDelivery.Api/obj/Debug/net6.0/FoodDelivery.Api.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FoodDelivery.Api/obj/Debug/net6.0/ref/FoodDelivery.Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FoodDelivery.Api/obj/Debug/net6.0/ref/FoodDelivery.Api.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FoodDelivery.Api/obj/Debug/net6.0/refint/FoodDelivery.Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FoodDelivery.Api/obj/Debug/net6.0/refint/FoodDelivery.Api.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FoodDelivery.Api/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/FoodDelivery.Api/obj/rider.project.model.nuget.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FoodDelivery.Api/obj/staticwebassets.pack.sentinel" beforeDir="false" afterPath="$PROJECT_DIR$/FoodDelivery.Api/obj/staticwebassets.pack.sentinel" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/food-ui/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/food-ui/src/app/app.routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/food-ui/src/app/features/chef/chef-shell/chef-shell.ts" beforeDir="false" afterPath="$PROJECT_DIR$/food-ui/src/app/features/chef/chef-shell/chef-shell.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/food-ui/src/app/features/chef/chef.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/food-ui/src/app/features/chef/chef.routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/food-ui/src/app/shared/components/sidebar-nav/sidebar-nav.ts" beforeDir="false" afterPath="$PROJECT_DIR$/food-ui/src/app/shared/components/sidebar-nav/sidebar-nav.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/food-ui/src/app/shared/models/owner.models.ts" beforeDir="false" afterPath="$PROJECT_DIR$/food-ui/src/app/shared/models/owner.models.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,61 +44,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.5259392973068833" />
-      <entry key="MS500" value="3.6362803829026458" />
-      <entry key="S2" value="7.794280826649233" />
-      <entry key="S5" value="14.382520530718914" />
-      <entry key="S10" value="27.447546936235387" />
-      <entry key="S30" value="65.27238903931716" />
-      <entry key="S60" value="88.43342995977001" />
-      <entry key="M2" value="104.56386801707853" />
-      <entry key="M5" value="116.36427143288427" />
-      <entry key="M10" value="128.12636230194187" />
-      <entry key="M15" value="151.2976421550254" />
-      <entry key="M30" value="236.3686563473292" />
-      <entry key="H1" value="345.81920741517035" />
-      <entry key="H2" value="435.0759703451352" />
-      <entry key="H4" value="492.29736698398386" />
-      <entry key="D1" value="547.9106538205903" />
-      <entry key="W1" value="558.2521221403292" />
+      <entry key="MS100" value="1.212290545685194" />
+      <entry key="MS500" value="4.085508008955782" />
+      <entry key="S2" value="14.336026859549197" />
+      <entry key="S5" value="29.13413170274302" />
+      <entry key="S10" value="46.95909452867178" />
+      <entry key="S30" value="100.91780235942916" />
+      <entry key="S60" value="136.52033529570696" />
+      <entry key="M2" value="162.07981288741905" />
+      <entry key="M5" value="198.3077662528499" />
+      <entry key="M10" value="260.16905771123237" />
+      <entry key="M15" value="313.5619171526616" />
+      <entry key="M30" value="440.71166681979815" />
+      <entry key="H1" value="592.6573250123278" />
+      <entry key="H2" value="721.5550809850187" />
+      <entry key="H4" value="807.3166123138486" />
+      <entry key="D1" value="893.0539748608163" />
+      <entry key="W1" value="909.2540322368804" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
-      <entry key="S2" value="0.0" />
-      <entry key="S5" value="9.662708269890971E-215" />
-      <entry key="S10" value="1.6720365228920074E-107" />
-      <entry key="S30" value="5.296193012977414E-36" />
-      <entry key="S60" value="3.983852694862276E-18" />
-      <entry key="M2" value="3.4566233226006913E-9" />
-      <entry key="M5" value="7.974786737153147E-4" />
-      <entry key="M10" value="0.048912261838864365" />
-      <entry key="M15" value="0.19289384837951234" />
-      <entry key="M30" value="0.7607107387145337" />
-      <entry key="H1" value="1.5106725353172132" />
-      <entry key="H2" value="2.128853507131226" />
-      <entry key="H4" value="2.527164497551536" />
-      <entry key="D1" value="2.915456932289872" />
-      <entry key="W1" value="2.9877739537475234" />
+      <entry key="S2" value="5.4652069638218945E-170" />
+      <entry key="S5" value="1.972616426183799E-68" />
+      <entry key="S10" value="1.4044986387262184E-34" />
+      <entry key="S30" value="5.198049858881276E-12" />
+      <entry key="S60" value="2.2799232133739212E-6" />
+      <entry key="M2" value="0.0015099414631583518" />
+      <entry key="M5" value="0.07444887895108644" />
+      <entry key="M10" value="0.2846383531322427" />
+      <entry key="M15" value="0.4956457306919898" />
+      <entry key="M30" value="1.123041095314692" />
+      <entry key="H1" value="1.9984319868953353" />
+      <entry key="H2" value="2.7893108428104307" />
+      <entry key="H4" value="3.329692271825423" />
+      <entry key="D1" value="3.8779493558423637" />
+      <entry key="W1" value="3.982292058930181" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.495945920313111" />
-      <entry key="MS500" value="3.619917923400592" />
-      <entry key="S2" value="7.76317368887427" />
-      <entry key="S5" value="14.333178228561115" />
-      <entry key="S10" value="27.398979303831233" />
-      <entry key="S30" value="65.24033774717357" />
-      <entry key="S60" value="88.41330593561867" />
-      <entry key="M2" value="104.55245464509458" />
-      <entry key="M5" value="116.36011667415828" />
-      <entry key="M10" value="128.1725230543706" />
-      <entry key="M15" value="151.488271381415" />
-      <entry key="M30" value="237.12740484970044" />
-      <entry key="H1" value="347.32835176835914" />
-      <entry key="H2" value="437.20383409013937" />
-      <entry key="H4" value="494.8239638428563" />
-      <entry key="D1" value="550.8260043187108" />
-      <entry key="W1" value="561.2398805744083" />
+      <entry key="MS100" value="1.1354850681925805" />
+      <entry key="MS500" value="4.0171117292845935" />
+      <entry key="S2" value="14.290404058157458" />
+      <entry key="S5" value="29.10184457566989" />
+      <entry key="S10" value="46.934289772499596" />
+      <entry key="S30" value="100.90033358657382" />
+      <entry key="S60" value="136.5084992192031" />
+      <entry key="M2" value="162.07427010657642" />
+      <entry key="M5" value="198.37847857279777" />
+      <entry key="M10" value="260.4508228765546" />
+      <entry key="M15" value="314.0549847870377" />
+      <entry key="M30" value="441.83246296353815" />
+      <entry key="H1" value="594.6539805416056" />
+      <entry key="H2" value="724.3432101559466" />
+      <entry key="H4" value="810.6456137423457" />
+      <entry key="D1" value="896.9317921853084" />
+      <entry key="W1" value="913.2363049752067" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -117,6 +106,24 @@
   &quot;fromUser&quot;: false
 }</component>
   <component name="ProjectId" id="3M5yaUo2HnFLffT4OokEpcE8Qni" />
+  <component name="ProjectSessionTemplates">
+    <option name="panelTemplate">
+      <template>
+        <option name="ensembleEnabled" value="true" />
+        <option name="ensembleTierId" value="balance" />
+        <option name="modeId" value="Agent" />
+        <option name="model">
+          <model>
+            <option name="modelType" value="builtin_id" />
+            <option name="modelValue" value="ensemble" />
+          </model>
+        </option>
+        <option name="targetType" value="BACKGROUND" />
+        <option name="worktreeMode" value="WORKSPACE" />
+      </template>
+    </option>
+    <option name="version" value="1" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -132,7 +139,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
     "copilot.chat.legacySessionMetadata.migrated": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "feature/food-purchase-order",
     "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "D:/projects/food-delivery",
@@ -144,6 +151,7 @@
     "prettierjs.PrettierConfiguration.Package": "D:\\projects\\food-delivery\\food-ui\\node_modules\\prettier",
     "studio.ml.bot.history.legacyLocationsMigrated": "true",
     "to.speed.mode.migration.done": "true",
+    "ts.external.directory.path": "D:\\projects\\food-delivery\\food-ui\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>

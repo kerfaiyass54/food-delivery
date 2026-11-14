@@ -29,6 +29,10 @@ export class SidebarNavComponent {
       settings: 'gear',
       person: 'person-vcard',
       search: 'search',
+      cart: 'cart3',
+      inventory: 'boxes',
+      orders: 'receipt-cutoff',
+      account: 'person-badge',
     };
     return icons[icon] ?? 'circle';
   }

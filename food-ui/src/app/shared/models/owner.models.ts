@@ -5,6 +5,7 @@ export interface AppConfig {
   apiBaseUrl: string;
   ownerId: number;
   chefId?: number;
+  clientId?: number;
 }
 
 export interface RestaurantDetails {

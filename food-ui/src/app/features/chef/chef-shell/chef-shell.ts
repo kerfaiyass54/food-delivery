@@ -17,6 +17,8 @@ export class ChefShellComponent {
     { label: 'My details', icon: 'person', route: '/chef/details' },
     { label: 'Find a restaurant', icon: 'search', route: '/chef/restaurant-search' },
     { label: 'My applications', icon: 'receipt', route: '/chef/candidature-following' },
+    { label: 'Products', icon: 'inventory', route: '/chef/products' },
+    { label: 'Orders', icon: 'orders', route: '/chef/orders' },
   ];
   constructor() {
     void this.data.loadProfile();
