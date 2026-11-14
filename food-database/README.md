@@ -1,6 +1,6 @@
 # FoodDelivery PostgreSQL database
 
-This directory contains SQL for the schema, sample data, indexes, and validation of the entities in `FoodDelivery.Api/Entities`. Identifiers, types, constraints, and delete behavior match `FoodDelivery.Api/Data/FoodDeliveryDbContext.cs` and its initial EF Core migration.
+This directory contains SQL for the schema, sample data, indexes, and validation of the entities in `FoodDelivery.Api/Entities`. Identifiers, types, constraints, and delete behavior match `FoodDelivery.Api/Data/FoodDeliveryDbContext.cs` and both EF Core migrations.
 
 ## Layout
 
@@ -11,7 +11,7 @@ This directory contains SQL for the schema, sample data, indexes, and validation
 
 ## Seed coverage
 
-The sample data contains 250 owners, 250 restaurants, 300 chefs, 500 candidatures, 1,250 restaurant operating-day links, and 500 restaurant off-day links. The `Days` table has exactly seven canonical weekday rows. Its unique name index and the entity's weekday lookup semantics make additional rows invalid.
+The sample data contains 250 owners, 250 restaurants, 300 chefs, 500 candidatures, 1,250 restaurant operating-day links, 500 restaurant off-day links, 250 clients, 300 products, 300 orders, 500 purchases, and 300 order-product links. Every entity table has at least 250 rows except `Days`, which has exactly seven canonical weekdays; its unique name index and lookup semantics make additional rows invalid. Commerce order lines point to products managed by the same chef as the order.
 
 The sample values are deterministic development data. Owner emails use the reserved `.test` domain. Do not use these records as production customer data.
 
@@ -29,10 +29,10 @@ The PostgreSQL volume is persistent, so its entrypoint does not rerun initializa
 docker compose -f FoodDelivery.Api/docker-compose.yml exec postgres sh /food-database/scripts/initialize.sh
 ```
 
-The schema and seed inserts use `IF NOT EXISTS` / `ON CONFLICT DO NOTHING` behavior, so rerunning the initializer preserves existing records. It uses the `fooddelivery` database owner created by the existing bootstrap script. The SQL matches the existing initial EF migration and records `20261110205112_InitialCreate` in `__EFMigrationsHistory`, so later `dotnet ef database update` calls do not attempt to recreate these tables.
+The schema and seed inserts use `IF NOT EXISTS` / `ON CONFLICT DO NOTHING` behavior, so rerunning the initializer preserves existing records. It uses the `fooddelivery` database owner created by the existing bootstrap script. The SQL matches the initial and commerce EF migrations and records `20261110205112_InitialCreate` and `20261114143456_AddClientsProductsPurchasesOrders` in `__EFMigrationsHistory`, so later `dotnet ef database update` calls do not attempt to recreate these tables.
 
 ## Indexes and service query paths
 
-The index script retains the model's unique owner email and restaurant owner indexes, the chef-by-restaurant index, candidature foreign-key indexes, and reverse day-link indexes. It adds composite indexes for chefs by restaurant/name and candidatures by restaurant/date or chef/date, matching their service filters and sort order. Restaurant sort columns receive B-tree indexes. Trigram GIN indexes support `RestaurantRepository.FilterRestaurants`, whose `Contains` filters become substring `LIKE` queries on name, address, and nationality.
+The index script retains the model's owner, restaurant, chef, candidature, product, purchase, order, and join-table indexes. It adds composite date indexes for client and chef order feeds and client purchase history, plus a partial name index for the available-product menu query. Restaurant sort columns receive B-tree indexes, and trigram GIN indexes support substring restaurant search.
 
-Use `init/02-validate-seed-data.sql` to confirm the minimum row counts, seven weekday rows, and that no seeded restaurant day is both an operating day and an off day.
+Use `init/02-validate-seed-data.sql` to confirm minimum row counts, seven weekday rows, valid order-to-chef/product relationships, non-negative stock and budgets, and that no seeded restaurant day is both an operating day and an off day.
