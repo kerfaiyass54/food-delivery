@@ -8,7 +8,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="04d54c95-db2a-4fde-b05b-c07329f27e89" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FoodDelivery.Api/.idea/.idea.food-delivery.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FoodDelivery.Api/.idea/.idea.food-delivery.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoodDelivery.Api/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/FoodDelivery.Api/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoodDelivery.Api/docker/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/FoodDelivery.Api/docker/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoodDelivery.Api/docker/postgres/init/01-create-databases.sh" beforeDir="false" afterPath="$PROJECT_DIR$/FoodDelivery.Api/docker/postgres/init/01-create-databases.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,10 +41,69 @@
     <commands />
     <urls />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2,
-  "fromUser": false
-}]]></component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.3814870750119934" />
+      <entry key="MS500" value="4.454864978410614" />
+      <entry key="S2" value="13.163999611337038" />
+      <entry key="S5" value="29.552637262878807" />
+      <entry key="S10" value="54.53183164496072" />
+      <entry key="S30" value="136.8397576394255" />
+      <entry key="S60" value="213.2334571430957" />
+      <entry key="M2" value="289.74907476190054" />
+      <entry key="M5" value="364.22403888310686" />
+      <entry key="M10" value="396.9259762691813" />
+      <entry key="M15" value="408.9669944556514" />
+      <entry key="M30" value="421.6436713357897" />
+      <entry key="H1" value="428.23399549455394" />
+      <entry key="H2" value="431.59466495923004" />
+      <entry key="H4" value="433.29170189763806" />
+      <entry key="D1" value="434.71449756504836" />
+      <entry key="W1" value="434.9591946336298" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="7.9314028999997245E-84" />
+      <entry key="S2" value="2.524541651850711E-21" />
+      <entry key="S5" value="1.0210913666717713E-8" />
+      <entry key="S10" value="1.7188129925920965E-4" />
+      <entry key="S30" value="0.11515728753563007" />
+      <entry key="S60" value="0.5874448261278524" />
+      <entry key="M2" value="1.3273454382055367" />
+      <entry key="M5" value="2.164969788063149" />
+      <entry key="M10" value="2.5484970042071655" />
+      <entry key="M15" value="2.690890126158643" />
+      <entry key="M30" value="2.8412427517293" />
+      <entry key="H1" value="2.9195420212551566" />
+      <entry key="H2" value="2.959497488624416" />
+      <entry key="H4" value="2.9796798978909345" />
+      <entry key="D1" value="2.9966037145080295" />
+      <entry key="W1" value="2.9995145806912316" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="1.30192262702637" />
+      <entry key="MS500" value="4.40949551817823" />
+      <entry key="S2" value="13.132389714910028" />
+      <entry key="S5" value="29.524454542037866" />
+      <entry key="S10" value="54.50579357763694" />
+      <entry key="S30" value="136.92750946016966" />
+      <entry key="S60" value="213.78993541086533" />
+      <entry key="M2" value="291.0474502275861" />
+      <entry key="M5" value="366.37055721623585" />
+      <entry key="M10" value="399.4635295469092" />
+      <entry key="M15" value="411.6501478631935" />
+      <entry key="M30" value="424.48080837007103" />
+      <entry key="H1" value="431.1514219228966" />
+      <entry key="H2" value="434.5530885226612" />
+      <entry key="H4" value="436.2708407437415" />
+      <entry key="D1" value="437.711010531413" />
+      <entry key="W1" value="437.9586962362076" />
+    </decayedShown>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2,
+  &quot;fromUser&quot;: false
+}</component>
   <component name="ProjectId" id="3M5yaUo2HnFLffT4OokEpcE8Qni" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -57,7 +120,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
     "copilot.chat.legacySessionMetadata.migrated": "true",
-    "git-widget-placeholder": "feature/chefs-management",
+    "git-widget-placeholder": "main",
     "junie.onboarding.icon.badge.shown": "true",
     "last_opened_file_path": "D:/projects/food-delivery",
     "node.js.detected.package.eslint": "true",
@@ -65,6 +128,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "prettierjs.PrettierConfiguration.Package": "D:\\projects\\food-delivery\\food-ui\\node_modules\\prettier",
     "to.speed.mode.migration.done": "true",
     "vue.rearranger.settings.migration": "true"
   }

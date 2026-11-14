@@ -27,7 +27,7 @@ The `.env` file is ignored by Git. Stop the services with `docker compose down`;
 
 Container-to-container connections use service names, never `localhost`: PostgreSQL `postgres:5432`, Redis `redis:6379`, Kafka `kafka:9092`, and Keycloak `keycloak:8080`.
 
-The database initialization script creates app and Keycloak databases on the first start only. If you change database passwords after the named PostgreSQL volume has been initialized, update the database roles manually or recreate the volume. The Keycloak service runs in development mode, and Kafka uses unauthenticated plaintext listeners; keep these ports local and do not use this configuration for production.
+The database initialization script creates app and Keycloak databases on first start; it also creates and seeds the FoodDelivery tables from `food-database`. Initialization runs only when PostgreSQL starts with a new data volume. To apply the schema and development seed data to an existing volume, run `docker compose exec postgres sh /food-database/scripts/initialize.sh`. See `food-database/README.md` for table counts and index details. If you change database passwords after the named PostgreSQL volume has been initialized, update the database roles manually or recreate the volume. The Keycloak service runs in development mode, and Kafka uses unauthenticated plaintext listeners; keep these ports local and do not use this configuration for production.
 
 ## Run the API against PostgreSQL
 

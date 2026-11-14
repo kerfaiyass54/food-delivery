@@ -11,3 +11,6 @@ CREATE DATABASE fooddelivery OWNER fooddelivery;
 CREATE USER keycloak WITH PASSWORD :'keycloak_password';
 CREATE DATABASE keycloak OWNER keycloak;
 SQL
+
+# Build and populate the FoodDelivery schema after its database has been created.
+sh /food-database/scripts/initialize.sh
