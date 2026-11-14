@@ -1,7 +1,9 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { ChefPortalService } from '../../../core/services/chef-portal.service';
+import { ChefCandidaturesService } from '../../../core/services/chef/chef-candidatures';
+import { ChefProfileService } from '../../../core/services/chef/chef-profile';
+import { RestaurantSearchService } from '../../../core/services/chef/restaurant-search';
 import { SearchRestaurant } from '../../../shared/models/chef.models';
 import { ConfirmOperationDialogComponent } from '../../owner/confirm-operation-dialog/confirm-operation-dialog';
 
@@ -13,18 +15,20 @@ import { ConfirmOperationDialogComponent } from '../../owner/confirm-operation-d
   styleUrls: ['./restaurant-search.css'],
 })
 export class RestaurantSearchComponent {
-  readonly data = inject(ChefPortalService);
+  readonly data = inject(RestaurantSearchService);
+  readonly applications = inject(ChefCandidaturesService);
+  readonly profile = inject(ChefProfileService);
   query = '';
   readonly searched = signal(false);
   readonly selectedRestaurant = signal<SearchRestaurant | null>(null);
   readonly confirmRestaurant = signal<SearchRestaurant | null>(null);
   readonly successMessage = signal('');
   readonly appliedRestaurantIds = computed(
-    () => new Set(this.data.applications().map(item => item.restaurantId))
+    () => new Set(this.applications.applications().map(item => item.restaurantId))
   );
   constructor() {
-    void this.data.loadProfile();
-    void this.data.loadApplications();
+    void this.profile.loadProfile();
+    void this.applications.loadApplications();
   }
   async search(): Promise<void> {
     this.searched.set(true);
@@ -46,7 +50,7 @@ export class RestaurantSearchComponent {
     const restaurant = this.confirmRestaurant();
     if (!restaurant) return;
     try {
-      await this.data.applyToRestaurant(restaurant.id);
+      await this.applications.applyToRestaurant(restaurant.id);
       this.successMessage.set(`Your application to ${restaurant.name} has been sent.`);
       this.confirmRestaurant.set(null);
     } catch {

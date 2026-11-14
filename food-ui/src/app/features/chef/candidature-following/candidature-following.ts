@@ -2,7 +2,7 @@ import { Component, computed, inject, signal } from '@angular/core';
 import { DatePipe, DecimalPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { ChefPortalService } from '../../../core/services/chef-portal.service';
+import { ChefCandidaturesService } from '../../../core/services/chef/chef-candidatures';
 import { ChefApplication } from '../../../shared/models/chef.models';
 
 @Component({
@@ -13,7 +13,7 @@ import { ChefApplication } from '../../../shared/models/chef.models';
   styleUrls: ['./candidature-following.css'],
 })
 export class CandidatureFollowingComponent {
-  readonly data = inject(ChefPortalService);
+  readonly data = inject(ChefCandidaturesService);
   readonly query = signal('');
   readonly statusFilter = signal('all');
   readonly pageSize = signal(5);

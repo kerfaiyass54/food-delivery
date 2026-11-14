@@ -1,7 +1,7 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { ConfirmOperationDialogComponent } from '../confirm-operation-dialog/confirm-operation-dialog';
 import { ChefDetailsDialogComponent } from './chef-details-dialog';
-import { ChefService } from '../../../core/services/chef.service';
+import { ChefService } from '../../../core/services/owner/chef.service';
 import { ChefDetails, ChefSummary } from '../../../shared/models/owner.models';
 
 @Component({

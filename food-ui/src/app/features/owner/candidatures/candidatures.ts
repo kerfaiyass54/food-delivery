@@ -2,7 +2,7 @@ import { Component, computed, inject, signal } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { ConfirmOperationDialogComponent } from '../confirm-operation-dialog/confirm-operation-dialog';
 import { CandidatureDetailsDialogComponent } from './candidature-details-dialog';
-import { CandidatureService } from '../../../core/services/candidature.service';
+import { CandidatureService } from '../../../core/services/owner/candidature.service';
 import { Candidature } from '../../../shared/models/owner.models';
 
 @Component({
