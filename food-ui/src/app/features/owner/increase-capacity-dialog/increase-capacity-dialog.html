@@ -1,6 +1,46 @@
-<div class="dialog-backdrop" (click)="cancelled.emit()"><section class="edit-dialog card border-0 shadow-lg" role="dialog" aria-modal="true" aria-labelledby="capacity-title" (click)="$event.stopPropagation()">
-  <button type="button" class="close-dialog" aria-label="Close" (click)="cancelled.emit()"><i class="bi bi-x-lg"></i></button><span class="dialog-icon"><i class="bi bi-arrows-angle-expand"></i></span><p class="dialog-kicker">GROW YOUR SPACE</p><h2 id="capacity-title">Add more seats</h2><p class="dialog-intro">Make room for more lovely moments around your table.</p>
-  <div class="capacity-summary"><span>Current capacity</span><b>{{ currentCapacity() }} <small>guests</small></b></div><label class="form-label" for="extra-seats">Additional seats</label><div class="input-group seat-input"><input id="extra-seats" class="form-control" type="number" min="1" max="500" [ngModel]="additionalSeats()" (ngModelChange)="setSeats($event)"/><span class="input-group-text">seats</span></div>
-  <div class="cost-estimate"><span><i class="bi bi-stars me-2"></i>Estimated one-time cost</span><b>{{ totalCost() | currency:'USD':'symbol':'1.0-0' }}</b><small>{{ costPerSeat() | currency:'USD':'symbol':'1.0-0' }} per additional seat</small></div>
-  <div class="dialog-actions"><button class="btn btn-light" type="button" (click)="cancelled.emit()">Cancel</button><button class="btn btn-success" type="button" [disabled]="additionalSeats() < 1" (click)="requested.emit({capacity: currentCapacity() + additionalSeats(), cost: totalCost()})">Continue <i class="bi bi-arrow-right ms-1"></i></button></div>
-</section></div>
+<div class="dialog-backdrop" (click)="cancelled.emit()">
+  <section
+    class="edit-dialog card border-0 shadow-lg"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="capacity-title"
+    (click)="$event.stopPropagation()">
+    <button type="button" class="close-dialog" aria-label="Close" (click)="cancelled.emit()">
+      <i class="bi bi-x-lg"></i></button
+    ><span class="dialog-icon"><i class="bi bi-arrows-angle-expand"></i></span>
+    <p class="dialog-kicker">GROW YOUR SPACE</p>
+    <h2 id="capacity-title">Add more seats</h2>
+    <p class="dialog-intro">Make room for more lovely moments around your table.</p>
+    <div class="capacity-summary">
+      <span>Current capacity</span><b>{{ currentCapacity() }} <small>guests</small></b>
+    </div>
+    <label class="form-label" for="extra-seats">Additional seats</label>
+    <div class="input-group seat-input">
+      <input
+        id="extra-seats"
+        class="form-control"
+        type="number"
+        min="1"
+        max="500"
+        [ngModel]="additionalSeats()"
+        (ngModelChange)="setSeats($event)" /><span class="input-group-text">seats</span>
+    </div>
+    <div class="cost-estimate">
+      <span><i class="bi bi-stars me-2"></i>Estimated one-time cost</span
+      ><b>{{ totalCost() | currency: 'USD' : 'symbol' : '1.0-0' }}</b
+      ><small>{{ costPerSeat() | currency: 'USD' : 'symbol' : '1.0-0' }} per additional seat</small>
+    </div>
+    <div class="dialog-actions">
+      <button class="btn btn-light" type="button" (click)="cancelled.emit()">Cancel</button
+      ><button
+        class="btn btn-success"
+        type="button"
+        [disabled]="additionalSeats() < 1"
+        (click)="
+          requested.emit({ capacity: currentCapacity() + additionalSeats(), cost: totalCost() })
+        ">
+        Continue <i class="bi bi-arrow-right ms-1"></i>
+      </button>
+    </div>
+  </section>
+</div>

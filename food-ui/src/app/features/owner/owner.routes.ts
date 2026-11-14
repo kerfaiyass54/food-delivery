@@ -13,18 +13,19 @@ export const OWNER_ROUTES: Routes = [
       },
       {
         path: 'restaurant',
-        loadComponent: () => import('./restaurant-details/restaurant-details')
-          .then((module) => module.RestaurantDetailsComponent),
+        loadComponent: () =>
+          import('./restaurant-details/restaurant-details').then(
+            module => module.RestaurantDetailsComponent
+          ),
       },
       {
         path: 'chefs',
-        loadComponent: () => import('./chefs/chefs')
-          .then((module) => module.ChefsComponent),
+        loadComponent: () => import('./chefs/chefs').then(module => module.ChefsComponent),
       },
       {
         path: 'candidatures',
-        loadComponent: () => import('./candidatures/candidatures')
-          .then((module) => module.CandidaturesComponent),
+        loadComponent: () =>
+          import('./candidatures/candidatures').then(module => module.CandidaturesComponent),
       },
     ],
   },

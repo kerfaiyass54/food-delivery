@@ -1,19 +1,85 @@
 <main class="management-page">
-  @if(data.error(); as error){<div class="page-notification error"><i class="bi bi-exclamation-circle"></i>{{error}}</div>}
+  @if (data.error(); as error) {
+    <div class="page-notification error"><i class="bi bi-exclamation-circle"></i>{{ error }}</div>
+  }
   <header class="management-header">
-    <div><span class="eyebrow"><i></i> Talent inbox</span><h1>Candidatures</h1><p>Meet the people who want to join your kitchen.</p></div>
-    <div class="count-card"><strong>{{ data.candidatures().length }}</strong><span>applications</span></div>
+    <div>
+      <span class="eyebrow"><i></i> Talent inbox</span>
+      <h1>Chef <em>candidatures.</em></h1>
+      <p>Meet the people who want to join your kitchen.</p>
+    </div>
+    <div class="count-card">
+      <i class="bi bi-inbox-fill"></i><strong>{{ data.candidatures().length }}</strong
+      ><span>applications</span>
+    </div>
   </header>
+  <section class="management-stats" aria-label="Candidature overview">
+    <div class="overview-card amber">
+      <span class="overview-icon"><i class="bi bi-hourglass-split"></i></span>
+      <div>
+        <small>Awaiting review</small><strong>{{ pendingCount() }}</strong>
+        <p>Need your attention</p>
+      </div>
+    </div>
+    <div class="overview-card blue">
+      <span class="overview-icon"><i class="bi bi-check2-circle"></i></span>
+      <div>
+        <small>Accepted</small><strong>{{ acceptedCount() }}</strong>
+        <p>Added to your team</p>
+      </div>
+    </div>
+    <div class="overview-card dark">
+      <span class="overview-icon"><i class="bi bi-lightning-charge"></i></span>
+      <div>
+        <small>Next action</small><strong>{{ pendingCount() ? 'Review' : 'Done' }}</strong>
+        <p>{{ pendingCount() ? 'Keep momentum' : 'Inbox is clear' }}</p>
+      </div>
+    </div>
+  </section>
   <section class="application-list" aria-label="Chef applications">
     @for (item of data.candidatures(); track item.id) {
-      <article class="application-card" tabindex="0" role="button" (click)="showDetails(item)" (keydown.enter)="showDetails(item)" (keydown.space)="showDetails(item); $event.preventDefault()">
-        <div class="candidate-avatar"><i class="bi bi-file-earmark-person"></i></div>
-        <div class="candidate-main"><h2>Candidature #{{ item.id }}</h2><p><i class="bi bi-person-check"></i> Connected chef: {{ item.chefName }}</p></div>
-        <div class="application-salary"><small>SALARY</small><b>${{ item.salary }}</b></div>
-        <div class="application-date"><small>DATE</small><b>{{ item.date | date:'mediumDate' }}</b></div>
+      <article
+        class="application-card"
+        tabindex="0"
+        role="button"
+        (click)="showDetails(item)"
+        (keydown.enter)="showDetails(item)"
+        (keydown.space)="showDetails(item); $event.preventDefault()">
+        <div class="candidate-avatar">
+          <span>{{ item.chefName.slice(0, 2).toUpperCase() }}</span><i
+            class="bi bi-file-earmark-person"></i>
+        </div>
+        <div class="candidate-main">
+          <div class="candidate-title">
+            <h2>{{ item.chefName }}</h2>
+            <span class="candidate-id">Application #{{ item.id }}</span>
+          </div>
+          <p>
+            <i class="bi bi-award"></i>{{ item.chefSpeciality }} <span>·</span>
+            {{ item.chefExperience }} years experience
+          </p>
+        </div>
+        <div class="application-salary">
+          <small>SALARY</small><b>${{ item.salary }}</b>
+        </div>
+        <div class="application-date">
+          <small>DATE</small><b>{{ item.date | date: 'mediumDate' }}</b>
+        </div>
         <span class="application-status" [class]="'status-' + item.status">{{ item.status }}</span>
         @if (item.status === 'pending') {
-          <div class="application-actions"><button type="button" class="approve-button" (click)="$event.stopPropagation(); ask(item, 'approve')"><i class="bi bi-check2"></i>Approve</button><button type="button" class="refuse-button" (click)="$event.stopPropagation(); ask(item, 'refuse')"><i class="bi bi-x-lg"></i>Refuse</button></div>
+          <div class="application-actions">
+            <button
+              type="button"
+              class="approve-button"
+              (click)="$event.stopPropagation(); ask(item, 'approve')">
+              <i class="bi bi-check2"></i>Approve</button
+            ><button
+              type="button"
+              class="refuse-button"
+              (click)="$event.stopPropagation(); ask(item, 'refuse')">
+              <i class="bi bi-x-lg"></i>Refuse
+            </button>
+          </div>
         } @else {
           <span class="completed-label"><i class="bi bi-check-circle"></i> {{ item.status }}</span>
         }
@@ -21,7 +87,17 @@
     }
   </section>
 </main>
-@if (selectedCandidature(); as candidature) { <app-candidature-details-dialog [candidature]="candidature" (closed)="closeDialog()" /> }
+@if (selectedCandidature(); as candidature) {
+  <app-candidature-details-dialog [candidature]="candidature" (closed)="closeDialog()" />
+}
 @if (pendingAction(); as action) {
-  <app-confirm-operation-dialog [title]="action.action === 'approve' ? 'Approve this application?' : 'Refuse this application?'" [message]="action.action === 'approve' ? 'Accept candidature #' + action.item.id + '.' : 'Refuse candidature #' + action.item.id + '.'" (confirmed)="applyAction()" (cancelled)="closeDialog()" />
+  <app-confirm-operation-dialog
+    [title]="action.action === 'approve' ? 'Approve this application?' : 'Refuse this application?'"
+    [message]="
+      action.action === 'approve'
+        ? 'Accept candidature #' + action.item.id + '.'
+        : 'Refuse candidature #' + action.item.id + '.'
+    "
+    (confirmed)="applyAction()"
+    (cancelled)="closeDialog()" />
 }

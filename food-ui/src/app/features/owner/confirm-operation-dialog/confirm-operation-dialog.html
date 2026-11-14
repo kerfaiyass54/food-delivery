@@ -1,9 +1,19 @@
 <div class="dialog-backdrop" (click)="cancelled.emit()" (keydown.escape)="cancelled.emit()">
-  <section class="confirm-dialog card border-0 shadow-lg" role="dialog" aria-modal="true" [attr.aria-label]="title()" (click)="$event.stopPropagation()">
+  <section
+    class="confirm-dialog card border-0 shadow-lg"
+    role="dialog"
+    aria-modal="true"
+    [attr.aria-label]="title()"
+    (click)="$event.stopPropagation()">
     <div class="confirm-mark"><i class="bi bi-check2"></i></div>
     <p class="dialog-kicker">ONE LAST CHECK</p>
     <h2>{{ title() }}</h2>
     <p class="confirm-copy">{{ message() }}</p>
-    <div class="dialog-actions"><button class="btn btn-light" type="button" (click)="cancelled.emit()">Go back</button><button class="btn btn-success" type="button" (click)="confirmed.emit()">Confirm change <i class="bi bi-arrow-right ms-1"></i></button></div>
+    <div class="dialog-actions">
+      <button class="btn btn-light" type="button" (click)="cancelled.emit()">Go back</button
+      ><button class="btn btn-success" type="button" (click)="confirmed.emit()">
+        Confirm change <i class="bi bi-arrow-right ms-1"></i>
+      </button>
+    </div>
   </section>
 </div>

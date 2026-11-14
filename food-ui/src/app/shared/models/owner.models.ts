@@ -4,6 +4,7 @@ export type CandidatureStatus = 'accepted' | 'refused' | 'pending';
 export interface AppConfig {
   apiBaseUrl: string;
   ownerId: number;
+  chefId?: number;
 }
 
 export interface RestaurantDetails {

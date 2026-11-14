@@ -1,31 +1,695 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
-:root { color-scheme:light; font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-synthesis:none; text-rendering:optimizeLegibility; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; font-optical-sizing:auto; font-weight:400; background:#f6f8fc; --blue:#1455d9; --blue-dark:#0d2f73; --blue-soft:#eaf1ff; --red:#dc3d4b; --red-soft:#fff0f2; --ink:#10254a; --muted:#70809d; }
-* { box-sizing:border-box; }
-body { margin:0; min-width:320px; min-height:100vh; background:#f6f8fc; color:var(--ink); }
-html { scroll-behavior:smooth; }
-button,input,select { font:inherit; }
-button { font-family:inherit; }
-::selection { color:#fff; background:var(--blue); }
+:root {
+  color-scheme: light;
+  font-family:
+    'Manrope',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  background: #f6f8fc;
+  --blue: #1455d9;
+  --blue-dark: #0d2f73;
+  --blue-soft: #eaf1ff;
+  --red: #dc3d4b;
+  --red-soft: #fff0f2;
+  --ink: #10254a;
+  --muted: #70809d;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: #f6f8fc;
+  color: var(--ink);
+}
+html {
+  scroll-behavior: smooth;
+}
+button,
+input,
+select {
+  font: inherit;
+}
+button {
+  font-family: inherit;
+}
+::selection {
+  color: #fff;
+  background: var(--blue);
+}
 
 /* Shared owner palette: component-level styles keep their motion while inheriting
    the same blue/red/white visual language. */
-.sidebar { background:#fff !important; border-color:#e4eaf5 !important; }
-.brand { color:var(--ink) !important; }
-.brand-mark { color:var(--blue) !important; background:var(--blue-soft) !important; }
-.brand-dot { color:var(--red) !important; }
-.nav-link { color:#71809a !important; }
-.nav-link:hover { color:var(--blue) !important; background:var(--blue-soft) !important; }
-.nav-link.active { color:var(--blue) !important; background:var(--blue-soft) !important; }
-.help-card { background:linear-gradient(145deg,#eef4ff,#fff) !important; }
-.help-icon,.help-card a { color:var(--blue) !important; }
-.management-page,.owner-page { background:#f6f8fc !important; }
-.management-header h1,.intro h1,.restaurant-hero h2,.card-heading h3 { color:var(--ink) !important; }
-.eyebrow,.section-eyebrow,.card-kicker { color:#5f76a1 !important; }
-.eyebrow i,.section-eyebrow i { background:var(--red) !important; box-shadow:0 0 0 4px var(--red-soft) !important; }
-.restaurant-hero { border-color:#cddafb !important; background:linear-gradient(112deg,#eaf1ff,#fff 55%,#fff0f2) !important; }
-.quick-stat,.detail-card,.chef-card,.count-card { border-color:#e0e7f3 !important; }
-.chef-avatar { background:linear-gradient(145deg,#eaf1ff,#dce7ff) !important; color:var(--blue) !important; }
-.details-button,.heading-icon,.round-edit { background:var(--blue-soft) !important; color:var(--blue) !important; }
-.remove-button { background:var(--red-soft) !important; color:var(--red) !important; }
-.dialog-done { background:var(--blue) !important; }
-.status-accepted { background:#e8f4e9 !important; color:#2f7a55 !important; }
+.sidebar {
+  background: #fff !important;
+  border-color: #e4eaf5 !important;
+}
+.brand {
+  color: var(--ink) !important;
+}
+.brand-mark {
+  color: var(--blue) !important;
+  background: var(--blue-soft) !important;
+}
+.brand-dot {
+  color: var(--red) !important;
+}
+.nav-link {
+  color: #71809a !important;
+}
+.nav-link:hover {
+  color: var(--blue) !important;
+  background: var(--blue-soft) !important;
+}
+.nav-link.active {
+  color: var(--blue) !important;
+  background: var(--blue-soft) !important;
+}
+.help-card {
+  background: linear-gradient(145deg, #eef4ff, #fff) !important;
+}
+.help-icon,
+.help-card a {
+  color: var(--blue) !important;
+}
+.management-page,
+.owner-page {
+  background: #f6f8fc !important;
+}
+.management-header h1,
+.intro h1,
+.restaurant-hero h2,
+.card-heading h3 {
+  color: var(--ink) !important;
+}
+.eyebrow,
+.section-eyebrow,
+.card-kicker {
+  color: #5f76a1 !important;
+}
+.eyebrow i,
+.section-eyebrow i {
+  background: var(--red) !important;
+  box-shadow: 0 0 0 4px var(--red-soft) !important;
+}
+.restaurant-hero {
+  border-color: #cddafb !important;
+  background: linear-gradient(112deg, #eaf1ff, #fff 55%, #fff0f2) !important;
+}
+.quick-stat,
+.detail-card,
+.chef-card,
+.count-card {
+  border-color: #e0e7f3 !important;
+}
+.chef-avatar {
+  background: linear-gradient(145deg, #eaf1ff, #dce7ff) !important;
+  color: var(--blue) !important;
+}
+.details-button,
+.heading-icon,
+.round-edit {
+  background: var(--blue-soft) !important;
+  color: var(--blue) !important;
+}
+.remove-button {
+  background: var(--red-soft) !important;
+  color: var(--red) !important;
+}
+.dialog-done {
+  background: var(--blue) !important;
+}
+.status-accepted {
+  background: #e8f4e9 !important;
+  color: #2f7a55 !important;
+}
+
+/* Chef workspace: editorial blue, red, and warm white visual system */
+app-chef-shell {
+  display: block;
+  min-height: 100vh;
+  background: #f6f8fc;
+  color: #10254a;
+}
+app-chef-shell .chef-shell {
+  grid-template-columns: 248px minmax(0, 1fr);
+  background: #f6f8fc;
+}
+app-chef-shell .chef-navigation {
+  z-index: 4;
+  border-right: 1px solid #e4eaf5;
+  background: #fff;
+}
+app-chef-shell .sidebar {
+  padding: 28px 17px 15px;
+  border: 0;
+  background: #fff;
+}
+app-chef-shell .brand {
+  margin: 1px 5px 46px;
+  color: #10254a;
+}
+app-chef-shell .brand-mark {
+  width: 40px;
+  height: 40px;
+  border-radius: 13px;
+  color: #1455d9;
+  background: #eaf1ff;
+}
+app-chef-shell .brand-dot {
+  color: #dc3d4b;
+}
+app-chef-shell .nav-caption {
+  color: #91a0bc;
+}
+app-chef-shell .sidebar nav {
+  gap: 5px;
+}
+app-chef-shell .nav-link {
+  min-height: 45px;
+  border-radius: 12px;
+  color: #71809a;
+  font-size: 11px;
+}
+app-chef-shell .nav-link:hover,
+app-chef-shell .nav-link.active {
+  color: #1455d9;
+  background: #eaf1ff;
+}
+app-chef-shell .nav-link.active {
+  box-shadow: inset 2px 0 #1455d9;
+}
+app-chef-shell .help-card {
+  border: 1px solid #e1e9fa;
+  border-radius: 16px;
+  background: linear-gradient(145deg, #eef4ff, #fff);
+}
+app-chef-shell .help-icon,
+app-chef-shell .help-card a {
+  color: #1455d9;
+}
+app-chef-shell .profile {
+  border-color: #e6ebf5;
+}
+app-chef-shell .avatar {
+  background: #eaf1ff;
+  color: #1455d9;
+}
+app-chef-shell .chef-content {
+  min-height: 100vh;
+}
+.chef-page.owner-page {
+  width: min(100%, 1480px);
+  max-width: 1480px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 32px clamp(24px, 4vw, 62px) 42px;
+  background: transparent !important;
+  color: #10254a;
+}
+.chef-page .topbar {
+  min-height: 44px;
+  margin: 0 0 34px;
+  padding: 0 0 13px;
+  border-bottom: 1px solid #e4eaf4;
+  animation: none;
+}
+.chef-page .breadcrumb {
+  gap: 10px;
+  color: #71809d;
+  font-size: 10px;
+}
+.chef-page .breadcrumb-home {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid #e0e7f3;
+  border-radius: 11px;
+  background: #fff;
+  color: #1455d9;
+}
+.chef-page .breadcrumb-home:hover {
+  background: #eaf1ff;
+}
+.chef-page .breadcrumb b {
+  color: #10254a;
+  font-weight: 700;
+}
+.chef-page .intro {
+  align-items: center;
+  margin: 0 0 29px;
+  animation: none;
+}
+.chef-page .intro h1 {
+  margin: 9px 0 7px;
+  color: #10254a !important;
+  font-size: clamp(42px, 4.6vw, 64px);
+  line-height: 1.04;
+  letter-spacing: -3px;
+}
+.chef-page .intro h1 em {
+  color: #1455d9;
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-weight: 400;
+}
+.chef-page .intro p {
+  margin: 0;
+  color: #70809d;
+  font-size: 13px;
+}
+.chef-page .intro-mark {
+  display: grid;
+  place-content: center;
+  width: 74px;
+  height: 74px;
+  border: 1px solid #dce6fa;
+  border-radius: 23px;
+  background: linear-gradient(145deg, #eaf1ff, #fff);
+  color: #1455d9;
+}
+.chef-page .intro-mark span {
+  font-size: 22px;
+}
+.chef-page .intro-mark small {
+  margin-top: 4px;
+  color: #6d83ae;
+  font-size: 7px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+}
+.chef-page .section-eyebrow {
+  color: #5f76a1 !important;
+}
+.chef-page .section-eyebrow > i {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-right: 7px;
+  border-radius: 50%;
+  background: #dc3d4b !important;
+  box-shadow: 0 0 0 4px #fff0f2 !important;
+  vertical-align: 1px;
+}
+.chef-page .chef-status {
+  padding: 8px 11px;
+  border: 1px solid #e0e7f3;
+  border-radius: 99px;
+  background: #fff;
+  color: #617698;
+  font-size: 8px;
+}
+.chef-page .chef-hero,
+.chef-page .application-overview,
+.chef-page .discovery-card {
+  border-color: #dce5f6;
+  background: linear-gradient(110deg, #eaf1ff, #fff 65%, #fff0f2);
+  box-shadow: 0 14px 36px #16376e0c;
+}
+.chef-page .chef-hero:after {
+  opacity: 0.24;
+}
+.chef-page .chef-summary article,
+.chef-page .chef-edit-card,
+.chef-page .applications-table-card,
+.chef-page .restaurant-card {
+  border-color: #e0e7f3;
+  box-shadow: 0 10px 28px #16376e0a;
+}
+.chef-page .applications-table-card {
+  border-radius: 19px;
+}
+.chef-page .application-overview {
+  min-height: 132px;
+  margin-bottom: 17px;
+  padding: 22px 25px;
+}
+.chef-page .overview-copy h2 {
+  color: #10254a;
+  font-family: 'Manrope', sans-serif;
+  font-size: 20px;
+  font-weight: 750;
+  letter-spacing: -0.6px;
+}
+.chef-page .overview-copy p {
+  color: #70809d;
+  font-size: 10px;
+}
+.chef-page .application-counts > div {
+  min-width: 75px;
+  padding: 10px 12px;
+  border-color: #dce5f6;
+  border-radius: 13px;
+  background: #ffffffd9;
+}
+.chef-page .application-counts b {
+  color: #1455d9;
+  font-size: 19px;
+}
+.chef-page .application-counts small {
+  color: #71809d;
+  font-size: 8px;
+}
+.chef-page .table-heading {
+  min-height: 82px;
+  padding: 20px 24px 14px;
+}
+.chef-page .table-heading h2 {
+  margin: 5px 0;
+  color: #10254a;
+  font-size: 16px;
+  font-weight: 750;
+}
+.chef-page .table-heading p {
+  margin: 4px 0 0;
+  color: #7888a3;
+  font-size: 10px;
+}
+.chef-page .refresh-button {
+  padding: 9px 12px;
+  border-color: #dce5f4;
+  border-radius: 10px;
+  color: #49658e;
+}
+.chef-page .refresh-button:hover {
+  background: #eaf1ff;
+  color: #1455d9;
+}
+.chef-page .table-toolbar {
+  gap: 10px;
+  padding: 0 24px 14px;
+}
+.chef-page .application-search {
+  width: min(310px, 45%);
+  height: 38px;
+  border-color: #e0e7f2;
+  border-radius: 11px;
+}
+.chef-page .application-search:focus-within {
+  border-color: #9eb9ed;
+  box-shadow: 0 0 0 3px #eaf1ff;
+}
+.chef-page .application-search i {
+  color: #7088ad;
+}
+.chef-page .status-filter {
+  color: #71809d;
+  font-size: 9px;
+}
+.chef-page .status-filter .form-select {
+  min-height: 36px;
+  border-color: #e0e7f2;
+  border-radius: 10px;
+  color: #405574;
+}
+.chef-page .application-table {
+  min-width: 740px;
+}
+.chef-page .application-table thead {
+  background: #f7f9fd;
+}
+.chef-page .application-table th {
+  height: 42px;
+  border-color: #e8edf5;
+  color: #7889a6;
+  font-size: 8px;
+}
+.chef-page .application-table th button:hover {
+  color: #1455d9;
+}
+.chef-page .application-table td {
+  height: 61px;
+  border-color: #edf0f6;
+  color: #60718d;
+}
+.chef-page .restaurant-cell b {
+  color: #10254a;
+  font-size: 10px;
+}
+.chef-page .application-avatar {
+  background: #eaf1ff;
+  color: #1455d9;
+}
+.chef-page .salary-cell {
+  color: #183963 !important;
+}
+.chef-page .application-empty {
+  min-height: 175px;
+  padding: 26px 14px;
+}
+.chef-page .application-empty > i {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 15px;
+  background: #eaf1ff;
+  color: #1455d9;
+  font-size: 19px;
+}
+.chef-page .application-empty b {
+  margin-top: 10px;
+  color: #10254a;
+  font-size: 13px;
+}
+.chef-page .application-empty span {
+  color: #70809d;
+}
+.chef-page .application-empty a {
+  color: #1455d9;
+}
+.chef-page .applications-footer {
+  min-height: 52px;
+  padding: 10px 24px;
+  border-color: #e8edf5;
+  color: #71809d;
+}
+.chef-page .applications-footer b {
+  color: #405574;
+}
+.chef-page .application-pagination button {
+  min-width: 29px;
+  height: 29px;
+}
+.chef-page .application-pagination button:hover:not(:disabled),
+.chef-page .application-pagination button.current {
+  border-color: #d7e3f8;
+  background: #eaf1ff;
+  color: #1455d9;
+}
+.chef-page .restaurant-search-bar {
+  min-height: 60px;
+  border-color: #dce5f4;
+  border-radius: 15px;
+}
+.chef-page .restaurant-search-bar:focus-within {
+  border-color: #9eb9ed;
+  box-shadow: 0 0 0 4px #eaf1ff;
+}
+.chef-page .search-submit,
+.chef-page .apply-button,
+.chef-page .save-button {
+  background: #1455d9;
+  color: #fff;
+}
+.chef-page .search-submit:hover,
+.chef-page .apply-button:hover,
+.chef-page .save-button:hover {
+  background: #0d43b2;
+}
+.chef-page .restaurant-card {
+  overflow: hidden;
+  border-radius: 18px;
+}
+.chef-page .restaurant-card-art {
+  height: 116px;
+  background: linear-gradient(120deg, #eaf1ff, #fff0f2);
+}
+.chef-page .restaurant-card h3 {
+  color: #10254a;
+}
+.chef-page .restaurant-cuisine i,
+.chef-page .restaurant-address i {
+  color: #dc3d4b;
+}
+.chef-page .details-link,
+.chef-page .text-action {
+  color: #1455d9;
+}
+.chef-page .discovery-art {
+  background: #fff;
+  color: #1455d9;
+}
+.chef-page .disc-circle {
+  border-color: #9db8e86b;
+}
+.chef-page .modal-actions .apply-button {
+  background: #1455d9;
+}
+.chef-page .profile-unavailable {
+  margin-top: 12px;
+}
+.chef-page .chef-alert,
+.chef-page .chef-success {
+  border-radius: 13px;
+  font-size: 11px;
+}
+@media (max-width: 760px) {
+  app-chef-shell .chef-shell {
+    display: block;
+  }
+  app-chef-shell .chef-navigation {
+    position: relative;
+    height: auto;
+    border-right: 0;
+    border-bottom: 1px solid #e4eaf5;
+  }
+  app-chef-shell .sidebar {
+    min-height: auto;
+    padding: 13px 16px;
+  }
+  app-chef-shell .brand {
+    margin: 0 0 11px;
+  }
+  .chef-page.owner-page {
+    padding: 21px 19px 30px;
+  }
+  .chef-page .topbar {
+    margin-bottom: 26px;
+  }
+  .chef-page .intro h1 {
+    font-size: clamp(37px, 8vw, 52px);
+    letter-spacing: -2.4px;
+  }
+  .chef-page .application-overview {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .chef-page .application-counts {
+    width: 100%;
+  }
+  .chef-page .application-counts > div {
+    flex: 1;
+  }
+  .chef-page .discovery-card {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 560px) {
+  .chef-page .intro-mark {
+    width: 55px;
+    height: 55px;
+    border-radius: 18px;
+  }
+  .chef-page .intro-mark span {
+    font-size: 18px;
+  }
+  .chef-page .intro-mark small {
+    font-size: 6px;
+  }
+  .chef-page .table-heading {
+    padding: 17px 15px 12px;
+  }
+  .chef-page .table-toolbar {
+    padding: 0 15px 12px;
+  }
+  .chef-page .application-search {
+    width: 100%;
+  }
+  .chef-page .applications-footer {
+    padding: 10px 15px;
+  }
+  .chef-page .application-overview {
+    padding: 18px;
+  }
+  .chef-page .application-counts > div {
+    min-width: 0;
+    padding: 9px 7px;
+  }
+  .chef-page .application-counts b {
+    font-size: 16px;
+  }
+  .chef-page .status-filter {
+    display: grid;
+    gap: 4px;
+    flex: 1;
+  }
+  .chef-page .status-filter .form-select {
+    min-width: 0;
+    width: 100%;
+  }
+  .chef-page .restaurant-card {
+    display: grid;
+    grid-template-columns: 92px 1fr;
+  }
+  .chef-page .restaurant-card-art {
+    height: 100%;
+    min-height: 160px;
+  }
+  .chef-page .discovery-art {
+    flex-basis: 52px;
+    height: 52px;
+    font-size: 19px;
+  }
+  .chef-page .discover-button {
+    margin-left: 67px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chef-page *,
+  app-chef-shell * {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High-specificity finish for feature-level component styles loaded on demand. */
+.chef-page.owner-page .intro h1 {
+  font-size: clamp(42px, 4.6vw, 64px) !important;
+  line-height: 1.04 !important;
+  letter-spacing: -3px !important;
+  color: #10254a !important;
+}
+.chef-page.owner-page .intro h1 em {
+  color: #1455d9 !important;
+}
+.chef-page.owner-page .intro p {
+  font-size: 13px !important;
+  color: #70809d !important;
+}
+.chef-page.owner-page.application-page .intro h1 {
+  font-size: clamp(42px, 4.6vw, 64px) !important;
+}
+.chef-page.owner-page.restaurant-search-page .intro h1 {
+  font-size: clamp(42px, 4.6vw, 64px) !important;
+}
+.chef-page .restaurant-search-bar .search-submit,
+.chef-page .restaurant-card .apply-button,
+.chef-page .modal-actions .apply-button,
+.chef-page .chef-edit-card .save-button,
+.chef-page .chef-edit-card .edit-profile-button {
+  background: #1455d9 !important;
+  border-color: #1455d9 !important;
+  color: #fff !important;
+}
+.chef-page .restaurant-search-bar .search-submit:hover,
+.chef-page .restaurant-card .apply-button:hover,
+.chef-page .modal-actions .apply-button:hover,
+.chef-page .chef-edit-card .save-button:hover,
+.chef-page .chef-edit-card .edit-profile-button:hover {
+  background: #0d43b2 !important;
+}
