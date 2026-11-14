@@ -13,4 +13,7 @@ public interface IRestaurantRepository
         IReadOnlyCollection<int> offDayIds, CancellationToken cancellationToken);
     Task<bool> UpdateOpeningHoursAsync(int restaurantId, TimeOnly opensAt, TimeOnly closesAt,
         CancellationToken cancellationToken);
+    Task<IReadOnlyList<Restaurant>> SearchAsync(string? filter, int page, int pageSize, string sortBy,
+        bool descending, CancellationToken cancellationToken);
+    Task<int> CountSearchAsync(string? filter, CancellationToken cancellationToken);
 }

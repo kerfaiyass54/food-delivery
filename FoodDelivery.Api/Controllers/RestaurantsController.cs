@@ -9,13 +9,26 @@ namespace FoodDelivery.Api.Controllers;
 public sealed class RestaurantsController : ControllerBase
 {
     private readonly IRestaurantService _restaurantService;
+    private readonly IRestaurantSearchService _searchService;
     private readonly ILogger<RestaurantsController> _logger;
 
-    public RestaurantsController(IRestaurantService restaurantService, ILogger<RestaurantsController> logger)
+    public RestaurantsController(IRestaurantService restaurantService, IRestaurantSearchService searchService,
+        ILogger<RestaurantsController> logger)
     {
         _restaurantService = restaurantService;
+        _searchService = searchService;
         _logger = logger;
     }
+
+    [HttpGet]
+    [ProducesResponseType(typeof(PagedResultDto<RestaurantSummaryDto>), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<PagedResultDto<RestaurantSummaryDto>>> Search(
+        [FromQuery] string? filter, [FromQuery] int page = 1, [FromQuery] int pageSize = 20,
+        [FromQuery] string? sortBy = "name", [FromQuery] bool descending = false,
+        CancellationToken cancellationToken = default) =>
+        ControllerResultMapper.Map(this, await _searchService.SearchAsync(filter, page, pageSize,
+            sortBy, descending, cancellationToken), _logger);
 
     [HttpGet("{id:int}")]
     [ProducesResponseType(typeof(RestaurantDetailsDto), StatusCodes.Status200OK)]

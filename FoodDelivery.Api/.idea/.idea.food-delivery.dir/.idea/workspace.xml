@@ -4,80 +4,132 @@
     <projectFile profileName="FoodDelivery.Api">FoodDelivery.Api.csproj</projectFile>
     <projectFile profileName="IIS Express">FoodDelivery.Api.csproj</projectFile>
   </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="CMakeProjectFlavorService">
+    <option name="flavorId" value="CMakePlainProjectFlavor" />
+  </component>
+  <component name="CMakeSettings">
+    <configurations />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="938e46b2-f6a8-4651-95ef-fe39483e6fdc" name="Änderungen" comment="" />
+    <list default="true" id="938e46b2-f6a8-4651-95ef-fe39483e6fdc" name="Änderungen" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.food-delivery.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.food-delivery.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/RestaurantsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/RestaurantsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/Candidatures/CandidatureRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Data/Candidatures/CandidatureRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/Candidatures/ICandidatureRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Data/Candidatures/ICandidatureRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/Chefs/ChefRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Data/Chefs/ChefRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/Chefs/IChefRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Data/Chefs/IChefRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/Restaurants/IRestaurantRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Data/Restaurants/IRestaurantRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/Restaurants/RestaurantRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Data/Restaurants/RestaurantRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/net6.0/FoodDelivery.Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net6.0/FoodDelivery.Api.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/net6.0/FoodDelivery.Api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net6.0/FoodDelivery.Api.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/FoodDelivery.Api.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/FoodDelivery.Api.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/FoodDelivery.Api.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/FoodDelivery.Api.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/FoodDelivery.Api.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/FoodDelivery.Api.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/FoodDelivery.Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/FoodDelivery.Api.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/FoodDelivery.Api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/FoodDelivery.Api.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/ref/FoodDelivery.Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/ref/FoodDelivery.Api.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/refint/FoodDelivery.Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/refint/FoodDelivery.Api.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/staticwebassets.pack.sentinel" beforeDir="false" afterPath="$PROJECT_DIR$/obj/staticwebassets.pack.sentinel" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../food-ui/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/../food-ui/angular.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../food-ui/src/app/features/chef/candidature-following/candidature-following.css" beforeDir="false" afterPath="$PROJECT_DIR$/../food-ui/src/app/features/chef/candidature-following/candidature-following.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../food-ui/src/app/features/chef/candidature-following/candidature-following.html" beforeDir="false" afterPath="$PROJECT_DIR$/../food-ui/src/app/features/chef/candidature-following/candidature-following.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../food-ui/src/app/features/chef/candidature-following/candidature-following.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../food-ui/src/app/features/chef/candidature-following/candidature-following.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../food-ui/src/app/features/chef/chef-details/chef-details.css" beforeDir="false" afterPath="$PROJECT_DIR$/../food-ui/src/app/features/chef/chef-details/chef-details.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../food-ui/src/app/features/chef/chef-details/chef-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/../food-ui/src/app/features/chef/chef-details/chef-details.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../food-ui/src/app/features/chef/chef-details/chef-details.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../food-ui/src/app/features/chef/chef-details/chef-details.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../food-ui/src/app/features/chef/chef-shell/chef-shell.css" beforeDir="false" afterPath="$PROJECT_DIR$/../food-ui/src/app/features/chef/chef-shell/chef-shell.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../food-ui/src/app/features/chef/restaurant-search/restaurant-search.css" beforeDir="false" afterPath="$PROJECT_DIR$/../food-ui/src/app/features/chef/restaurant-search/restaurant-search.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../food-ui/src/app/features/chef/restaurant-search/restaurant-search.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../food-ui/src/app/features/chef/restaurant-search/restaurant-search.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../food-ui/src/app/shared/components/sidebar-nav/sidebar-nav.css" beforeDir="false" afterPath="$PROJECT_DIR$/../food-ui/src/app/shared/components/sidebar-nav/sidebar-nav.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../food-ui/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/../food-ui/src/styles.css" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CopilotPersistence">
+    <persistenceIdMap>
+      <entry key="_D:/projects/food-delivery" value="3LyhoGsU7TDI09ywNdzmxThTdZS" />
+      <entry key="_D:/projects/food-delivery/FoodDelivery.Api" value="3M5kVwFmtF1zDOqUxAWcaj6Jbzi" />
+    </persistenceIdMap>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0072663053216053" />
-      <entry key="MS500" value="2.5345506175211217" />
-      <entry key="S2" value="7.351232134481138" />
-      <entry key="S5" value="10.820041342957385" />
-      <entry key="S10" value="12.642138265560005" />
-      <entry key="S30" value="14.413023219723323" />
-      <entry key="S60" value="15.723632459307757" />
-      <entry key="M2" value="17.312377086474388" />
-      <entry key="M5" value="23.60562852911217" />
-      <entry key="M10" value="36.23843814723107" />
-      <entry key="M15" value="45.06076990515881" />
-      <entry key="M30" value="58.24618651435744" />
-      <entry key="H1" value="67.12608901184166" />
-      <entry key="H2" value="72.28765783513106" />
-      <entry key="H4" value="75.07141500764921" />
-      <entry key="D1" value="77.50152713367748" />
-      <entry key="W1" value="77.92853124899749" />
+      <entry key="MS100" value="1.001873582010313" />
+      <entry key="MS500" value="1.330787102909194" />
+      <entry key="S2" value="3.530408472727676" />
+      <entry key="S5" value="8.6615434039636" />
+      <entry key="S10" value="13.579123961367985" />
+      <entry key="S30" value="19.36209584386466" />
+      <entry key="S60" value="22.01970666707756" />
+      <entry key="M2" value="24.37162267034666" />
+      <entry key="M5" value="31.11098849765633" />
+      <entry key="M10" value="43.8756085533356" />
+      <entry key="M15" value="52.76516887315106" />
+      <entry key="M30" value="66.05823295394215" />
+      <entry key="H1" value="75.01858494494117" />
+      <entry key="H2" value="80.22997312875529" />
+      <entry key="H4" value="83.04151198323349" />
+      <entry key="D1" value="85.49638895877041" />
+      <entry key="W1" value="85.92779334960981" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
-      <entry key="S2" value="2.3950687802870627E-159" />
-      <entry key="S5" value="3.5622729730141906E-64" />
-      <entry key="S10" value="1.887398466941782E-32" />
-      <entry key="S30" value="2.6624892685783067E-11" />
-      <entry key="S60" value="5.159931461345498E-6" />
-      <entry key="M2" value="0.0022715482520398933" />
-      <entry key="M5" value="0.08760497834354608" />
-      <entry key="M10" value="0.29598138175153194" />
-      <entry key="M15" value="0.4441294740895299" />
-      <entry key="M30" value="0.6664303970329759" />
-      <entry key="H1" value="0.8163518830951368" />
-      <entry key="H2" value="0.9035219328246197" />
-      <entry key="H4" value="0.9505377072081991" />
-      <entry key="D1" value="0.991581064918509" />
-      <entry key="W1" value="0.9987929327371747" />
+      <entry key="S2" value="1.562109062138744E-160" />
+      <entry key="S5" value="1.1953209759479096E-64" />
+      <entry key="S10" value="1.0933073565781535E-32" />
+      <entry key="S30" value="2.219460516435046E-11" />
+      <entry key="S60" value="4.711115065921282E-6" />
+      <entry key="M2" value="0.002170510323845818" />
+      <entry key="M5" value="0.08602501209329987" />
+      <entry key="M10" value="0.2933002081371575" />
+      <entry key="M15" value="0.4414432841521514" />
+      <entry key="M30" value="0.6644119837511597" />
+      <entry key="H1" value="0.8151147058857175" />
+      <entry key="H2" value="0.9028370317425605" />
+      <entry key="H4" value="0.9501773685699741" />
+      <entry key="D1" value="0.9915184053980626" />
+      <entry key="W1" value="0.9987839160287836" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.049502906633448605" />
-      <entry key="MS500" value="2.058522052821578" />
-      <entry key="S2" value="7.191266425403953" />
-      <entry key="S5" value="10.747698297643037" />
-      <entry key="S10" value="12.60385989103466" />
-      <entry key="S30" value="14.399659754678487" />
-      <entry key="S60" value="15.716822968338407" />
-      <entry key="M2" value="17.31115863635877" />
-      <entry key="M5" value="23.691438606131186" />
-      <entry key="M10" value="36.53305305974839" />
-      <entry key="M15" value="45.5037664624228" />
-      <entry key="M30" value="58.91188389761339" />
-      <entry key="H1" value="67.94201819853238" />
-      <entry key="H2" value="73.19095207922615" />
-      <entry key="H4" value="76.0218344630276" />
-      <entry key="D1" value="78.49308784862079" />
-      <entry key="W1" value="78.92732125849555" />
+      <entry key="MS100" value="0.9092077220847052" />
+      <entry key="MS500" value="1.3046813527274284" />
+      <entry key="S2" value="3.478714453950892" />
+      <entry key="S5" value="8.580109711046264" />
+      <entry key="S10" value="13.51162074888021" />
+      <entry key="S30" value="19.33023866559168" />
+      <entry key="S60" value="22.0022710348195" />
+      <entry key="M2" value="24.36462039832681" />
+      <entry key="M5" value="31.192858994840698" />
+      <entry key="M10" value="44.16634905571346" />
+      <entry key="M15" value="53.204680199130294" />
+      <entry key="M30" value="66.72151011911913" />
+      <entry key="H1" value="75.83307531248279" />
+      <entry key="H2" value="81.13248143550204" />
+      <entry key="H4" value="83.9915205234629" />
+      <entry key="D1" value="86.48787857624035" />
+      <entry key="W1" value="86.92657313676277" />
     </decayedShown>
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 7
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="3LyVdzbcGM758JZBMhEKOSTLJgh" />
+  <component name="ProjectSessionTemplates">
+    <option name="version" value="1" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -91,8 +143,14 @@
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "cidr.known.project.marker": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "feature/retaurant-management",
-    "nodejs_package_manager_path": "npm"
+    "copilot.chat.legacySessionMetadata.migrated": "true",
+    "git-widget-placeholder": "feature/chefs-management",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "python.packages.toolwindow.project.migrated.to.right.top.v2": "true",
+    "settings.editor.selected.configurable": "editor.preferences.tabs"
   }
 }]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.FoodDelivery.Api">
