@@ -1,3 +1,487 @@
-:host{display:block}.management-page{max-width:1120px;margin:auto;padding:clamp(32px,6vw,82px) clamp(20px,5vw,70px)}.management-header{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:32px}.eyebrow{display:flex;align-items:center;gap:8px;color:#78967b;font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase}.eyebrow i{width:7px;height:7px;border-radius:50%;background:#71a178;box-shadow:0 0 0 4px #e1efe0}.management-header h1{margin:14px 0 8px;color:#29382e;font-size:clamp(42px,6vw,72px);letter-spacing:-4px;line-height:.95}.management-header p{margin:0;color:#849185;font-size:13px}.count-card{display:grid;place-items:center;min-width:118px;padding:17px;border:1px solid #dfeade;border-radius:18px;background:#fff;box-shadow:0 12px 25px #3248350b}.count-card strong{color:#527d59;font-size:30px}.count-card span{color:#91a094;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1px}.application-list{display:grid;gap:12px}.application-card{display:grid;grid-template-columns:52px minmax(0,1fr) auto auto auto;align-items:center;gap:17px;padding:18px 20px;border:1px solid #e1eae0;border-radius:20px;background:#fff;box-shadow:0 9px 24px #32483508;transition:.3s;animation:card-in .5s both;cursor:pointer}.application-card:focus-visible{outline:3px solid #a8c8a9;outline-offset:3px}.application-card:nth-child(2){animation-delay:.08s}.application-card:nth-child(3){animation-delay:.16s}.application-card:hover{transform:translateY(-5px);border-color:#bcd3bc;box-shadow:0 18px 36px #32483518}.candidate-avatar{display:grid;place-items:center;width:52px;height:52px;border-radius:16px;background:#fff0e4;color:#ad7855;font-size:14px;font-weight:800}.candidate-main h2{margin:0;color:#354238;font-size:15px}.candidate-main p{display:flex;align-items:center;gap:5px;margin:6px 0 0;color:#8b988d;font-size:10px}.candidate-main p i{color:#74a47a}.candidate-main p span{margin:0 4px;color:#bcc7bd}.application-salary,.application-date{display:grid;gap:5px;min-width:125px}.application-salary small,.application-date small{color:#a1aba2;font-size:8px;font-weight:800;letter-spacing:1px}.application-salary b,.application-date b{color:#657366;font-size:10px;font-weight:650}.application-salary b{color:#4f6e54}.application-status{padding:6px 9px;border-radius:99px;font-size:9px;font-weight:750}.status-pending{background:#fff3e5;color:#a8794e}.status-approved{background:#e8f4e9;color:#55835d}.status-refused{background:#faeae7;color:#ad6d63}.application-actions{display:flex;gap:7px}.approve-button,.refuse-button{padding:9px 11px;border:0;border-radius:10px;font-size:10px;font-weight:750;cursor:pointer;transition:.2s}.approve-button{background:#e8f4e8;color:#4f8058}.approve-button:hover{background:#d2e9d3;transform:translateY(-2px)}.refuse-button{background:#fff0ed;color:#ad685d}.refuse-button:hover{background:#f8ddd8;transform:translateY(-2px)}.approve-button i,.refuse-button i{margin-right:4px}.completed-label{color:#8e9b90;font-size:10px;font-weight:650}.completed-label i{margin-right:4px;color:#79a07d}@keyframes card-in{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:none}}@media(max-width:850px){.application-card{grid-template-columns:46px minmax(0,1fr) auto}.application-date{grid-column:2}.application-status{grid-column:3;grid-row:1}.application-actions,.completed-label{grid-column:2/4}}@media(max-width:600px){.management-header{align-items:flex-start}.application-card{grid-template-columns:44px 1fr}.candidate-avatar{width:44px;height:44px;border-radius:13px}.application-status,.application-date,.application-actions,.completed-label{grid-column:2}.application-status{grid-row:auto;justify-self:start}.application-actions{width:100%}.application-actions button{flex:1}}@media(prefers-reduced-motion:reduce){.application-card{animation:none;transition:none}}
+:host {
+  display: block;
+}
+.management-page {
+  max-width: 1120px;
+  margin: auto;
+  padding: clamp(32px, 6vw, 82px) clamp(20px, 5vw, 70px);
+}
+.management-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #78967b;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+.eyebrow i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #71a178;
+  box-shadow: 0 0 0 4px #e1efe0;
+}
+.management-header h1 {
+  margin: 14px 0 8px;
+  color: #29382e;
+  font-size: clamp(42px, 6vw, 72px);
+  letter-spacing: -4px;
+  line-height: 0.95;
+}
+.management-header p {
+  margin: 0;
+  color: #849185;
+  font-size: 13px;
+}
+.count-card {
+  display: grid;
+  place-items: center;
+  min-width: 118px;
+  padding: 17px;
+  border: 1px solid #dfeade;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 12px 25px #3248350b;
+}
+.count-card strong {
+  color: #527d59;
+  font-size: 30px;
+}
+.count-card span {
+  color: #91a094;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.application-list {
+  display: grid;
+  gap: 12px;
+}
+.application-card {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr) auto auto auto;
+  align-items: center;
+  gap: 17px;
+  padding: 18px 20px;
+  border: 1px solid #e1eae0;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 9px 24px #32483508;
+  transition: 0.3s;
+  animation: card-in 0.5s both;
+  cursor: pointer;
+}
+.application-card:focus-visible {
+  outline: 3px solid #a8c8a9;
+  outline-offset: 3px;
+}
+.application-card:nth-child(2) {
+  animation-delay: 0.08s;
+}
+.application-card:nth-child(3) {
+  animation-delay: 0.16s;
+}
+.application-card:hover {
+  transform: translateY(-5px);
+  border-color: #bcd3bc;
+  box-shadow: 0 18px 36px #32483518;
+}
+.candidate-avatar {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: #fff0e4;
+  color: #ad7855;
+  font-size: 14px;
+  font-weight: 800;
+}
+.candidate-main h2 {
+  margin: 0;
+  color: #354238;
+  font-size: 15px;
+}
+.candidate-main p {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 6px 0 0;
+  color: #8b988d;
+  font-size: 10px;
+}
+.candidate-main p i {
+  color: #74a47a;
+}
+.candidate-main p span {
+  margin: 0 4px;
+  color: #bcc7bd;
+}
+.application-salary,
+.application-date {
+  display: grid;
+  gap: 5px;
+  min-width: 125px;
+}
+.application-salary small,
+.application-date small {
+  color: #a1aba2;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+.application-salary b,
+.application-date b {
+  color: #657366;
+  font-size: 10px;
+  font-weight: 650;
+}
+.application-salary b {
+  color: #4f6e54;
+}
+.application-status {
+  padding: 6px 9px;
+  border-radius: 99px;
+  font-size: 9px;
+  font-weight: 750;
+}
+.status-pending {
+  background: #fff3e5;
+  color: #a8794e;
+}
+.status-approved {
+  background: #e8f4e9;
+  color: #55835d;
+}
+.status-refused {
+  background: #faeae7;
+  color: #ad6d63;
+}
+.application-actions {
+  display: flex;
+  gap: 7px;
+}
+.approve-button,
+.refuse-button {
+  padding: 9px 11px;
+  border: 0;
+  border-radius: 10px;
+  font-size: 10px;
+  font-weight: 750;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.approve-button {
+  background: #e8f4e8;
+  color: #4f8058;
+}
+.approve-button:hover {
+  background: #d2e9d3;
+  transform: translateY(-2px);
+}
+.refuse-button {
+  background: #fff0ed;
+  color: #ad685d;
+}
+.refuse-button:hover {
+  background: #f8ddd8;
+  transform: translateY(-2px);
+}
+.approve-button i,
+.refuse-button i {
+  margin-right: 4px;
+}
+.completed-label {
+  color: #8e9b90;
+  font-size: 10px;
+  font-weight: 650;
+}
+.completed-label i {
+  margin-right: 4px;
+  color: #79a07d;
+}
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (max-width: 850px) {
+  .application-card {
+    grid-template-columns: 46px minmax(0, 1fr) auto;
+  }
+  .application-date {
+    grid-column: 2;
+  }
+  .application-status {
+    grid-column: 3;
+    grid-row: 1;
+  }
+  .application-actions,
+  .completed-label {
+    grid-column: 2/4;
+  }
+}
+@media (max-width: 600px) {
+  .management-header {
+    align-items: flex-start;
+  }
+  .application-card {
+    grid-template-columns: 44px 1fr;
+  }
+  .candidate-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 13px;
+  }
+  .application-status,
+  .application-date,
+  .application-actions,
+  .completed-label {
+    grid-column: 2;
+  }
+  .application-status {
+    grid-row: auto;
+    justify-self: start;
+  }
+  .application-actions {
+    width: 100%;
+  }
+  .application-actions button {
+    flex: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .application-card {
+    animation: none;
+    transition: none;
+  }
+}
 
-.management-page{position:relative;overflow:hidden}.management-page::before{content:"";position:absolute;inset:0 0 auto;height:260px;pointer-events:none;background:radial-gradient(circle at 85% 15%,#dce8ff 0,transparent 35%),radial-gradient(circle at 15% 0,#fff0f2 0,transparent 30%);opacity:.7}.management-header,.management-stats,.application-list{position:relative;z-index:1}.management-header h1 em{color:#dc3d4b;font-style:normal}.count-card{position:relative;overflow:hidden;gap:2px;transition:transform .3s,box-shadow .3s}.count-card:hover{transform:translateY(-6px);box-shadow:0 18px 30px #173a7a22}.count-card i{color:#dc3d4b;font-size:15px}.management-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0 0 22px}.overview-card{display:flex;align-items:center;gap:13px;min-height:92px;padding:16px;border:1px solid #e0e7f3;border-radius:18px;background:#fff;box-shadow:0 10px 24px #173a7a0a;transition:.3s;animation:rise-in .65s both}.overview-card:nth-child(2){animation-delay:.08s}.overview-card:nth-child(3){animation-delay:.16s}.overview-card:hover{transform:translateY(-5px);box-shadow:0 18px 32px #173a7a18}.overview-icon{display:grid;place-items:center;width:39px;height:39px;border-radius:12px;background:#fff5df;color:#bc7b16;font-size:16px}.overview-card.blue .overview-icon{background:#eaf1ff;color:#1455d9}.overview-card.dark .overview-icon{background:#10254a;color:#fff}.overview-card div{display:grid;gap:2px}.overview-card small{color:#8291ac;font-size:8px;font-weight:800;letter-spacing:.7px;text-transform:uppercase}.overview-card strong{color:#10254a;font-size:22px;line-height:1.1}.overview-card p{margin:0;color:#9aa7bc;font-size:9px}.application-card{position:relative;overflow:hidden;border-color:#e0e7f3;animation:rise-in .65s both}.application-card::before{content:"";position:absolute;inset:0 auto 0 0;width:3px;background:#1455d9;transform:scaleY(0);transform-origin:bottom;transition:transform .3s}.application-card:hover::before{transform:scaleY(1)}.candidate-avatar{position:relative;background:linear-gradient(145deg,#fff0f2,#ffe0e5);color:#dc3d4b;transition:transform .35s}.candidate-avatar span{display:none}.candidate-avatar i{font-size:18px}.application-card:hover .candidate-avatar{transform:rotate(5deg) scale(1.08)}.candidate-title{gap:9px}.candidate-id{color:#9aa7bc;font-size:9px;font-weight:700}.candidate-main p i{color:#1455d9}.application-status{animation:status-pulse 2.8s ease-in-out infinite}.approve-button{background:#eaf1ff;color:#1455d9}.approve-button:hover{background:#1455d9;color:#fff}.refuse-button{background:#fff0f2;color:#dc3d4b}.refuse-button:hover{background:#dc3d4b;color:#fff}@keyframes rise-in{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}@keyframes status-pulse{0%,100%{box-shadow:0 0 0 0 transparent}50%{box-shadow:0 0 0 4px #f4c66b33}}@media(max-width:760px){.management-stats{grid-template-columns:1fr}.overview-card{min-height:75px}}@media(prefers-reduced-motion:reduce){.overview-card,.application-card,.application-status{animation:none}.count-card,.overview-card,.application-card,.candidate-avatar{transition:none}}
+.management-page {
+  position: relative;
+  overflow: hidden;
+}
+.management-page::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 260px;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 85% 15%, #dce8ff 0, transparent 35%),
+    radial-gradient(circle at 15% 0, #fff0f2 0, transparent 30%);
+  opacity: 0.7;
+}
+.management-header,
+.management-stats,
+.application-list {
+  position: relative;
+  z-index: 1;
+}
+.management-header h1 em {
+  color: #dc3d4b;
+  font-style: normal;
+}
+.count-card {
+  position: relative;
+  overflow: hidden;
+  gap: 2px;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
+}
+.count-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 30px #173a7a22;
+}
+.count-card i {
+  color: #dc3d4b;
+  font-size: 15px;
+}
+.management-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 0 0 22px;
+}
+.overview-card {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  min-height: 92px;
+  padding: 16px;
+  border: 1px solid #e0e7f3;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 10px 24px #173a7a0a;
+  transition: 0.3s;
+  animation: rise-in 0.65s both;
+}
+.overview-card:nth-child(2) {
+  animation-delay: 0.08s;
+}
+.overview-card:nth-child(3) {
+  animation-delay: 0.16s;
+}
+.overview-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 32px #173a7a18;
+}
+.overview-icon {
+  display: grid;
+  place-items: center;
+  width: 39px;
+  height: 39px;
+  border-radius: 12px;
+  background: #fff5df;
+  color: #bc7b16;
+  font-size: 16px;
+}
+.overview-card.blue .overview-icon {
+  background: #eaf1ff;
+  color: #1455d9;
+}
+.overview-card.dark .overview-icon {
+  background: #10254a;
+  color: #fff;
+}
+.overview-card div {
+  display: grid;
+  gap: 2px;
+}
+.overview-card small {
+  color: #8291ac;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+}
+.overview-card strong {
+  color: #10254a;
+  font-size: 22px;
+  line-height: 1.1;
+}
+.overview-card p {
+  margin: 0;
+  color: #9aa7bc;
+  font-size: 9px;
+}
+.application-card {
+  position: relative;
+  overflow: hidden;
+  border-color: #e0e7f3;
+  animation: rise-in 0.65s both;
+}
+.application-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: #1455d9;
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.3s;
+}
+.application-card:hover::before {
+  transform: scaleY(1);
+}
+.candidate-avatar {
+  position: relative;
+  background: linear-gradient(145deg, #fff0f2, #ffe0e5);
+  color: #dc3d4b;
+  transition: transform 0.35s;
+}
+.candidate-avatar span {
+  display: none;
+}
+.candidate-avatar i {
+  font-size: 18px;
+}
+.application-card:hover .candidate-avatar {
+  transform: rotate(5deg) scale(1.08);
+}
+.candidate-title {
+  gap: 9px;
+}
+.candidate-id {
+  color: #9aa7bc;
+  font-size: 9px;
+  font-weight: 700;
+}
+.candidate-main p i {
+  color: #1455d9;
+}
+.application-status {
+  animation: status-pulse 2.8s ease-in-out infinite;
+}
+.approve-button {
+  background: #eaf1ff;
+  color: #1455d9;
+}
+.approve-button:hover {
+  background: #1455d9;
+  color: #fff;
+}
+.refuse-button {
+  background: #fff0f2;
+  color: #dc3d4b;
+}
+.refuse-button:hover {
+  background: #dc3d4b;
+  color: #fff;
+}
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes status-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+  50% {
+    box-shadow: 0 0 0 4px #f4c66b33;
+  }
+}
+@media (max-width: 760px) {
+  .management-stats {
+    grid-template-columns: 1fr;
+  }
+  .overview-card {
+    min-height: 75px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .overview-card,
+  .application-card,
+  .application-status {
+    animation: none;
+  }
+  .count-card,
+  .overview-card,
+  .application-card,
+  .candidate-avatar {
+    transition: none;
+  }
+}

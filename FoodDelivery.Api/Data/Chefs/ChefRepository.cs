@@ -46,6 +46,23 @@ public sealed class ChefRepository : IChefRepository
         }
     }
 
+    public async Task<Chef?> GetByIdAsync(int chefId, CancellationToken cancellationToken)
+    {
+        return await _dbContext.Chefs.AsNoTracking().SingleOrDefaultAsync(x => x.Id == chefId, cancellationToken);
+    }
+
+    public async Task<bool> UpdateProfileAsync(int chefId, int experience, string speciality, decimal salary,
+        CancellationToken cancellationToken)
+    {
+        var chef = await _dbContext.Chefs.SingleOrDefaultAsync(x => x.Id == chefId, cancellationToken);
+        if (chef is null) return false;
+        chef.Experience = experience;
+        chef.Speciality = speciality;
+        chef.Salary = salary;
+        await _dbContext.SaveChangesAsync(cancellationToken);
+        return true;
+    }
+
     public async Task<ChefAssignmentStatus> AssignToRestaurantAsync(int restaurantId, int chefId,
         CancellationToken cancellationToken)
     {

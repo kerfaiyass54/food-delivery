@@ -28,15 +28,19 @@ export class CandidatureService {
   async load(): Promise<void> {
     const restaurantId = await this.waitForRestaurant();
     if (!restaurantId) return;
-    this.loading.set(true); this.error.set(null);
+    this.loading.set(true);
+    this.error.set(null);
     try {
       const base = (await this.config.get()).apiBaseUrl;
-      const response = await firstValueFrom(this.http.get<CandidatureDetailsDto[]>(
-        `${base}/restaurants/${restaurantId}/candidatures`,
-      ));
-      this.candidatures.set(response.map((item) => this.map(item)));
-    } catch (error) { this.error.set(this.message(error, 'Unable to load candidatures.')); }
-    finally { this.loading.set(false); }
+      const response = await firstValueFrom(
+        this.http.get<CandidatureDetailsDto[]>(`${base}/restaurants/${restaurantId}/candidatures`)
+      );
+      this.candidatures.set(response.map(item => this.map(item)));
+    } catch (error) {
+      this.error.set(this.message(error, 'Unable to load candidatures.'));
+    } finally {
+      this.loading.set(false);
+    }
   }
 
   async getChef(candidatureId: number): Promise<ChefDetails | null> {
@@ -44,8 +48,15 @@ export class CandidatureService {
     if (!restaurantId) return null;
     try {
       const base = (await this.config.get()).apiBaseUrl;
-      return await firstValueFrom(this.http.get<ChefDetails>(`${base}/restaurants/${restaurantId}/candidatures/${candidatureId}/chef`));
-    } catch (error) { this.error.set(this.message(error, 'Unable to load connected chef.')); return null; }
+      return await firstValueFrom(
+        this.http.get<ChefDetails>(
+          `${base}/restaurants/${restaurantId}/candidatures/${candidatureId}/chef`
+        )
+      );
+    } catch (error) {
+      this.error.set(this.message(error, 'Unable to load connected chef.'));
+      return null;
+    }
   }
 
   async refuse(candidatureId: number): Promise<void> {
@@ -57,9 +68,16 @@ export class CandidatureService {
     if (!restaurantId) return;
     try {
       const base = (await this.config.get()).apiBaseUrl;
-      await firstValueFrom(this.http.post(`${base}/restaurants/${restaurantId}/chefs/${candidature.chefId}`, {}));
-      this.candidatures.update((items) => items.map((item) => item.id === candidature.id ? { ...item, status: 'accepted' } : item));
-    } catch (error) { this.error.set(this.message(error, 'Unable to accept candidature.')); throw error; }
+      await firstValueFrom(
+        this.http.post(`${base}/restaurants/${restaurantId}/chefs/${candidature.chefId}`, {})
+      );
+      this.candidatures.update(items =>
+        items.map(item => (item.id === candidature.id ? { ...item, status: 'accepted' } : item))
+      );
+    } catch (error) {
+      this.error.set(this.message(error, 'Unable to accept candidature.'));
+      throw error;
+    }
   }
 
   private async mutate(candidatureId: number, action: 'refuse'): Promise<void> {
@@ -67,11 +85,19 @@ export class CandidatureService {
     if (!restaurantId) return;
     try {
       const base = (await this.config.get()).apiBaseUrl;
-      const updated = await firstValueFrom(this.http.put<CandidatureDetailsDto>(
-        `${base}/restaurants/${restaurantId}/candidatures/${candidatureId}/${action}`, {},
-      ));
-      this.candidatures.update((items) => items.map((item) => item.id === candidatureId ? this.map(updated) : item));
-    } catch (error) { this.error.set(this.message(error, 'Unable to update candidature.')); throw error; }
+      const updated = await firstValueFrom(
+        this.http.put<CandidatureDetailsDto>(
+          `${base}/restaurants/${restaurantId}/candidatures/${candidatureId}/${action}`,
+          {}
+        )
+      );
+      this.candidatures.update(items =>
+        items.map(item => (item.id === candidatureId ? this.map(updated) : item))
+      );
+    } catch (error) {
+      this.error.set(this.message(error, 'Unable to update candidature.'));
+      throw error;
+    }
   }
 
   private async waitForRestaurant(): Promise<number | null> {
@@ -80,7 +106,11 @@ export class CandidatureService {
     return this.ownerRestaurant.getRestaurantId();
   }
 
-  private message(error: unknown, fallback: string): string { return error instanceof HttpErrorResponse && error.error?.detail ? error.error.detail : fallback; }
+  private message(error: unknown, fallback: string): string {
+    return error instanceof HttpErrorResponse && error.error?.detail
+      ? error.error.detail
+      : fallback;
+  }
 
   private map(item: CandidatureDetailsDto): Candidature {
     const status = item.status.toLowerCase();

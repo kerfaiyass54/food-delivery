@@ -1,1 +1,87 @@
-:host{display:block;min-height:100vh}.owner-shell{display:grid;grid-template-columns:235px minmax(0,1fr);min-height:100vh;background:#f6f8fc}.owner-navigation{position:sticky;top:0;height:100vh}.owner-content{min-width:0}.shell-notification{position:sticky;z-index:10;top:14px;display:flex;align-items:center;gap:10px;width:min(760px,calc(100% - 40px));margin:14px auto -48px;padding:12px 15px;border:1px solid #c9d9fb;border-radius:12px;background:#fff;color:#1455d9;box-shadow:0 10px 24px #173a7a14;font-size:11px}.shell-notification.error{border-color:#f0c4ca;background:#fff;color:#c12f40}.shell-notification i{font-size:15px}.shell-notification button{margin-left:auto;padding:6px 10px;border:1px solid currentColor;border-radius:8px;background:#fff;color:inherit;font-size:10px;font-weight:700;cursor:pointer}.loader{width:14px;height:14px;border:2px solid #c9d9fb;border-top-color:#1455d9;border-radius:50%;animation:spin .8s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}@media(max-width:760px){.owner-shell{display:block}.owner-navigation{position:relative;height:auto}.owner-navigation app-sidebar-nav{display:block}.owner-content{min-height:calc(100vh - 76px)}}@media(prefers-reduced-motion:reduce){.loader{animation:none}}
+:host {
+  display: block;
+  min-height: 100vh;
+}
+.owner-shell {
+  display: grid;
+  grid-template-columns: 235px minmax(0, 1fr);
+  min-height: 100vh;
+  background: #f6f8fc;
+}
+.owner-navigation {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+.owner-content {
+  min-width: 0;
+}
+.shell-notification {
+  position: sticky;
+  z-index: 10;
+  top: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: min(760px, calc(100% - 40px));
+  margin: 14px auto -48px;
+  padding: 12px 15px;
+  border: 1px solid #c9d9fb;
+  border-radius: 12px;
+  background: #fff;
+  color: #1455d9;
+  box-shadow: 0 10px 24px #173a7a14;
+  font-size: 11px;
+}
+.shell-notification.error {
+  border-color: #f0c4ca;
+  background: #fff;
+  color: #c12f40;
+}
+.shell-notification i {
+  font-size: 15px;
+}
+.shell-notification button {
+  margin-left: auto;
+  padding: 6px 10px;
+  border: 1px solid currentColor;
+  border-radius: 8px;
+  background: #fff;
+  color: inherit;
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.loader {
+  width: 14px;
+  height: 14px;
+  border: 2px solid #c9d9fb;
+  border-top-color: #1455d9;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (max-width: 760px) {
+  .owner-shell {
+    display: block;
+  }
+  .owner-navigation {
+    position: relative;
+    height: auto;
+  }
+  .owner-navigation app-sidebar-nav {
+    display: block;
+  }
+  .owner-content {
+    min-height: calc(100vh - 76px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .loader {
+    animation: none;
+  }
+}

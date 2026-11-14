@@ -1,5 +1,32 @@
 <article class="stat-card" [class]="'stat-card tone-' + stat().tone">
-      <div class="stat-top"><span class="stat-icon"><app-icon [name]="stat().icon === 'wallet' ? 'wallet2' : stat().icon === 'receipt' ? 'receipt' : stat().icon === 'bag' ? 'bag-check' : 'people'" [size]="20"/></span><span class="stat-change"><app-icon name="arrow-up-right" [size]="13"/>{{ stat().change }}</span></div>
-      <p class="stat-label">{{ stat().label }}</p><div class="stat-value">{{ stat().value }}</div>
-      <div class="sparkline" aria-hidden="true"><svg viewBox="0 0 120 32" preserveAspectRatio="none"><polyline [attr.points]="stat().points" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-    </article>
+  <div class="stat-top">
+    <span class="stat-icon"
+      ><app-icon
+        [name]="
+          stat().icon === 'wallet'
+            ? 'wallet2'
+            : stat().icon === 'receipt'
+              ? 'receipt'
+              : stat().icon === 'bag'
+                ? 'bag-check'
+                : 'people'
+        "
+        [size]="20" /></span
+    ><span class="stat-change"
+      ><app-icon name="arrow-up-right" [size]="13" />{{ stat().change }}</span
+    >
+  </div>
+  <p class="stat-label">{{ stat().label }}</p>
+  <div class="stat-value">{{ stat().value }}</div>
+  <div class="sparkline" aria-hidden="true">
+    <svg viewBox="0 0 120 32" preserveAspectRatio="none">
+      <polyline
+        [attr.points]="stat().points"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="round" />
+    </svg>
+  </div>
+</article>

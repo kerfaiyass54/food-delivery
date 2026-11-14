@@ -1,1 +1,171 @@
-:host { display:block; height:100%; }.sidebar { display:flex; flex-direction:column; height:100%; box-sizing:border-box; padding:27px 17px 15px; background:#fcfcfa; border-right:1px solid #eeefeb; }.brand { display:flex; align-items:center; gap:10px; margin:1px 5px 46px; color:#28332b; text-decoration:none; font-size:21px; letter-spacing:-1px; font-weight:800; }.brand-mark { display:grid; place-items:center; color:#38734d; background:#e8f3e9; width:38px; height:38px; border-radius:13px; }.brand-dot { color:#66a77b; }.brand small { display:block; color:#a0a8a1; font-weight:700; letter-spacing:1.1px; font-size:8px; margin-top:1px; }.nav-caption { margin:0 12px 10px; font-weight:750; letter-spacing:1.1px; color:#a3aaa4; font-size:9px; }.sidebar nav { display:grid; gap:4px; }.nav-link { display:flex; align-items:center; gap:12px; min-height:43px; padding:0 11px; border-radius:12px; text-decoration:none; color:#7e8980; font-size:12px; font-weight:550; transition:background .2s,color .2s,transform .2s; }.nav-link:hover { color:#426a4e; background:#f1f5ef; transform:translateX(2px); }.nav-link.active { background:#eaf2e9; color:#3f774f; font-weight:700; }.nav-badge { margin-left:auto; padding:3px 7px; border-radius:99px; color:#b66c42; background:#fff0e5; font-size:9px; font-weight:750; }.sidebar-spacer { flex:1; min-height:20px; }.help-card { margin:0 3px 17px; border-radius:15px; padding:14px 13px; background:linear-gradient(145deg,#f5f1e6,#f0eee6); }.help-icon { font-size:17px; color:#aa9160; }.help-card b { display:block; margin-top:8px; color:#4b4a3e; font-size:11px; }.help-card p { margin:5px 0 11px; color:#919083; font-size:10px; }.help-card a { color:#557553; font-size:10px; font-weight:700; text-decoration:none; }.help-card a span { margin-left:3px; }.profile { display:flex; align-items:center; gap:10px; padding:12px 2px 2px; border:0; border-top:1px solid #edeee9; background:none; text-align:left; cursor:pointer; }.avatar { display:grid; place-items:center; width:34px; height:34px; border-radius:50%; background:#eee4d8; color:#806c58; font-size:10px; font-weight:750; }.profile-name { color:#424a43; font-size:11px; font-weight:700; }.profile-name small { display:block; margin-top:3px; color:#999f99; font-size:9px; font-weight:450; }.profile-more { margin-left:auto; font-size:20px; color:#909991; }
+:host {
+  display: block;
+  height: 100%;
+}
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 27px 17px 15px;
+  background: #fff;
+  border-right: 1px solid #e4eaf5;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 1px 5px 46px;
+  color: #10254a;
+  text-decoration: none;
+  font-size: 21px;
+  letter-spacing: -1px;
+  font-weight: 800;
+  transition: transform 0.25s;
+}
+.brand:hover {
+  transform: translateX(2px);
+}
+.brand-mark {
+  display: grid;
+  place-items: center;
+  color: #1455d9;
+  background: #eaf1ff;
+  width: 38px;
+  height: 38px;
+  border-radius: 13px;
+  box-shadow: 0 8px 17px #1455d91c;
+}
+.brand-dot {
+  color: #dc3d4b;
+}
+.brand small {
+  display: block;
+  color: #8291ac;
+  font-weight: 700;
+  letter-spacing: 1.1px;
+  font-size: 8px;
+  margin-top: 1px;
+}
+.nav-caption {
+  margin: 0 12px 10px;
+  font-weight: 750;
+  letter-spacing: 1.1px;
+  color: #9aa7bc;
+  font-size: 9px;
+}
+.sidebar nav {
+  display: grid;
+  gap: 4px;
+}
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 43px;
+  padding: 0 11px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: #71809a;
+  font-size: 12px;
+  font-weight: 550;
+  transition:
+    background 0.2s,
+    color 0.2s,
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+.nav-link:hover {
+  color: #1455d9;
+  background: #eaf1ff;
+  transform: translateX(3px);
+}
+.nav-link.active {
+  background: #eaf1ff;
+  color: #1455d9;
+  font-weight: 700;
+  box-shadow: inset 3px 0 #1455d9;
+}
+.nav-badge {
+  margin-left: auto;
+  padding: 3px 7px;
+  border-radius: 99px;
+  color: #dc3d4b;
+  background: #fff0f2;
+  font-size: 9px;
+  font-weight: 750;
+}
+.sidebar-spacer {
+  flex: 1;
+  min-height: 20px;
+}
+.help-card {
+  margin: 0 3px 17px;
+  border: 1px solid #d9e3f7;
+  border-radius: 17px;
+  padding: 14px 13px;
+  background: linear-gradient(145deg, #eef4ff, #fff);
+}
+.help-icon {
+  font-size: 17px;
+  color: #1455d9;
+}
+.help-card b {
+  display: block;
+  margin-top: 8px;
+  color: #10254a;
+  font-size: 11px;
+}
+.help-card p {
+  margin: 5px 0 11px;
+  color: #8291ac;
+  font-size: 10px;
+}
+.help-card a {
+  color: #1455d9;
+  font-size: 10px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.help-card a span {
+  margin-left: 3px;
+}
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 2px 2px;
+  border: 0;
+  border-top: 1px solid #e4eaf5;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+}
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #fff0f2;
+  color: #dc3d4b;
+  font-size: 10px;
+  font-weight: 750;
+}
+.profile-name {
+  color: #10254a;
+  font-size: 11px;
+  font-weight: 700;
+}
+.profile-name small {
+  display: block;
+  margin-top: 3px;
+  color: #8291ac;
+  font-size: 9px;
+  font-weight: 450;
+}
+.profile-more {
+  margin-left: auto;
+  font-size: 20px;
+  color: #9aa7bc;
+}

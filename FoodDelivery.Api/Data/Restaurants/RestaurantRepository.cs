@@ -157,4 +157,39 @@ public sealed class RestaurantRepository : IRestaurantRepository
             throw;
         }
     }
+
+    public async Task<IReadOnlyList<Restaurant>> SearchAsync(string? filter, int page, int pageSize, string sortBy,
+        bool descending, CancellationToken cancellationToken)
+    {
+        var query = FilterRestaurants(filter);
+        query = (sortBy.ToLowerInvariant(), descending) switch
+        {
+            ("address", false) => query.OrderBy(x => x.Address),
+            ("address", true) => query.OrderByDescending(x => x.Address),
+            ("nationality", false) => query.OrderBy(x => x.Nationality),
+            ("nationality", true) => query.OrderByDescending(x => x.Nationality),
+            ("budget", false) => query.OrderBy(x => x.Budget),
+            ("budget", true) => query.OrderByDescending(x => x.Budget),
+            ("dateofadd", false) => query.OrderBy(x => x.DateOfAdd),
+            ("dateofadd", true) => query.OrderByDescending(x => x.DateOfAdd),
+            (_, false) => query.OrderBy(x => x.Name),
+            _ => query.OrderByDescending(x => x.Name)
+        };
+        return await query.Skip((page - 1) * pageSize).Take(pageSize).ToListAsync(cancellationToken);
+    }
+
+    public Task<int> CountSearchAsync(string? filter, CancellationToken cancellationToken) =>
+        FilterRestaurants(filter).CountAsync(cancellationToken);
+
+    private IQueryable<Restaurant> FilterRestaurants(string? filter)
+    {
+        var query = _dbContext.Restaurants.AsNoTracking();
+        if (!string.IsNullOrWhiteSpace(filter))
+        {
+            var term = filter.Trim();
+            query = query.Where(x => x.Name.Contains(term) || x.Address.Contains(term) ||
+                                     (x.Nationality != null && x.Nationality.Contains(term)));
+        }
+        return query;
+    }
 }

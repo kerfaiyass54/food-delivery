@@ -122,4 +122,20 @@ public sealed class CandidatureRepository : ICandidatureRepository
             throw;
         }
     }
+
+    public async Task<IReadOnlyList<Candidature>> GetByChefIdAsync(int chefId, CancellationToken cancellationToken)
+    {
+        return await _dbContext.Candidatures.AsNoTracking().Include(x => x.Chef)
+            .Where(x => x.ChefId == chefId).OrderByDescending(x => x.Date).ToListAsync(cancellationToken);
+    }
+
+    public async Task<bool> DeleteByChefAsync(int chefId, int candidatureId, CancellationToken cancellationToken)
+    {
+        var candidature = await _dbContext.Candidatures.SingleOrDefaultAsync(
+            x => x.ChefId == chefId && x.Id == candidatureId, cancellationToken);
+        if (candidature is null) return false;
+        _dbContext.Candidatures.Remove(candidature);
+        await _dbContext.SaveChangesAsync(cancellationToken);
+        return true;
+    }
 }

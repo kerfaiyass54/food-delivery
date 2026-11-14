@@ -1,12 +1,188 @@
 <main class="owner-page chef-page application-page">
-  <header class="topbar"><div class="breadcrumb"><a class="breadcrumb-home" routerLink="/chef/details"><i class="bi bi-house"></i></a><span>Chef workspace</span><i class="bi bi-chevron-right"></i><b>My applications</b></div><div class="chef-status"><i class="bi bi-send-check"></i> YOUR NEXT STEP</div></header>
-  <section class="intro"><div><span class="section-eyebrow"><i></i> KEEP YOUR MOMENTUM</span><h1>Candidature <em>following.</em></h1><p>Stay close to every kitchen you’ve reached out to.</p></div><div class="intro-mark" aria-hidden="true"><span><i class="bi bi-send"></i></span><small>IN MOTION</small></div></section>
-  @if(data.applicationsError(); as error){<div class="chef-alert" role="alert"><i class="bi bi-exclamation-circle"></i>{{error}}<button type="button" (click)="data.loadApplications()">Retry</button></div>}
-  <section class="application-overview"><div class="overview-copy"><span class="section-eyebrow"><i></i> YOUR APPLICATIONS</span><h2>Every hello starts somewhere.</h2><p>Here’s a clear view of where each conversation stands.</p></div><div class="application-counts"><div><b>{{data.applications().length}}</b><small>Sent</small></div><div><b>{{pendingCount()}}</b><small>In review</small></div><div><b>{{acceptedCount()}}</b><small>Accepted</small></div></div></section>
-  <section class="applications-table-card"><div class="table-heading"><div><span class="section-eyebrow"><i></i> YOUR OUTREACH</span><h2>Application history</h2></div><button class="refresh-button" type="button" (click)="data.loadApplications()" [disabled]="data.applicationsLoading()"><i class="bi bi-arrow-clockwise" [class.spinning]="data.applicationsLoading()"></i> Refresh</button></div>
-    <div class="table-toolbar"><label class="application-search"><i class="bi bi-search"></i><input aria-label="Search applications" placeholder="Search restaurants…" [ngModel]="query()" (ngModelChange)="query.set($event);currentPage.set(1)"></label><label class="status-filter">Status<select class="form-select form-select-sm" aria-label="Filter applications by status" [ngModel]="statusFilter()" (ngModelChange)="statusFilter.set($event);currentPage.set(1)"><option value="all">All applications</option><option value="pending">In review</option><option value="accepted">Accepted</option><option value="refused">Not selected</option></select></label><label class="status-filter">Show<select class="form-select form-select-sm" aria-label="Applications per page" [ngModel]="pageSize()" (ngModelChange)="pageSize.set(+$event);currentPage.set(1)"><option [ngValue]="5">5 rows</option><option [ngValue]="10">10 rows</option><option [ngValue]="20">20 rows</option></select></label></div>
-    <div class="application-table-wrap"><table class="table application-table align-middle mb-0"><thead><tr><th><button (click)="sortBy('restaurantName')">RESTAURANT <i class="bi bi-arrow-down-up"></i></button></th><th>LOCATION</th><th><button (click)="sortBy('salary')">ASKING SALARY <i class="bi bi-arrow-down-up"></i></button></th><th><button (click)="sortBy('date')">DATE SENT <i class="bi bi-arrow-down-up"></i></button></th><th><button (click)="sortBy('status')">STATUS <i class="bi bi-arrow-down-up"></i></button></th></tr></thead><tbody>@for(item of visibleItems();track item.id){<tr><td><div class="restaurant-cell"><span class="application-avatar"><i class="bi bi-shop"></i></span><span><b>{{item.restaurantName}}</b><small>Application #{{item.id}}</small></span></div></td><td class="location-cell"><i class="bi bi-geo-alt"></i>{{item.address || 'Location not listed'}}</td><td class="salary-cell">${{item.salary | number:'1.0-0'}} <small>/ month</small></td><td class="date-cell">{{item.date | date:'MMM d, y'}}</td><td><span class="application-status" [class]="'application-status status-' + item.status"><i class="bi bi-circle-fill"></i>{{statusLabel(item.status)}}</span></td></tr>}@empty{@if(!data.applicationsLoading()){<tr><td colspan="5"><div class="application-empty"><i class="bi bi-send"></i><b>No applications here yet</b><span>Try another search or explore restaurants looking for a chef.</span><a routerLink="/chef/restaurants">Find a restaurant <i class="bi bi-arrow-right"></i></a></div></td></tr>}}</tbody></table></div>
-    @if(data.applicationsLoading()){<div class="table-loading"><span></span>Loading your applications…</div>}
-    <footer class="applications-footer"><span>Showing <b>{{rangeStart()}}–{{rangeEnd()}}</b> of <b>{{filtered().length}}</b> applications</span><div class="application-pagination"><button aria-label="Previous page" [disabled]="currentPage()===1" (click)="setPage(currentPage()-1)"><i class="bi bi-chevron-left"></i></button>@for(page of pages();track page){<button [class.current]="currentPage()===page" (click)="setPage(page)">{{page}}</button>}<button aria-label="Next page" [disabled]="currentPage()>=pageCount()" (click)="setPage(currentPage()+1)"><i class="bi bi-chevron-right"></i></button></div></footer>
+  <header class="topbar">
+    <div class="breadcrumb">
+      <a class="breadcrumb-home" routerLink="/chef/details"><i class="bi bi-house"></i></a
+      ><span>Chef workspace</span><i class="bi bi-chevron-right"></i><b>My applications</b>
+    </div>
+    <div class="chef-status"><i class="bi bi-send-check"></i> YOUR NEXT STEP</div>
+  </header>
+  <section class="intro">
+    <div>
+      <span class="section-eyebrow"><i></i> YOUR NEXT MOVE</span>
+      <h1>My <em>applications.</em></h1>
+      <p>Every kitchen you’ve reached out to, all in one place.</p>
+    </div>
+    <div class="intro-mark" aria-hidden="true">
+      <span><i class="bi bi-send"></i></span><small>IN MOTION</small>
+    </div>
+  </section>
+  @if (data.applicationsError(); as error) {
+    <div class="chef-alert" role="alert">
+      <i class="bi bi-exclamation-circle"></i>{{ error
+      }}<button type="button" (click)="data.loadApplications()">Retry</button>
+    </div>
+  }
+  <section class="application-overview">
+    <div class="overview-copy">
+      <span class="section-eyebrow"><i></i> YOUR PROGRESS</span>
+      <h2>Good things take a little time.</h2>
+      <p>Keep track of where every conversation stands.</p>
+    </div>
+    <div class="application-counts">
+      <div>
+        <b>{{ data.applications().length }}</b><small>Sent</small>
+      </div>
+      <div>
+        <b>{{ pendingCount() }}</b><small>In review</small>
+      </div>
+      <div>
+        <b>{{ acceptedCount() }}</b><small>Accepted</small>
+      </div>
+    </div>
+  </section>
+  <section class="applications-table-card">
+    <div class="table-heading">
+      <div>
+        <span class="section-eyebrow"><i></i> YOUR OUTREACH</span>
+        <h2>Application history</h2>
+        <p>View and follow up on the roles you’re interested in.</p>
+      </div>
+      <button
+        class="refresh-button"
+        type="button"
+        (click)="data.loadApplications()"
+        [disabled]="data.applicationsLoading()">
+        <i class="bi bi-arrow-clockwise" [class.spinning]="data.applicationsLoading()"></i> Refresh
+      </button>
+    </div>
+    <div class="table-toolbar">
+      <label class="application-search"
+        ><i class="bi bi-search"></i
+        ><input
+          aria-label="Search applications"
+          placeholder="Search restaurants…"
+          [ngModel]="query()"
+          (ngModelChange)="query.set($event); currentPage.set(1)" /></label
+      ><label class="status-filter"
+        >Status<select
+          class="form-select form-select-sm"
+          aria-label="Filter applications by status"
+          [ngModel]="statusFilter()"
+          (ngModelChange)="statusFilter.set($event); currentPage.set(1)">
+          <option value="all">All applications</option>
+          <option value="pending">In review</option>
+          <option value="accepted">Accepted</option>
+          <option value="refused">Not selected</option>
+        </select></label
+      ><label class="status-filter"
+        >Show<select
+          class="form-select form-select-sm"
+          aria-label="Applications per page"
+          [ngModel]="pageSize()"
+          (ngModelChange)="pageSize.set(+$event); currentPage.set(1)">
+          <option [ngValue]="5">5 rows</option>
+          <option [ngValue]="10">10 rows</option>
+          <option [ngValue]="20">20 rows</option>
+        </select></label
+      >
+    </div>
+    <div class="application-table-wrap">
+      <table class="table application-table align-middle mb-0">
+        <thead>
+          <tr>
+            <th>
+              <button (click)="sortBy('restaurantName')">
+                RESTAURANT <i class="bi bi-arrow-down-up"></i>
+              </button>
+            </th>
+            <th>LOCATION</th>
+            <th>
+              <button (click)="sortBy('salary')">
+                ASKING SALARY <i class="bi bi-arrow-down-up"></i>
+              </button>
+            </th>
+            <th>
+              <button (click)="sortBy('date')">
+                DATE SENT <i class="bi bi-arrow-down-up"></i>
+              </button>
+            </th>
+            <th>
+              <button (click)="sortBy('status')">STATUS <i class="bi bi-arrow-down-up"></i></button>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (item of visibleItems(); track item.id) {
+            <tr>
+              <td>
+                <div class="restaurant-cell">
+                  <span class="application-avatar"><i class="bi bi-shop"></i></span
+                  ><span
+                    ><b>{{ item.restaurantName }}</b
+                    ><small>Application #{{ item.id }}</small></span
+                  >
+                </div>
+              </td>
+              <td class="location-cell">
+                <i class="bi bi-geo-alt"></i>{{ item.address || 'Location not listed' }}
+              </td>
+              <td class="salary-cell">
+                ${{ item.salary | number: '1.0-0' }} <small>/ month</small>
+              </td>
+              <td class="date-cell">{{ item.date | date: 'MMM d, y' }}</td>
+              <td>
+                <span
+                  class="application-status"
+                  [class]="'application-status status-' + item.status"
+                  ><i class="bi bi-circle-fill"></i>{{ statusLabel(item.status) }}</span
+                >
+              </td>
+            </tr>
+          } @empty {
+            @if (!data.applicationsLoading()) {
+              <tr>
+                <td colspan="5">
+                  <div class="application-empty">
+                    <i class="bi bi-send"></i><b>No applications here yet</b
+                    ><span>Try another search or explore restaurants looking for a chef.</span
+                    ><a routerLink="/chef/restaurants"
+                      >Find a restaurant <i class="bi bi-arrow-right"></i
+                    ></a>
+                  </div>
+                </td>
+              </tr>
+            }
+          }
+        </tbody>
+      </table>
+    </div>
+    @if (data.applicationsLoading()) {
+      <div class="table-loading"><span></span>Loading your applications…</div>
+    }
+    <footer class="applications-footer">
+      <span
+        >Showing <b>{{ rangeStart() }}–{{ rangeEnd() }}</b> of
+        <b>{{ filtered().length }}</b> applications</span
+      >
+      <div class="application-pagination">
+        <button
+          aria-label="Previous page"
+          [disabled]="currentPage() === 1"
+          (click)="setPage(currentPage() - 1)">
+          <i class="bi bi-chevron-left"></i>
+        </button>
+        @for (page of pages(); track page) {
+          <button [class.current]="currentPage() === page" (click)="setPage(page)">
+            {{ page }}
+          </button>
+        }
+        <button
+          aria-label="Next page"
+          [disabled]="currentPage() >= pageCount()"
+          (click)="setPage(currentPage() + 1)">
+          <i class="bi bi-chevron-right"></i>
+        </button>
+      </div>
+    </footer>
   </section>
 </main>
