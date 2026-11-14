@@ -16,38 +16,6 @@
   <component name="ChangeListManager">
     <list default="true" id="938e46b2-f6a8-4651-95ef-fe39483e6fdc" name="Änderungen" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.food-delivery.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.food-delivery.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/RestaurantsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/RestaurantsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/Candidatures/CandidatureRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Data/Candidatures/CandidatureRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/Candidatures/ICandidatureRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Data/Candidatures/ICandidatureRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/Chefs/ChefRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Data/Chefs/ChefRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/Chefs/IChefRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Data/Chefs/IChefRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/Restaurants/IRestaurantRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Data/Restaurants/IRestaurantRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/Restaurants/RestaurantRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Data/Restaurants/RestaurantRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Debug/net6.0/FoodDelivery.Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net6.0/FoodDelivery.Api.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Debug/net6.0/FoodDelivery.Api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net6.0/FoodDelivery.Api.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/FoodDelivery.Api.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/FoodDelivery.Api.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/FoodDelivery.Api.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/FoodDelivery.Api.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/FoodDelivery.Api.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/FoodDelivery.Api.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/FoodDelivery.Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/FoodDelivery.Api.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/FoodDelivery.Api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/FoodDelivery.Api.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/ref/FoodDelivery.Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/ref/FoodDelivery.Api.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/refint/FoodDelivery.Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/refint/FoodDelivery.Api.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/obj/rider.project.model.nuget.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/staticwebassets.pack.sentinel" beforeDir="false" afterPath="$PROJECT_DIR$/obj/staticwebassets.pack.sentinel" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../food-ui/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/../food-ui/angular.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../food-ui/src/app/features/chef/candidature-following/candidature-following.css" beforeDir="false" afterPath="$PROJECT_DIR$/../food-ui/src/app/features/chef/candidature-following/candidature-following.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../food-ui/src/app/features/chef/candidature-following/candidature-following.html" beforeDir="false" afterPath="$PROJECT_DIR$/../food-ui/src/app/features/chef/candidature-following/candidature-following.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../food-ui/src/app/features/chef/candidature-following/candidature-following.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../food-ui/src/app/features/chef/candidature-following/candidature-following.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../food-ui/src/app/features/chef/chef-details/chef-details.css" beforeDir="false" afterPath="$PROJECT_DIR$/../food-ui/src/app/features/chef/chef-details/chef-details.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../food-ui/src/app/features/chef/chef-details/chef-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/../food-ui/src/app/features/chef/chef-details/chef-details.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../food-ui/src/app/features/chef/chef-details/chef-details.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../food-ui/src/app/features/chef/chef-details/chef-details.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../food-ui/src/app/features/chef/chef-shell/chef-shell.css" beforeDir="false" afterPath="$PROJECT_DIR$/../food-ui/src/app/features/chef/chef-shell/chef-shell.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../food-ui/src/app/features/chef/restaurant-search/restaurant-search.css" beforeDir="false" afterPath="$PROJECT_DIR$/../food-ui/src/app/features/chef/restaurant-search/restaurant-search.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../food-ui/src/app/features/chef/restaurant-search/restaurant-search.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../food-ui/src/app/features/chef/restaurant-search/restaurant-search.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../food-ui/src/app/shared/components/sidebar-nav/sidebar-nav.css" beforeDir="false" afterPath="$PROJECT_DIR$/../food-ui/src/app/shared/components/sidebar-nav/sidebar-nav.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../food-ui/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/../food-ui/src/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,61 +33,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.001873582010313" />
-      <entry key="MS500" value="1.330787102909194" />
-      <entry key="S2" value="3.530408472727676" />
-      <entry key="S5" value="8.6615434039636" />
-      <entry key="S10" value="13.579123961367985" />
-      <entry key="S30" value="19.36209584386466" />
-      <entry key="S60" value="22.01970666707756" />
-      <entry key="M2" value="24.37162267034666" />
-      <entry key="M5" value="31.11098849765633" />
-      <entry key="M10" value="43.8756085533356" />
-      <entry key="M15" value="52.76516887315106" />
-      <entry key="M30" value="66.05823295394215" />
-      <entry key="H1" value="75.01858494494117" />
-      <entry key="H2" value="80.22997312875529" />
-      <entry key="H4" value="83.04151198323349" />
-      <entry key="D1" value="85.49638895877041" />
-      <entry key="W1" value="85.92779334960981" />
+      <entry key="MS100" value="1.1469185724445918" />
+      <entry key="MS500" value="2.488825899713011" />
+      <entry key="S2" value="4.707593794871338" />
+      <entry key="S5" value="11.049154667408896" />
+      <entry key="S10" value="21.440866525992917" />
+      <entry key="S30" value="41.428852173350975" />
+      <entry key="S60" value="52.430040948281416" />
+      <entry key="M2" value="60.47848237420319" />
+      <entry key="M5" value="69.97641093430647" />
+      <entry key="M10" value="83.58600429804643" />
+      <entry key="M15" value="95.16573088132871" />
+      <entry key="M30" value="116.35926471397823" />
+      <entry key="H1" value="133.3106686592453" />
+      <entry key="H2" value="144.15423268785267" />
+      <entry key="H4" value="150.30358676419752" />
+      <entry key="D1" value="155.84378476421378" />
+      <entry key="W1" value="156.83381378149429" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="1.562109062138744E-160" />
-      <entry key="S5" value="1.1953209759479096E-64" />
-      <entry key="S10" value="1.0933073565781535E-32" />
-      <entry key="S30" value="2.219460516435046E-11" />
-      <entry key="S60" value="4.711115065921282E-6" />
-      <entry key="M2" value="0.002170510323845818" />
-      <entry key="M5" value="0.08602501209329987" />
-      <entry key="M10" value="0.2933002081371575" />
-      <entry key="M15" value="0.4414432841521514" />
-      <entry key="M30" value="0.6644119837511597" />
-      <entry key="H1" value="0.8151147058857175" />
-      <entry key="H2" value="0.9028370317425605" />
-      <entry key="H4" value="0.9501773685699741" />
-      <entry key="D1" value="0.9915184053980626" />
-      <entry key="W1" value="0.9987839160287836" />
+      <entry key="MS100" value="5.066008572056287E-16" />
+      <entry key="MS500" value="8.7283707261405E-4" />
+      <entry key="S2" value="0.1718831467842637" />
+      <entry key="S5" value="0.4944169127015523" />
+      <entry key="S10" value="0.7031478597717213" />
+      <entry key="S30" value="0.8892329627314427" />
+      <entry key="S60" value="0.9429914967398059" />
+      <entry key="M2" value="0.9710875859662391" />
+      <entry key="M5" value="0.9983662791861218" />
+      <entry key="M10" value="1.0943334275249368" />
+      <entry key="M15" value="1.2118050324638903" />
+      <entry key="M30" value="1.4624918505730509" />
+      <entry key="H1" value="1.6805253242447689" />
+      <entry key="H2" value="1.8250430076995903" />
+      <entry key="H4" value="1.908343391264235" />
+      <entry key="D1" value="1.984108930656512" />
+      <entry key="W1" value="1.9977143129131196" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9092077220847052" />
-      <entry key="MS500" value="1.3046813527274284" />
-      <entry key="S2" value="3.478714453950892" />
-      <entry key="S5" value="8.580109711046264" />
-      <entry key="S10" value="13.51162074888021" />
-      <entry key="S30" value="19.33023866559168" />
-      <entry key="S60" value="22.0022710348195" />
-      <entry key="M2" value="24.36462039832681" />
-      <entry key="M5" value="31.192858994840698" />
-      <entry key="M10" value="44.16634905571346" />
-      <entry key="M15" value="53.204680199130294" />
-      <entry key="M30" value="66.72151011911913" />
-      <entry key="H1" value="75.83307531248279" />
-      <entry key="H2" value="81.13248143550204" />
-      <entry key="H4" value="83.9915205234629" />
-      <entry key="D1" value="86.48787857624035" />
-      <entry key="W1" value="86.92657313676277" />
+      <entry key="MS100" value="1.1008724760034838" />
+      <entry key="MS500" value="2.466815250140888" />
+      <entry key="S2" value="4.777043565435762" />
+      <entry key="S5" value="11.399659256426448" />
+      <entry key="S10" value="22.02806637470463" />
+      <entry key="S30" value="42.26170262159199" />
+      <entry key="S60" value="53.34126524012936" />
+      <entry key="M2" value="61.43250607739819" />
+      <entry key="M5" value="70.96716350955673" />
+      <entry key="M10" value="84.67584051639366" />
+      <entry key="M15" value="96.37416323951926" />
+      <entry key="M30" value="117.81974217400136" />
+      <entry key="H1" value="134.99005970726134" />
+      <entry key="H2" value="145.9786685456795" />
+      <entry key="H4" value="152.21161532231946" />
+      <entry key="D1" value="157.8278395400409" />
+      <entry key="W1" value="158.83152031515218" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
