@@ -76,7 +76,8 @@ export class ChefProductsComponent {
     this.error.set('');
     this.success.set('');
     try {
-      this.chefId ||= (await this.config.get()).chefId ?? 1;
+      const config = await this.config.get();
+      this.chefId = this.config.requireId(config.chefId, 'chefId');
       await this.data.delete(this.chefId, product.id);
       this.products.update(items => items.filter(item => item.id !== product.id));
       this.success.set(`${product.name} was removed from your menu.`);
@@ -88,6 +89,7 @@ export class ChefProductsComponent {
   }
 
   private message(error: unknown, fallback: string): string {
-    return error instanceof HttpErrorResponse && error.error?.detail ? error.error.detail : fallback;
+    if (error instanceof HttpErrorResponse && error.error?.detail) return error.error.detail;
+    return error instanceof Error ? error.message : fallback;
   }
 }
