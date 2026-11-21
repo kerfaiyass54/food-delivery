@@ -112,7 +112,9 @@ public sealed class FoodDeliveryDbContext : DbContext
         {
             entity.HasOne(x => x.Chef).WithMany(x => x.Products).HasForeignKey(x => x.ChefId)
                 .OnDelete(DeleteBehavior.Restrict);
+            entity.Property(x => x.Price).HasPrecision(18, 2);
             entity.HasCheckConstraint("CK_Products_Stock_NonNegative", "\"Stock\" >= 0");
+            entity.HasCheckConstraint("CK_Products_Price_Positive_WhenSet", "\"Price\" IS NULL OR \"Price\" > 0");
             entity.HasIndex(x => new { x.ChefId, x.Name });
         });
         modelBuilder.Entity<Purchase>(entity =>
