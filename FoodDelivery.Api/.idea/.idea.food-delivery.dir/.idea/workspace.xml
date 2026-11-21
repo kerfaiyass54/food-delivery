@@ -16,11 +16,10 @@
   <component name="ChangeListManager">
     <list default="true" id="938e46b2-f6a8-4651-95ef-fe39483e6fdc" name="Änderungen" comment="">
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../food-ui/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../food-ui/src/app/app.routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../food-ui/src/app/features/chef/chef-shell/chef-shell.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../food-ui/src/app/features/chef/chef-shell/chef-shell.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../food-ui/src/app/features/chef/chef.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../food-ui/src/app/features/chef/chef.routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../food-ui/src/app/shared/components/sidebar-nav/sidebar-nav.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../food-ui/src/app/shared/components/sidebar-nav/sidebar-nav.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../food-ui/src/app/shared/models/owner.models.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../food-ui/src/app/shared/models/owner.models.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.food-delivery.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.food-delivery.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/FoodDelivery.Api.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/FoodDelivery.Api.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/FoodDelivery.Api.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/FoodDelivery.Api.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/obj/rider.project.restore.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,6 +111,7 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "cidr.known.project.marker": "true",
