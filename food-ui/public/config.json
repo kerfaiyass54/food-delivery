@@ -1,5 +1,3 @@
 {
-  "apiBaseUrl": "/api",
-  "ownerId": 1,
-  "chefId": 1
+  "apiBaseUrl": "/api"
 }
