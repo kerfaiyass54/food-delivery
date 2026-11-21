@@ -55,6 +55,7 @@ export class ChefProfileService {
     return { ...value, requiredSalary: Number(value.requiredSalary ?? dto.salary ?? 0) };
   }
   private message(error: unknown, fallback: string): string {
-    return error instanceof HttpErrorResponse && error.error?.detail ? error.error.detail : fallback;
+    if (error instanceof HttpErrorResponse && error.error?.detail) return error.error.detail;
+    return error instanceof Error ? error.message : fallback;
   }
 }
