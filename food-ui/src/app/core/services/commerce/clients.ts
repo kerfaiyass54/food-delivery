@@ -19,9 +19,14 @@ export class ClientsService {
   readonly client = signal<ClientDto | null>(null);
 
   async initializeClient(): Promise<number | null> {
-    // Until authentication exists, this is only the browser's explicitly created
-    // development profile selection, not a trusted identity or authorization claim.
-    const id = this.readStoredClientId();
+    let configuredId: number | undefined;
+    try {
+      configuredId = (await this.config.get()).clientId;
+    } catch {
+      configuredId = undefined;
+    }
+    const storedId = this.readStoredClientId();
+    const id = configuredId && configuredId > 0 ? configuredId : storedId;
     this.clientId.set(id);
     return id;
   }
