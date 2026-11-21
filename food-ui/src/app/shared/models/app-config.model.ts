@@ -1,6 +1,5 @@
 export interface AppConfig {
   apiBaseUrl: string;
-  ownerId: number;
+  ownerId?: number;
   chefId?: number;
-  clientId?: number;
 }
