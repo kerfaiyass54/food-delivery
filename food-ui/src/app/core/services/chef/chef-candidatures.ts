@@ -21,7 +21,7 @@ export class ChefCandidaturesService {
     this.applicationsError.set(null);
     try {
       const config = await this.config.get();
-      this.chefId = this.config.requireId(config.chefId, 'chefId');
+      this.chefId ||= config.chefId ?? 1;
       const items = await firstValueFrom(this.http.get<ChefApplication[]>(`${config.apiBaseUrl}/chefs/${this.chefId}/candidatures`));
       this.applications.set(items.map(item => this.mapApplication(item)));
     } catch (error) {
@@ -31,7 +31,7 @@ export class ChefCandidaturesService {
 
   async applyToRestaurant(restaurantId: number): Promise<void> {
     const config = await this.config.get();
-    this.chefId = this.config.requireId(config.chefId, 'chefId');
+    this.chefId ||= config.chefId ?? 1;
     const salary = this.profile.profile()?.requiredSalary ?? 0;
     this.applying.set(true);
     this.applicationsError.set(null);
@@ -53,7 +53,6 @@ export class ChefCandidaturesService {
     };
   }
   private message(error: unknown, fallback: string): string {
-    if (error instanceof HttpErrorResponse && error.error?.detail) return error.error.detail;
-    return error instanceof Error ? error.message : fallback;
+    return error instanceof HttpErrorResponse && error.error?.detail ? error.error.detail : fallback;
   }
 }
