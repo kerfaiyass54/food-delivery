@@ -102,10 +102,12 @@ CREATE TABLE IF NOT EXISTS "Products" (
     "Name" character varying(150) NOT NULL,
     "Type" character varying(100) NOT NULL,
     "Stock" integer NOT NULL,
+    "Price" numeric(18,2),
     "CookDate" timestamp with time zone NOT NULL,
     "ChefId" integer NOT NULL,
     CONSTRAINT "PK_Products" PRIMARY KEY ("Id"),
     CONSTRAINT "CK_Products_Stock_NonNegative" CHECK ("Stock" >= 0),
+    CONSTRAINT "CK_Products_Price_Positive_WhenSet" CHECK ("Price" IS NULL OR "Price" > 0),
     CONSTRAINT "FK_Products_Chefs_ChefId" FOREIGN KEY ("ChefId")
         REFERENCES "Chefs" ("Id") ON DELETE RESTRICT
 );
