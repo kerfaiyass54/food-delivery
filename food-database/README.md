@@ -29,7 +29,7 @@ The PostgreSQL volume is persistent, so its entrypoint does not rerun initializa
 docker compose -f FoodDelivery.Api/docker-compose.yml exec postgres sh /food-database/scripts/initialize.sh
 ```
 
-The schema and seed inserts use `IF NOT EXISTS` / `ON CONFLICT DO NOTHING` behavior, so rerunning the initializer preserves existing records. It uses the `fooddelivery` database owner created by the existing bootstrap script. The SQL matches the initial and commerce EF migrations and records `20261110205112_InitialCreate` and `20261114143456_AddClientsProductsPurchasesOrders` in `__EFMigrationsHistory`, so later `dotnet ef database update` calls do not attempt to recreate these tables.
+The schema and seed inserts use `IF NOT EXISTS` / `ON CONFLICT DO NOTHING` behavior, so rerunning the initializer preserves existing records. Product prices are stored on `Products.Price`; existing records may keep `NULL` until a chef sets a price, while seeded sample products receive deterministic prices. It uses the `fooddelivery` database owner created by the existing bootstrap script. The SQL matches the initial and commerce EF migrations and records `20261110205112_InitialCreate` and `20261114143456_AddClientsProductsPurchasesOrders` in `__EFMigrationsHistory`, so later `dotnet ef database update` calls do not attempt to recreate these tables.
 
 ## Indexes and service query paths
 
