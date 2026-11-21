@@ -35,7 +35,8 @@ export class ChefProductsComponent {
     this.loading.set(true);
     this.error.set('');
     try {
-      this.chefId ||= (await this.config.get()).chefId ?? 1;
+      const config = await this.config.get();
+      this.chefId = this.config.requireId(config.chefId, 'chefId');
       this.products.set(await this.data.getByChef(this.chefId));
     } catch (error) {
       this.error.set(this.message(error, 'Your products could not be loaded.'));
@@ -49,7 +50,8 @@ export class ChefProductsComponent {
     this.error.set('');
     this.success.set('');
     try {
-      this.chefId ||= (await this.config.get()).chefId ?? 1;
+      const config = await this.config.get();
+      this.chefId = this.config.requireId(config.chefId, 'chefId');
       const product = await this.data.cook(this.chefId, this.draft);
       this.products.update(items => {
         const existing = items.findIndex(item => item.id === product.id);
