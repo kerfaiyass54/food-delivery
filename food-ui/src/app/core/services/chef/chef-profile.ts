@@ -19,7 +19,7 @@ export class ChefProfileService {
     this.profileError.set(null);
     try {
       const config = await this.config.get();
-      this.chefId = this.config.requireId(config.chefId, 'chefId');
+      this.chefId = config.chefId ?? 1;
       const profile = await firstValueFrom(this.http.get<ChefProfile>(`${config.apiBaseUrl}/chefs/${this.chefId}`));
       this.profile.set(this.mapProfile(profile));
     } catch (error) {
@@ -45,17 +45,13 @@ export class ChefProfileService {
   }
 
   private async ensureChefId(): Promise<void> {
-    if (!this.chefId) {
-      const config = await this.config.get();
-      this.chefId = this.config.requireId(config.chefId, 'chefId');
-    }
+    if (!this.chefId) { const config = await this.config.get(); this.chefId = config.chefId ?? 1; }
   }
   private mapProfile(value: ChefProfile): ChefProfile {
     const dto = value as ChefProfile & { salary?: number };
     return { ...value, requiredSalary: Number(value.requiredSalary ?? dto.salary ?? 0) };
   }
   private message(error: unknown, fallback: string): string {
-    if (error instanceof HttpErrorResponse && error.error?.detail) return error.error.detail;
-    return error instanceof Error ? error.message : fallback;
+    return error instanceof HttpErrorResponse && error.error?.detail ? error.error.detail : fallback;
   }
 }
