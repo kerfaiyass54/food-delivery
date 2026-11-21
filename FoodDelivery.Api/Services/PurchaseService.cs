@@ -32,10 +32,33 @@ public sealed class PurchaseService : IPurchaseService
             .SingleOrDefaultAsync(ct);
         if (client is null || product is null) return ServiceResult<PurchaseDto>.Missing();
         if (product.Stock < request.Quantity) return ServiceResult<PurchaseDto>.Conflicting("Insufficient product stock.");
-        var total = request.Price * request.Quantity;
+        if (product.Price is null or <= 0)
+            return ServiceResult<PurchaseDto>.Conflicting("This product has no price yet. Ask the chef to set its price before purchasing.");
+
+        decimal total;
+        try
+        {
+            total = checked(product.Price.Value * request.Quantity);
+        }
+        catch (OverflowException)
+        {
+            return ServiceResult<PurchaseDto>.Conflicting("The purchase total exceeds the supported amount.");
+        }
+
+        if (total > 9999999999999999.99m)
+            return ServiceResult<PurchaseDto>.Conflicting("The purchase total exceeds the supported amount.");
         if (client.Budget < total) return ServiceResult<PurchaseDto>.Conflicting("Insufficient client budget.");
-        product.Stock -= request.Quantity; client.Budget -= total;
-        var purchase = new Purchase { ClientId = clientId, ProductId = product.Id, Date = DateTimeOffset.UtcNow, Price = request.Price, Quantity = request.Quantity };
+
+        product.Stock -= request.Quantity;
+        client.Budget -= total;
+        var purchase = new Purchase
+        {
+            ClientId = clientId,
+            ProductId = product.Id,
+            Date = DateTimeOffset.UtcNow,
+            Price = product.Price.Value,
+            Quantity = request.Quantity
+        };
         _db.Purchases.Add(purchase); await _db.SaveChangesAsync(ct); await tx.CommitAsync(ct);
         return ServiceResult<PurchaseDto>.Success(PurchaseDto.From(purchase));
     }

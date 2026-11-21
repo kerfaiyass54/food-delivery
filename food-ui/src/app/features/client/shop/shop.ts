@@ -21,7 +21,6 @@ export class ClientShopComponent {
   readonly error = signal('');
   readonly success = signal('');
   readonly quantities = signal<Record<number, number>>({});
-  readonly prices = signal<Record<number, number>>({});
   orderTime = '19:00';
 
   constructor() {
@@ -49,24 +48,15 @@ export class ClientShopComponent {
     this.quantities.update(values => ({ ...values, [productId]: Math.max(1, Number(quantity) || 1) }));
   }
 
-  price(productId: number): number | null {
-    return this.prices()[productId] ?? null;
-  }
-
-  setPrice(productId: number, price: number): void {
-    this.prices.update(values => ({ ...values, [productId]: Number(price) || 0 }));
-  }
-
   async buy(product: ProductDto): Promise<void> {
     const clientId = this.data.clientId();
     const quantity = this.quantity(product.id);
-    const price = this.price(product.id);
     if (!clientId) {
       this.error.set('Create your client profile before making a purchase.');
       return;
     }
-    if (price === null || price <= 0) {
-      this.error.set('Enter a unit price to continue.');
+    if (product.price === null || product.price <= 0) {
+      this.error.set('This product has no price yet. Ask the chef to set its price before purchasing.');
       return;
     }
     if (quantity > product.stock) {
@@ -76,7 +66,7 @@ export class ClientShopComponent {
 
     this.beginAction(product.id);
     try {
-      await this.data.purchase(clientId, { productId: product.id, quantity, price });
+      await this.data.purchase(clientId, { productId: product.id, quantity });
       this.success.set(`${product.name} has been added to your purchases.`);
       await this.refreshProducts();
     } catch (error) {

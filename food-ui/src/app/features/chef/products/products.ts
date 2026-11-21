@@ -24,7 +24,7 @@ export class ChefProductsComponent {
   readonly deletingId = signal<number | null>(null);
   readonly error = signal('');
   readonly success = signal('');
-  readonly draft: CookProductRequest = { name: '', type: '', quantity: 1 };
+  readonly draft: CookProductRequest = { name: '', type: '', quantity: 1, price: 0.01 };
   private chefId = 0;
 
   constructor() {
@@ -61,6 +61,7 @@ export class ChefProductsComponent {
       this.draft.name = '';
       this.draft.type = '';
       this.draft.quantity = 1;
+      this.draft.price = 0.01;
     } catch (error) {
       this.error.set(this.message(error, 'The product could not be added.'));
     } finally {

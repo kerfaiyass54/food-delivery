@@ -29,6 +29,7 @@
         <label class="chef-commerce-field"><span>Product name</span><input name="name" [(ngModel)]="draft.name" maxlength="150" required placeholder="e.g. Saffron couscous" /></label>
         <label class="chef-commerce-field"><span>Type or cuisine</span><input name="type" [(ngModel)]="draft.type" maxlength="100" required placeholder="e.g. Main course" /></label>
         <label class="chef-commerce-field"><span>Quantity to add</span><input name="quantity" type="number" min="1" [(ngModel)]="draft.quantity" required /></label>
+        <label class="chef-commerce-field"><span>Unit price</span><input name="price" type="number" min="0.01" max="9999999999999999.99" step="0.01" [(ngModel)]="draft.price" required /></label>
         <button class="cook-submit" type="submit" [disabled]="cooking()"><i class="bi bi-stars"></i>{{ cooking() ? 'Adding to the menu…' : 'Add to the menu' }}<i class="bi bi-arrow-right"></i></button>
       </form>
       <div class="cook-footnote"><i class="bi bi-info-circle"></i> Products connected to purchases or orders can’t be deleted.</div>
@@ -44,7 +45,7 @@
       @for (product of products(); track product.id; let index = $index) {
         <article class="chef-product-card" [style.--card-index]="index">
           <div class="product-top-art" [class]="'product-top-art flavor-' + (index % 4)"><span class="art-ring"></span><i class="bi bi-egg-fried"></i><span class="product-number">MENU / {{ (index + 1).toString().padStart(2, '0') }}</span><span class="stock-bubble"><b>{{ product.stock }}</b><small>IN STOCK</small></span></div>
-          <div class="chef-product-body"><span class="chef-product-type">{{ product.type }}</span><h3>{{ product.name }}</h3><p><i class="bi bi-clock-history"></i> Last cooked {{ product.cookDate | date: 'MMM d, y' }}</p><div class="chef-product-footer"><span><i class="bi bi-box-seam"></i> Product #{{ product.id }}</span><button type="button" [disabled]="deletingId() === product.id" (click)="remove(product)"><i class="bi bi-trash3"></i>{{ deletingId() === product.id ? 'Removing…' : 'Remove' }}</button></div></div>
+          <div class="chef-product-body"><span class="chef-product-type">{{ product.type }}</span><h3>{{ product.name }}</h3><p><i class="bi bi-clock-history"></i> Last cooked {{ product.cookDate | date: 'MMM d, y' }}</p><p><i class="bi bi-tag"></i> {{ product.price === null ? 'Price not set' : (product.price | number: '1.2-2') + ' per unit' }}</p><div class="chef-product-footer"><span><i class="bi bi-box-seam"></i> Product #{{ product.id }}</span><button type="button" [disabled]="deletingId() === product.id" (click)="remove(product)"><i class="bi bi-trash3"></i>{{ deletingId() === product.id ? 'Removing…' : 'Remove' }}</button></div></div>
         </article>
       }
     </section>

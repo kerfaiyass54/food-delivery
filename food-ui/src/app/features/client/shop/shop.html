@@ -53,10 +53,10 @@
             <p class="cook-date"><i class="bi bi-clock-history"></i> Cooked {{ product.cookDate | date: 'MMM d, h:mm a' }}</p>
             <div class="product-controls">
               <label><span>Qty</span><input type="number" min="1" [max]="product.stock" [ngModel]="quantity(product.id)" (ngModelChange)="setQuantity(product.id, $event)" [name]="'quantity-' + product.id" /></label>
-              <label><span>Unit price</span><input type="number" min="0.01" step="0.01" placeholder="Offer" [ngModel]="price(product.id)" (ngModelChange)="setPrice(product.id, $event)" [name]="'price-' + product.id" /></label>
+              <label><span>Unit price</span><output>{{ product.price === null ? 'Price not set' : (product.price | number: '1.2-2') }}</output></label>
             </div>
             <div class="menu-actions">
-              <button type="button" class="buy-button" [disabled]="actionProductId() === product.id || product.stock < 1 || !data.clientId()" (click)="buy(product)">
+              <button type="button" class="buy-button" [disabled]="actionProductId() === product.id || product.stock < 1 || !data.clientId() || product.price === null || product.price <= 0" (click)="buy(product)">
                 <i class="bi bi-bag-heart"></i>{{ actionProductId() === product.id ? 'Working…' : 'Buy' }}
               </button>
               <button type="button" class="order-button" [disabled]="actionProductId() === product.id || product.stock < 1 || !data.clientId()" (click)="order(product)">
