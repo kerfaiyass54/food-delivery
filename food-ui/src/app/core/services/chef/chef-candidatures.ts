@@ -21,7 +21,7 @@ export class ChefCandidaturesService {
     this.applicationsError.set(null);
     try {
       const config = await this.config.get();
-      this.chefId ||= config.chefId ?? 1;
+      this.chefId = this.config.requireId(config.chefId, 'chefId');
       const items = await firstValueFrom(this.http.get<ChefApplication[]>(`${config.apiBaseUrl}/chefs/${this.chefId}/candidatures`));
       this.applications.set(items.map(item => this.mapApplication(item)));
     } catch (error) {
@@ -31,7 +31,7 @@ export class ChefCandidaturesService {
 
   async applyToRestaurant(restaurantId: number): Promise<void> {
     const config = await this.config.get();
-    this.chefId ||= config.chefId ?? 1;
+    this.chefId = this.config.requireId(config.chefId, 'chefId');
     const salary = this.profile.profile()?.requiredSalary ?? 0;
     this.applying.set(true);
     this.applicationsError.set(null);
