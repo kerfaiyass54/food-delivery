@@ -48,7 +48,9 @@ export class OwnerRestaurantService {
 
   private setError(error: unknown, fallback: string): void {
     this.error.set(
-      error instanceof HttpErrorResponse && error.error?.detail ? error.error.detail : fallback
+      error instanceof HttpErrorResponse && error.error?.detail
+        ? error.error.detail
+        : error instanceof Error ? error.message : fallback
     );
   }
 }
