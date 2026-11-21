@@ -1,4 +1,4 @@
--- PostgreSQL schema kept aligned with FoodDelivery.Api/Migrations/20261110205112_InitialCreate.cs.
+-- PostgreSQL schema kept aligned with the FoodDelivery.Api EF Core migrations.
 -- Table and column identifiers are quoted to preserve EF Core's PostgreSQL casing.
 CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
     "MigrationId" character varying(150) NOT NULL,
