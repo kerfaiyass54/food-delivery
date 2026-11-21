@@ -3,7 +3,7 @@ import { DatePipe, DecimalPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { ChefCandidaturesService } from '../../../core/services/chef/chef-candidatures';
-import { ChefApplication } from '../../../shared/models/chef.models';
+import { ChefApplication } from '../../../shared/models/chef-application.model';
 
 @Component({
   selector: 'app-candidature-following',

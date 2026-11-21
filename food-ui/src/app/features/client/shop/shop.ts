@@ -4,7 +4,7 @@ import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { ClientsService } from '../../../core/services/commerce/clients';
-import { ProductDto } from '../../../shared/models/commerce.models';
+import { ProductDto } from '../../../shared/models/product.dto';
 
 @Component({
   selector: 'app-client-shop',

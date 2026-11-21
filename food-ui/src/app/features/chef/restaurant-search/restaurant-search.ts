@@ -4,7 +4,7 @@ import { RouterLink } from '@angular/router';
 import { ChefCandidaturesService } from '../../../core/services/chef/chef-candidatures';
 import { ChefProfileService } from '../../../core/services/chef/chef-profile';
 import { RestaurantSearchService } from '../../../core/services/chef/restaurant-search';
-import { SearchRestaurant } from '../../../shared/models/chef.models';
+import { SearchRestaurant } from '../../../shared/models/search-restaurant.model';
 import { ConfirmOperationDialogComponent } from '../../owner/confirm-operation-dialog/confirm-operation-dialog';
 
 @Component({

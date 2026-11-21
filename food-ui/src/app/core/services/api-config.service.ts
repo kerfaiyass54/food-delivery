@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
-import { AppConfig } from '../../shared/models/owner.models';
+import { AppConfig } from '../../shared/models/app-config.model';
 
 @Injectable({ providedIn: 'root' })
 export class ApiConfigService {

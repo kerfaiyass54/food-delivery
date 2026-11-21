@@ -5,7 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { ApiConfigService } from '../../../core/services/api-config.service';
 import { ChefProductsService } from '../../../core/services/commerce/chef-products';
-import { CookProductRequest, ProductDto } from '../../../shared/models/commerce.models';
+import { CookProductRequest } from '../../../shared/models/cook-product-request.model';
+import { ProductDto } from '../../../shared/models/product.dto';
 
 @Component({
   selector: 'app-chef-products',

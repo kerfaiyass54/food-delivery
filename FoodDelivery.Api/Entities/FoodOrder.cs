@@ -14,5 +14,3 @@ public class FoodOrder
     [Required] public Chef Chef { get; set; } = null!;
     public ICollection<OrderProduct> Products { get; set; } = new List<OrderProduct>();
 }
-
-public enum OrderStatus { Pending = 0, Launched = 1, Cancelled = 2 }

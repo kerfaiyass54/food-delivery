@@ -14,5 +14,3 @@ public class Client
     public ICollection<Purchase> Purchases { get; set; } = new List<Purchase>();
     public ICollection<FoodOrder> Orders { get; set; } = new List<FoodOrder>();
 }
-
-public enum ClientStatus { Sick = 0, Normal = 1, Diet = 2 }

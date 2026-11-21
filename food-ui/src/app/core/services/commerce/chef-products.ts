@@ -2,7 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { ApiConfigService } from '../api-config.service';
-import { CookProductRequest, ProductDto } from '../../../shared/models/commerce.models';
+import { CookProductRequest } from '../../../shared/models/cook-product-request.model';
+import { ProductDto } from '../../../shared/models/product.dto';
 
 @Injectable({ providedIn: 'root' })
 export class ChefProductsService {

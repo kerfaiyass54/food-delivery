@@ -2,15 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject, signal } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { ApiConfigService } from '../api-config.service';
-import {
-  ClientDto,
-  CreateClientRequest,
-  CreateOrderRequest,
-  OrderDto,
-  ProductDto,
-  PurchaseDto,
-  PurchaseRequest,
-} from '../../../shared/models/commerce.models';
+import { ClientDto } from '../../../shared/models/client.dto';
+import { CreateClientRequest } from '../../../shared/models/create-client-request.model';
+import { CreateOrderRequest } from '../../../shared/models/create-order-request.model';
+import { OrderDto } from '../../../shared/models/order.dto';
+import { ProductDto } from '../../../shared/models/product.dto';
+import { PurchaseDto } from '../../../shared/models/purchase.dto';
+import { PurchaseRequest } from '../../../shared/models/purchase-request.model';
 
 @Injectable({ providedIn: 'root' })
 export class ClientsService {

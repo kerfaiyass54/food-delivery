@@ -2,25 +2,9 @@ import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http'
 import { Injectable, inject, signal } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { ApiConfigService } from '../api-config.service';
-import { SearchRestaurant } from '../../../shared/models/chef.models';
-
-interface RestaurantSearchDto {
-  id: number;
-  name: string;
-  address: string;
-  capacity: number;
-  status: string;
-  nationality: string | null;
-  budget: number;
-  timeOpen: string | null;
-  timeClose: string | null;
-  operatingDays: string[];
-}
-
-interface RestaurantSearchPage {
-  items: RestaurantSearchDto[];
-  totalPages: number;
-}
+import { SearchRestaurant } from '../../../shared/models/search-restaurant.model';
+import { RestaurantSearchDto } from '../../../shared/dto/restaurant-search.dto';
+import { RestaurantSearchPageDto } from '../../../shared/dto/restaurant-search-page.dto';
 
 @Injectable({ providedIn: 'root' })
 export class RestaurantSearchService {
@@ -45,7 +29,7 @@ export class RestaurantSearchService {
         if (filter) params = params.set('filter', filter);
 
         const result = await firstValueFrom(
-          this.http.get<RestaurantSearchPage>(`${config.apiBaseUrl}/restaurants`, { params })
+          this.http.get<RestaurantSearchPageDto>(`${config.apiBaseUrl}/restaurants`, { params })
         );
         restaurants.push(...result.items);
         totalPages = result.totalPages;

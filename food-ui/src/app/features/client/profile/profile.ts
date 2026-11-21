@@ -2,7 +2,8 @@ import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { ClientsService } from '../../../core/services/commerce/clients';
-import { ClientStatus, CreateClientRequest } from '../../../shared/models/commerce.models';
+import { ClientStatus } from '../../../shared/models/client-status.model';
+import { CreateClientRequest } from '../../../shared/models/create-client-request.model';
 
 @Component({
   selector: 'app-client-profile',

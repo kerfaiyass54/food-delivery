@@ -1,6 +1,6 @@
 import { Component, input, output } from '@angular/core';
 import { DatePipe } from '@angular/common';
-import { Candidature } from '../../../shared/models/owner.models';
+import { Candidature } from '../../../shared/models/candidature.model';
 
 @Component({
   selector: 'app-candidature-details-dialog',

@@ -3,7 +3,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, computed, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ClientsService } from '../../../core/services/commerce/clients';
-import { OrderDto, PurchaseDto } from '../../../shared/models/commerce.models';
+import { OrderDto } from '../../../shared/models/order.dto';
+import { PurchaseDto } from '../../../shared/models/purchase.dto';
 
 @Component({
   selector: 'app-client-orders',

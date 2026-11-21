@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { ApiConfigService } from '../api-config.service';
-import { OrderDto } from '../../../shared/models/commerce.models';
+import { OrderDto } from '../../../shared/models/order.dto';
 
 @Injectable({ providedIn: 'root' })
 export class ChefOrdersService {

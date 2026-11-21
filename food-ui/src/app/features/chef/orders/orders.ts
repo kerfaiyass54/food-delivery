@@ -4,7 +4,7 @@ import { Component, computed, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ApiConfigService } from '../../../core/services/api-config.service';
 import { ChefOrdersService } from '../../../core/services/commerce/chef-orders';
-import { OrderDto } from '../../../shared/models/commerce.models';
+import { OrderDto } from '../../../shared/models/order.dto';
 
 @Component({
   selector: 'app-chef-orders',

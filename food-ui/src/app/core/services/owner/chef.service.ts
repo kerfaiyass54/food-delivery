@@ -3,7 +3,8 @@ import { Injectable, inject, signal } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { ApiConfigService } from '../api-config.service';
 import { OwnerRestaurantService } from './owner-restaurant.service';
-import { ChefDetails, ChefSummary } from '../../../shared/models/owner.models';
+import { ChefDetails } from '../../../shared/models/chef-details.model';
+import { ChefSummary } from '../../../shared/models/chef.model';
 
 @Injectable({ providedIn: 'root' })
 export class ChefService {

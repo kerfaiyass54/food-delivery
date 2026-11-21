@@ -20,6 +20,3 @@ public sealed record RestaurantSummaryDto(
             restaurant.TimeOpen, restaurant.TimeClose,
             restaurant.OperatingDays.OrderBy(day => day.DayId).Select(day => day.Day.Name).ToArray());
 }
-
-public sealed record PagedResultDto<T>(IReadOnlyList<T> Items, int Page, int PageSize, int TotalCount,
-    int TotalPages);

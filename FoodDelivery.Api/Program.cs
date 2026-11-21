@@ -16,6 +16,23 @@ if (string.IsNullOrWhiteSpace(connectionString))
 
 builder.Services.AddControllers();
 builder.Services.AddDbContext<FoodDeliveryDbContext>(options => options.UseNpgsql(connectionString));
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("FoodDeliveryUi", policy =>
+    {
+        var allowedOrigins = builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>();
+        if (allowedOrigins is { Length: > 0 })
+        {
+            policy.WithOrigins(allowedOrigins).AllowAnyHeader().AllowAnyMethod();
+        }
+        else
+        {
+            policy.WithOrigins("http://localhost:4200", "https://localhost:4200")
+                .AllowAnyHeader()
+                .AllowAnyMethod();
+        }
+    });
+});
 builder.Services.AddScoped<IRestaurantRepository, RestaurantRepository>();
 builder.Services.AddScoped<IChefRepository, ChefRepository>();
 builder.Services.AddScoped<ICandidatureRepository, CandidatureRepository>();
@@ -45,6 +62,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseCors("FoodDeliveryUi");
 app.UseAuthorization();
 
 app.MapControllers();
