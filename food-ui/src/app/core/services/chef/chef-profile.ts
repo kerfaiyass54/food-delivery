@@ -19,7 +19,7 @@ export class ChefProfileService {
     this.profileError.set(null);
     try {
       const config = await this.config.get();
-      this.chefId = config.chefId ?? 1;
+      this.chefId = this.config.requireId(config.chefId, 'chefId');
       const profile = await firstValueFrom(this.http.get<ChefProfile>(`${config.apiBaseUrl}/chefs/${this.chefId}`));
       this.profile.set(this.mapProfile(profile));
     } catch (error) {
@@ -45,7 +45,10 @@ export class ChefProfileService {
   }
 
   private async ensureChefId(): Promise<void> {
-    if (!this.chefId) { const config = await this.config.get(); this.chefId = config.chefId ?? 1; }
+    if (!this.chefId) {
+      const config = await this.config.get();
+      this.chefId = this.config.requireId(config.chefId, 'chefId');
+    }
   }
   private mapProfile(value: ChefProfile): ChefProfile {
     const dto = value as ChefProfile & { salary?: number };
