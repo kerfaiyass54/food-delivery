@@ -1,6 +1,6 @@
 import { Component, input, output } from '@angular/core';
 
-import { ChefDetails } from '../../../shared/models/owner.models';
+import { ChefDetails } from '../../../shared/models/chef-details.model';
 
 @Component({
   selector: 'app-chef-details-dialog',

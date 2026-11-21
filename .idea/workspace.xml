@@ -7,9 +7,7 @@
     <option name="selectedModelId" value="auto" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="04d54c95-db2a-4fde-b05b-c07329f27e89" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/FoodDelivery.Api/.idea/.idea.food-delivery.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FoodDelivery.Api/.idea/.idea.food-delivery.dir/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="04d54c95-db2a-4fde-b05b-c07329f27e89" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,7 +19,7 @@
     </persistenceIdMap>
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="254" />
+    <option name="cachedIndexableFilesCount" value="301" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -37,11 +35,88 @@
     <commands />
     <urls />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2,
-  "fromUser": false
-}]]></component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.2592744262628741" />
+      <entry key="MS500" value="2.6960466959554905" />
+      <entry key="S2" value="4.893579070706951" />
+      <entry key="S5" value="11.47835340887406" />
+      <entry key="S10" value="17.955671592684073" />
+      <entry key="S30" value="25.124547151359774" />
+      <entry key="S60" value="27.43465279889001" />
+      <entry key="M2" value="28.72227019366609" />
+      <entry key="M5" value="35.106653497653745" />
+      <entry key="M10" value="62.823559112755916" />
+      <entry key="M15" value="99.22717317202009" />
+      <entry key="M30" value="225.10066340353856" />
+      <entry key="H1" value="438.23840301605435" />
+      <entry key="H2" value="670.3419801033095" />
+      <entry key="H4" value="850.2812867873945" />
+      <entry key="D1" value="1050.1651609599185" />
+      <entry key="W1" value="1090.1525327481145" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="1.1768223819639194E-217" />
+      <entry key="S5" value="1.6915481630146102E-87" />
+      <entry key="S10" value="4.1128434969186603E-44" />
+      <entry key="S30" value="3.4518140699550705E-15" />
+      <entry key="S60" value="5.8752140981883174E-8" />
+      <entry key="M2" value="2.4238841013432533E-4" />
+      <entry key="M5" value="0.035808018067633986" />
+      <entry key="M10" value="0.19316019559442144" />
+      <entry key="M15" value="0.35827146025538587" />
+      <entry key="M30" value="0.8443666927058193" />
+      <entry key="H1" value="1.7380895403095196" />
+      <entry key="H2" value="2.824141230735362" />
+      <entry key="H4" value="3.7196373622521337" />
+      <entry key="D1" value="4.753074825348237" />
+      <entry key="W1" value="4.963796623404962" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="1.2084743625923298" />
+      <entry key="MS500" value="2.675674919502506" />
+      <entry key="S2" value="4.884742611326711" />
+      <entry key="S5" value="11.469569558494017" />
+      <entry key="S10" value="17.94847746135689" />
+      <entry key="S30" value="25.121070989281023" />
+      <entry key="S60" value="27.43273743217084" />
+      <entry key="M2" value="28.721502348650606" />
+      <entry key="M5" value="35.141795318818964" />
+      <entry key="M10" value="63.01580733520623" />
+      <entry key="M15" value="99.58438604656428" />
+      <entry key="M30" value="225.9437497564752" />
+      <entry key="H1" value="439.9751439243027" />
+      <entry key="H2" value="673.1650222202202" />
+      <entry key="H4" value="854.0002011352439" />
+      <entry key="D1" value="1054.9180821250197" />
+      <entry key="W1" value="1095.1163064571742" />
+    </decayedShown>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2,
+  &quot;fromUser&quot;: false
+}</component>
   <component name="ProjectId" id="3M5yaUo2HnFLffT4OokEpcE8Qni" />
+  <component name="ProjectSessionTemplates">
+    <option name="panelTemplate">
+      <template>
+        <option name="ensembleEnabled" value="true" />
+        <option name="ensembleTierId" value="balance" />
+        <option name="modeId" value="Agent" />
+        <option name="model">
+          <model>
+            <option name="modelType" value="builtin_id" />
+            <option name="modelValue" value="ensemble" />
+          </model>
+        </option>
+        <option name="targetType" value="BACKGROUND" />
+        <option name="worktreeMode" value="WORKSPACE" />
+      </template>
+    </option>
+    <option name="version" value="1" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -57,23 +132,26 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
     "copilot.chat.legacySessionMetadata.migrated": "true",
-    "git-widget-placeholder": "feature/chefs-management",
+    "git-widget-placeholder": "feature/food-purchase-order",
     "junie.onboarding.icon.badge.shown": "true",
+    "kotlin-language-version-configured": "true",
     "last_opened_file_path": "D:/projects/food-delivery",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "prettierjs.PrettierConfiguration.Package": "D:\\projects\\food-delivery\\food-ui\\node_modules\\prettier",
+    "studio.ml.bot.history.legacyLocationsMigrated": "true",
     "to.speed.mode.migration.done": "true",
+    "ts.external.directory.path": "D:\\projects\\food-delivery\\food-ui\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-3bd3a6803838-JavaScript-PY-261.22158.340" />
-        <option value="bundled-python-sdk-b63d5a1f7c97-b61e75351b1f-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-261.22158.340" />
+        <option value="bundled-jdk-30f59d01ecdd-63390994e64e-intellij.indexing.shared.core-IU-262.8665.337" />
       </set>
     </attachedChunks>
   </component>

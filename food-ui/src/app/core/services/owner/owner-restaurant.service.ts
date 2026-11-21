@@ -2,26 +2,9 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable, inject, signal } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { ApiConfigService } from '../api-config.service';
-import { RestaurantDetails, RestaurantStatus } from '../../../shared/models/owner.models';
-
-interface ApiDay {
-  id: number;
-  name: string;
-}
-interface RestaurantDetailsDto {
-  id: number;
-  name: string;
-  address: string;
-  capacity: number;
-  dateOfAdd: string;
-  status: string;
-  timeOpen: string | null;
-  timeClose: string | null;
-  nationality: string | null;
-  budget: number;
-  operatingDays: ApiDay[];
-  offDays: ApiDay[];
-}
+import { RestaurantDetails } from '../../../shared/models/restaurant.model';
+import { RestaurantDetailsDto } from '../../../shared/dto/restaurant-details.dto';
+import { emptyRestaurantDetails, mapRestaurantDetails } from '../../../shared/mappers/restaurant.mapper';
 
 @Injectable({ providedIn: 'root' })
 export class OwnerRestaurantService {
@@ -30,7 +13,7 @@ export class OwnerRestaurantService {
   private readonly restaurantApiId = signal<number | null>(null);
 
   readonly ownerId = signal<number | null>(null);
-  readonly restaurant = signal<RestaurantDetails>(this.emptyRestaurant());
+  readonly restaurant = signal<RestaurantDetails>(emptyRestaurantDetails());
   readonly loading = signal(false);
   readonly error = signal<string | null>(null);
 
@@ -46,7 +29,7 @@ export class OwnerRestaurantService {
       );
       this.ownerId.set(appConfig.ownerId);
       this.restaurantApiId.set(response.id);
-      this.restaurant.set(this.mapRestaurant(response));
+      this.restaurant.set(mapRestaurantDetails(response));
     } catch (error) {
       this.setError(error, 'Unable to load restaurant details.');
     } finally {
@@ -60,51 +43,6 @@ export class OwnerRestaurantService {
 
   getRestaurantId(): number | null {
     return this.restaurantApiId();
-  }
-
-  private mapRestaurant(dto: RestaurantDetailsDto): RestaurantDetails {
-    return {
-      apiId: dto.id,
-      id: `RST-${dto.id}`,
-      name: dto.name,
-      address: dto.address,
-      capacity: dto.capacity,
-      dateOfAdd: dto.dateOfAdd,
-      status: this.toStatus(dto.status),
-      timeOpen: this.toTime(dto.timeOpen),
-      timeClose: this.toTime(dto.timeClose),
-      nationality: dto.nationality ?? '',
-      budget: dto.budget > 0 ? `$${dto.budget.toFixed(0)}` : '',
-      days: dto.operatingDays.map(day => day.name),
-      offDays: dto.offDays.map(day => day.name),
-    };
-  }
-
-  private emptyRestaurant(): RestaurantDetails {
-    return {
-      apiId: 0,
-      id: '',
-      name: '',
-      address: '',
-      capacity: 0,
-      dateOfAdd: '',
-      status: 'closed',
-      timeOpen: '--:--',
-      timeClose: '--:--',
-      days: [],
-      offDays: [],
-      nationality: '',
-      budget: '',
-    };
-  }
-
-  private toStatus(status: string): RestaurantStatus {
-    const value = status.toLowerCase();
-    return value === 'open' || value === 'repair' ? value : 'closed';
-  }
-
-  private toTime(value: string | null): string {
-    return value ? value.slice(0, 5) : '--:--';
   }
 
   private setError(error: unknown, fallback: string): void {

@@ -26,6 +26,15 @@ export const CHEF_ROUTES: Routes = [
             module => module.CandidatureFollowingComponent
           ),
       },
+      {
+        path: 'products',
+        loadComponent: () =>
+          import('./products/products').then(module => module.ChefProductsComponent),
+      },
+      {
+        path: 'orders',
+        loadComponent: () => import('./orders/orders').then(module => module.ChefOrdersComponent),
+      },
       { path: 'restaurants', pathMatch: 'full', redirectTo: 'restaurant-search' },
       { path: 'candidatures', pathMatch: 'full', redirectTo: 'candidature-following' },
     ],

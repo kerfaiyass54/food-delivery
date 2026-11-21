@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable, inject, signal } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { ApiConfigService } from '../api-config.service';
-import { ChefProfile } from '../../../shared/models/chef.models';
+import { ChefProfile } from '../../../shared/models/chef-profile.model';
 
 @Injectable({ providedIn: 'root' })
 export class ChefProfileService {

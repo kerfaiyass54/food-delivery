@@ -1,0 +1,11 @@
+<div class="client-shell">
+  <aside class="client-navigation">
+    <app-sidebar-nav
+      [items]="navigation"
+      [profileName]="name()"
+      profileRole="Food lover"
+      brandSubtitle="TABLE CLUB"
+      brandLink="/client/shop" />
+  </aside>
+  <main class="client-content"><router-outlet /></main>
+</div>

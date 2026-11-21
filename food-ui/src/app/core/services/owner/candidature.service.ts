@@ -3,18 +3,9 @@ import { Injectable, inject, signal } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { ApiConfigService } from '../api-config.service';
 import { OwnerRestaurantService } from './owner-restaurant.service';
-import { Candidature, ChefDetails } from '../../../shared/models/owner.models';
-
-interface CandidatureDetailsDto {
-  id: number;
-  chefId: number;
-  chefName: string;
-  chefSpeciality: string;
-  chefExperience: number;
-  salary: number;
-  date: string;
-  status: string;
-}
+import { Candidature } from '../../../shared/models/candidature.model';
+import { ChefDetails } from '../../../shared/models/chef-details.model';
+import { CandidatureDetailsDto } from '../../../shared/dto/candidature-details.dto';
 
 @Injectable({ providedIn: 'root' })
 export class CandidatureService {
@@ -68,11 +59,14 @@ export class CandidatureService {
     if (!restaurantId) return;
     try {
       const base = (await this.config.get()).apiBaseUrl;
-      await firstValueFrom(
-        this.http.post(`${base}/restaurants/${restaurantId}/chefs/${candidature.chefId}`, {})
+      const updated = await firstValueFrom(
+        this.http.put<CandidatureDetailsDto>(
+          `${base}/restaurants/${restaurantId}/candidatures/${candidature.id}/accept`,
+          {}
+        )
       );
       this.candidatures.update(items =>
-        items.map(item => (item.id === candidature.id ? { ...item, status: 'accepted' } : item))
+        items.map(item => (item.id === candidature.id ? this.map(updated) : item))
       );
     } catch (error) {
       this.error.set(this.message(error, 'Unable to accept candidature.'));

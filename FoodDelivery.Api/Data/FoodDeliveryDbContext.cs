@@ -16,6 +16,11 @@ public sealed class FoodDeliveryDbContext : DbContext
     public DbSet<Day> Days => Set<Day>();
     public DbSet<RestaurantOperatingDay> RestaurantOperatingDays => Set<RestaurantOperatingDay>();
     public DbSet<RestaurantOffDay> RestaurantOffDays => Set<RestaurantOffDay>();
+    public DbSet<Client> Clients => Set<Client>();
+    public DbSet<Product> Products => Set<Product>();
+    public DbSet<Purchase> Purchases => Set<Purchase>();
+    public DbSet<FoodOrder> Orders => Set<FoodOrder>();
+    public DbSet<OrderProduct> OrderProducts => Set<OrderProduct>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -95,6 +100,44 @@ public sealed class FoodDeliveryDbContext : DbContext
                 .HasForeignKey(x => x.RestaurantId).OnDelete(DeleteBehavior.Cascade);
             entity.HasOne(x => x.Day).WithMany(x => x.RestaurantsOff)
                 .HasForeignKey(x => x.DayId).OnDelete(DeleteBehavior.Restrict);
+        });
+
+        modelBuilder.Entity<Client>(entity =>
+        {
+            entity.Property(x => x.Budget).HasPrecision(18, 2);
+            entity.Property(x => x.Weight).HasPrecision(8, 2);
+            entity.Property(x => x.Status).HasConversion<string>().HasMaxLength(20);
+        });
+        modelBuilder.Entity<Product>(entity =>
+        {
+            entity.HasOne(x => x.Chef).WithMany(x => x.Products).HasForeignKey(x => x.ChefId)
+                .OnDelete(DeleteBehavior.Restrict);
+            entity.HasCheckConstraint("CK_Products_Stock_NonNegative", "\"Stock\" >= 0");
+            entity.HasIndex(x => new { x.ChefId, x.Name });
+        });
+        modelBuilder.Entity<Purchase>(entity =>
+        {
+            entity.Property(x => x.Price).HasPrecision(18, 2);
+            entity.HasOne(x => x.Client).WithMany(x => x.Purchases).HasForeignKey(x => x.ClientId)
+                .OnDelete(DeleteBehavior.Restrict);
+            entity.HasOne(x => x.Product).WithMany(x => x.Purchases).HasForeignKey(x => x.ProductId)
+                .OnDelete(DeleteBehavior.Restrict);
+        });
+        modelBuilder.Entity<FoodOrder>(entity =>
+        {
+            entity.Property(x => x.Status).HasConversion<string>().HasMaxLength(20);
+            entity.HasOne(x => x.Client).WithMany(x => x.Orders).HasForeignKey(x => x.ClientId)
+                .OnDelete(DeleteBehavior.Restrict);
+            entity.HasOne(x => x.Chef).WithMany(x => x.Orders).HasForeignKey(x => x.ChefId)
+                .OnDelete(DeleteBehavior.Restrict);
+        });
+        modelBuilder.Entity<OrderProduct>(entity =>
+        {
+            entity.HasKey(x => new { x.OrderId, x.ProductId });
+            entity.HasOne(x => x.Order).WithMany(x => x.Products).HasForeignKey(x => x.OrderId)
+                .OnDelete(DeleteBehavior.Cascade);
+            entity.HasOne(x => x.Product).WithMany(x => x.OrderProducts).HasForeignKey(x => x.ProductId)
+                .OnDelete(DeleteBehavior.Restrict);
         });
     }
 }

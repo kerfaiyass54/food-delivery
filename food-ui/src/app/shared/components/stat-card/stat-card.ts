@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { DashboardStat } from '../../models/dashboard.model';
+import { DashboardStat } from '../../models/dashboard-stat.model';
 import { IconComponent } from '../icon/icon';
 
 @Component({

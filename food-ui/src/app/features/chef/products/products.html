@@ -1,0 +1,54 @@
+<main class="owner-page commerce-page chef-products-page">
+  <header class="topbar">
+    <div class="breadcrumb">
+      <a class="breadcrumb-home" routerLink="/chef/details"><i class="bi bi-house"></i></a>
+      <span>Chef workspace</span><i class="bi bi-chevron-right"></i><b>My products</b>
+    </div>
+    <div class="chef-commerce-status"><i class="bi bi-box-seam"></i> YOUR KITCHEN</div>
+  </header>
+
+  <section class="intro chef-commerce-intro">
+    <div>
+      <span class="section-eyebrow"><i></i> FROM YOUR HANDS TO THEIR TABLE</span>
+      <h1>What’s <em>cooking?</em></h1>
+      <p>Keep your menu fresh. Add a product or build up the stock of a kitchen favorite.</p>
+    </div>
+    <div class="intro-mark product-mark" aria-hidden="true"><span><i class="bi bi-fire"></i></span><small>IN THE KITCHEN</small></div>
+  </section>
+
+  @if (error()) { <div class="chef-commerce-alert" role="alert"><i class="bi bi-exclamation-circle"></i>{{ error() }}<button type="button" (click)="load()">Retry</button></div> }
+  @if (success()) { <div class="chef-commerce-success" role="status"><i class="bi bi-check-circle-fill"></i>{{ success() }}</div> }
+
+  <section class="cook-layout">
+    <article class="cook-card">
+      <div class="cook-heading">
+        <span class="cook-icon"><i class="bi bi-plus-lg"></i></span>
+        <div><span class="card-kicker">A NEW BATCH</span><h2>Cook a product</h2><p>Use the same name to add stock to an existing product.</p></div>
+      </div>
+      <form class="cook-form" (ngSubmit)="cook()">
+        <label class="chef-commerce-field"><span>Product name</span><input name="name" [(ngModel)]="draft.name" maxlength="150" required placeholder="e.g. Saffron couscous" /></label>
+        <label class="chef-commerce-field"><span>Type or cuisine</span><input name="type" [(ngModel)]="draft.type" maxlength="100" required placeholder="e.g. Main course" /></label>
+        <label class="chef-commerce-field"><span>Quantity to add</span><input name="quantity" type="number" min="1" [(ngModel)]="draft.quantity" required /></label>
+        <button class="cook-submit" type="submit" [disabled]="cooking()"><i class="bi bi-stars"></i>{{ cooking() ? 'Adding to the menu…' : 'Add to the menu' }}<i class="bi bi-arrow-right"></i></button>
+      </form>
+      <div class="cook-footnote"><i class="bi bi-info-circle"></i> Products connected to purchases or orders can’t be deleted.</div>
+    </article>
+    <aside class="kitchen-note"><div class="note-spark">✳</div><span class="card-kicker">CHEF’S NOTE</span><h3>Every great menu starts with one good idea.</h3><p>Your products appear in the client menu as soon as they have stock.</p><div class="note-lines"><span></span><span></span><span></span></div></aside>
+  </section>
+
+  <section class="products-heading"><div><span class="section-eyebrow"><i></i> YOUR CURRENT SELECTION</span><h2>On the menu</h2></div><div class="product-total"><b>{{ products().length }}</b><span>products</span><button type="button" aria-label="Refresh products" (click)="load()" [disabled]="loading()"><i class="bi bi-arrow-clockwise" [class.spinning]="loading()"></i></button></div></section>
+
+  @if (loading()) { <div class="chef-commerce-loading"><span></span> Checking the pantry…</div> }
+  @else if (products().length) {
+    <section class="chef-product-grid" aria-label="Your products">
+      @for (product of products(); track product.id; let index = $index) {
+        <article class="chef-product-card" [style.--card-index]="index">
+          <div class="product-top-art" [class]="'product-top-art flavor-' + (index % 4)"><span class="art-ring"></span><i class="bi bi-egg-fried"></i><span class="product-number">MENU / {{ (index + 1).toString().padStart(2, '0') }}</span><span class="stock-bubble"><b>{{ product.stock }}</b><small>IN STOCK</small></span></div>
+          <div class="chef-product-body"><span class="chef-product-type">{{ product.type }}</span><h3>{{ product.name }}</h3><p><i class="bi bi-clock-history"></i> Last cooked {{ product.cookDate | date: 'MMM d, y' }}</p><div class="chef-product-footer"><span><i class="bi bi-box-seam"></i> Product #{{ product.id }}</span><button type="button" [disabled]="deletingId() === product.id" (click)="remove(product)"><i class="bi bi-trash3"></i>{{ deletingId() === product.id ? 'Removing…' : 'Remove' }}</button></div></div>
+        </article>
+      }
+    </section>
+  } @else if (!error()) {
+    <section class="chef-products-empty"><span><i class="bi bi-journal-plus"></i></span><h3>Your menu is a blank canvas.</h3><p>Add your first product above and invite clients into your kitchen.</p></section>
+  }
+</main>

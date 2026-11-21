@@ -1,0 +1,56 @@
+:host {
+  display: block;
+  min-height: 100vh;
+}
+.client-shell {
+  display: grid;
+  grid-template-columns: 235px minmax(0, 1fr);
+  min-height: 100vh;
+  background: #fff8f5;
+}
+.client-navigation {
+  position: sticky;
+  z-index: 2;
+  top: 0;
+  height: 100vh;
+}
+.client-content {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 91% 2%, #ffe3d8 0, transparent 26%),
+    radial-gradient(ellipse at 6% 80%, #fff0d8 0, transparent 28%),
+    #fffaf7;
+}
+.client-content > router-outlet + * {
+  display: block;
+  animation: client-route-in 0.58s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+@keyframes client-route-in {
+  from {
+    opacity: 0;
+    transform: translateY(15px) scale(0.995);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (max-width: 760px) {
+  .client-shell {
+    display: block;
+  }
+  .client-navigation {
+    position: relative;
+    height: auto;
+  }
+  .client-content {
+    min-height: calc(100vh - 76px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .client-content > router-outlet + * {
+    animation: none;
+  }
+}

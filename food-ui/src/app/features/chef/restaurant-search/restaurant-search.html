@@ -159,9 +159,9 @@
           <small>HOURS</small><b>{{ time(place.timeOpen) }} – {{ time(place.timeClose) }}</b>
         </div>
       </div>
-      @if (place.operatingDays?.length) {
+      @if (place.operatingDays.length) {
         <p class="modal-days">
-          <i class="bi bi-calendar-week"></i> {{ place.operatingDays?.join(' · ') }}
+          <i class="bi bi-calendar-week"></i> {{ place.operatingDays.join(' · ') }}
         </p>
       }
       <div class="modal-actions">

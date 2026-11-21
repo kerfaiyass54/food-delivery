@@ -13,6 +13,8 @@ public interface ICandidatureService
         CancellationToken cancellationToken);
     Task<ServiceResult<ChefDetailsDto>> GetChefAsync(int restaurantId, int candidatureId,
         CancellationToken cancellationToken);
+    Task<ServiceResult<CandidatureDetailsDto>> AcceptAsync(int restaurantId, int candidatureId,
+        CancellationToken cancellationToken);
     Task<ServiceResult<CandidatureDetailsDto>> RefuseAsync(int restaurantId, int candidatureId,
         CancellationToken cancellationToken);
 }

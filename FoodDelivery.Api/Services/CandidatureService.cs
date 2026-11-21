@@ -1,21 +1,30 @@
 using FoodDelivery.Api.Contracts.Candidatures;
 using FoodDelivery.Api.Contracts.Chefs;
+using FoodDelivery.Api.Data;
 using FoodDelivery.Api.Data.Candidatures;
+using FoodDelivery.Api.Data.Chefs;
 using FoodDelivery.Api.Data.Restaurants;
+using FoodDelivery.Api.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace FoodDelivery.Api.Services;
 
 public sealed class CandidatureService : ICandidatureService
 {
     private readonly ICandidatureRepository _candidatureRepository;
+    private readonly IChefRepository _chefRepository;
     private readonly IRestaurantRepository _restaurantRepository;
+    private readonly FoodDeliveryDbContext _dbContext;
     private readonly ILogger<CandidatureService> _logger;
 
     public CandidatureService(ICandidatureRepository candidatureRepository,
-        IRestaurantRepository restaurantRepository, ILogger<CandidatureService> logger)
+        IChefRepository chefRepository, IRestaurantRepository restaurantRepository,
+        FoodDeliveryDbContext dbContext, ILogger<CandidatureService> logger)
     {
         _candidatureRepository = candidatureRepository;
+        _chefRepository = chefRepository;
         _restaurantRepository = restaurantRepository;
+        _dbContext = dbContext;
         _logger = logger;
     }
 
@@ -95,6 +104,63 @@ public sealed class CandidatureService : ICandidatureService
         _logger.LogInformation("Loaded chef {ChefId} related to candidature {CandidatureId}",
             candidature.ChefId, candidatureId);
         return ServiceResult<ChefDetailsDto>.Success(ChefDetailsDto.FromEntity(candidature.Chef));
+    }
+
+    public async Task<ServiceResult<CandidatureDetailsDto>> AcceptAsync(int restaurantId, int candidatureId,
+        CancellationToken cancellationToken)
+    {
+        await using var transaction = await _dbContext.Database.BeginTransactionAsync(cancellationToken);
+
+        var candidature = await _candidatureRepository.GetByIdAsync(
+            restaurantId, candidatureId, cancellationToken);
+        if (candidature is null)
+        {
+            return ServiceResult<CandidatureDetailsDto>.Missing();
+        }
+
+        if (candidature.Status != CandidatureStatus.Pending)
+        {
+            return ServiceResult<CandidatureDetailsDto>.Conflicting("Only pending candidatures can be accepted.");
+        }
+
+        var assignment = await _chefRepository.AssignToRestaurantAsync(
+            restaurantId, candidature.ChefId, cancellationToken);
+        if (assignment is ChefAssignmentStatus.RestaurantNotFound or ChefAssignmentStatus.ChefNotFound)
+        {
+            return ServiceResult<CandidatureDetailsDto>.Missing();
+        }
+
+        if (assignment is ChefAssignmentStatus.AlreadyAssigned or ChefAssignmentStatus.AssignedToAnotherRestaurant)
+        {
+            return ServiceResult<CandidatureDetailsDto>.Conflicting(
+                assignment == ChefAssignmentStatus.AlreadyAssigned
+                    ? "This chef already works at this restaurant."
+                    : "This chef is already assigned to another restaurant.");
+        }
+
+        var decision = await _candidatureRepository.AcceptAsync(
+            restaurantId, candidatureId, cancellationToken);
+        if (decision == CandidatureDecisionStatus.NotFound)
+        {
+            return ServiceResult<CandidatureDetailsDto>.Missing();
+        }
+
+        if (decision == CandidatureDecisionStatus.AlreadyDecided)
+        {
+            return ServiceResult<CandidatureDetailsDto>.Conflicting("Only pending candidatures can be accepted.");
+        }
+
+        var accepted = await _candidatureRepository.GetByIdAsync(
+            restaurantId, candidatureId, cancellationToken);
+        if (accepted is null)
+        {
+            return ServiceResult<CandidatureDetailsDto>.Missing();
+        }
+
+        await transaction.CommitAsync(cancellationToken);
+        _logger.LogInformation("Accepted candidature {CandidatureId} for restaurant {RestaurantId}",
+            candidatureId, restaurantId);
+        return ServiceResult<CandidatureDetailsDto>.Success(CandidatureDetailsDto.FromEntity(accepted));
     }
 
     public async Task<ServiceResult<CandidatureDetailsDto>> RefuseAsync(int restaurantId, int candidatureId,

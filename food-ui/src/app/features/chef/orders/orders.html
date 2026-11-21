@@ -1,0 +1,46 @@
+<main class="owner-page chef-commerce-page chef-orders-page">
+  <header class="topbar">
+    <div class="breadcrumb">
+      <a class="breadcrumb-home" routerLink="/chef/details"><i class="bi bi-house"></i></a>
+      <span>Chef workspace</span><i class="bi bi-chevron-right"></i><b>Orders</b>
+    </div>
+    <div class="chef-commerce-status"><i class="bi bi-receipt-cutoff"></i> SERVICE BOARD</div>
+  </header>
+
+  <section class="intro chef-commerce-intro">
+    <div>
+      <span class="section-eyebrow"><i></i> A NEW TABLE IS CALLING</span>
+      <h1>Orders, with <em>care.</em></h1>
+      <p>Review what clients are craving and launch each order when your kitchen is ready.</p>
+    </div>
+    <div class="intro-mark orders-mark" aria-hidden="true"><span><i class="bi bi-bell"></i></span><small>THE PASS</small></div>
+  </section>
+
+  <section class="orders-summary">
+    <div><span class="section-eyebrow"><i></i> YOUR SERVICE BOARD</span><h2>Today’s tickets</h2><p>Orders are placed with your products and scheduled by the client.</p></div>
+    <div class="ticket-count"><b>{{ orders().length }}</b><small>TOTAL<br />ORDERS</small></div>
+    <div class="ticket-count pending-count"><b>{{ pendingCount() }}</b><small>WAITING<br />TO LAUNCH</small></div>
+    <button class="refresh-orders" type="button" [disabled]="loading()" (click)="load()"><i class="bi bi-arrow-clockwise" [class.spinning]="loading()"></i></button>
+  </section>
+
+  @if (error()) { <div class="chef-commerce-alert" role="alert"><i class="bi bi-exclamation-circle"></i>{{ error() }}<button type="button" (click)="load()">Retry</button></div> }
+  @if (loading()) { <div class="chef-orders-loading"><span></span> Calling the kitchen…</div> }
+  @else if (orders().length) {
+    <section class="ticket-grid" aria-label="Chef orders">
+      @for (order of orders(); track order.id; let index = $index) {
+        <article class="ticket-card" [style.--card-index]="index">
+          <div class="ticket-top"><div class="ticket-id"><span>ORDER</span><b>#{{ order.id }}</b></div><span [class]="'ticket-status ' + statusClass(order.status)"><i></i>{{ order.status }}</span></div>
+          <div class="ticket-time"><span class="time-icon"><i class="bi bi-clock"></i></span><div><small>REQUESTED TIME</small><b>{{ order.time.slice(0, 5) }}</b></div><span class="ticket-date">{{ order.date | date: 'MMM d · h:mm a' }}</span></div>
+          <div class="ticket-rule"><span></span><i class="bi bi-scissors"></i><span></span></div>
+          <div class="ticket-items-heading"><span>THE ORDER</span><small>{{ order.products.length }} item(s)</small></div>
+          <div class="ticket-items">@for (item of order.products; track item.productId) { <div><span><b>{{ item.quantity }}×</b> {{ item.productName }}</span><i class="bi bi-check2-circle"></i></div> }</div>
+          <div class="ticket-client"><span class="client-avatar"><i class="bi bi-person"></i></span><span>Prepared for <b>Client #{{ order.clientId }}</b></span><span class="ticket-chef">Chef #{{ order.chefId }}</span></div>
+          @if (isPending(order)) { <button class="launch-order" type="button" [disabled]="launchingId() === order.id" (click)="launch(order)"><i class="bi bi-fire"></i>{{ launchingId() === order.id ? 'Launching…' : 'Launch order' }}<i class="bi bi-arrow-up-right"></i></button> }
+          @else { <div class="ticket-complete"><i class="bi bi-check-circle-fill"></i> This ticket has been {{ order.status.toLowerCase() }}.</div> }
+        </article>
+      }
+    </section>
+  } @else if (!error()) {
+    <section class="orders-empty"><span><i class="bi bi-receipt"></i></span><h3>All quiet on the pass.</h3><p>New client orders will show up here as soon as they’re placed.</p><a routerLink="/chef/products">Check your menu <i class="bi bi-arrow-right"></i></a></section>
+  }
+</main>
