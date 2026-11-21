@@ -1,1 +1,210 @@
+
+############################################################
+# ENVIRONMENT VARIABLES & SECRETS
+############################################################
 .env
+.env.*
+!.env.example
+!.env.template
+
+secrets.json
+secrets.*.json
+appsettings.*.local.json
+*.key
+*.pem
+*.pfx
+*.p12
+*.cer
+*.crt
+*.cert
+*.private
+*.pub
+
+############################################################
+# .NET / ASP.NET CORE
+############################################################
+bin/
+obj/
+out/
+[Bb]uild/
+[Dd]ebug/
+[Rr]elease/
+[Aa]rtifacts/
+[Tt]est[Rr]esults/
+*.log
+*.tlog
+*.tmp
+*.temp
+*.cache
+*.pid
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# NuGet
+packages/
+*.nupkg
+*.snupkg
+
+# Generated files
+Generated/
+wwwroot/lib/
+
+# Publish outputs
+publish/
+PublishProfiles/
+
+############################################################
+# VISUAL STUDIO
+############################################################
+.vs/
+.vscode/.vs/
+*.vspscc
+*.vssscc
+*.scc
+*.cachefile
+*.coverage
+*.coveragexml
+coverage/
+coverage*.json
+
+############################################################
+# JETBRAINS / RIDER / INTELLIJ
+############################################################
+.idea/
+**/.idea/
+*.iml
+
+############################################################
+# VISUAL STUDIO CODE
+############################################################
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
+############################################################
+# WINDOWS
+############################################################
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+############################################################
+# MACOS
+############################################################
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+############################################################
+# LINUX
+############################################################
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+############################################################
+# FRONTEND / NODE / ANGULAR / REACT
+############################################################
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.npm/
+.nx/
+.angular/
+.cache/
+.parcel-cache/
+dist/
+build/
+.next/
+.nuxt/
+.svelte-kit/
+coverage/
+
+# Keep package managers' lock files tracked
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+############################################################
+# DOCKER
+############################################################
+docker-compose.override.yml
+docker-compose.*.override.yml
+compose.override.yaml
+compose.*.override.yaml
+
+############################################################
+# DATABASE / LOCAL DATA
+############################################################
+*.db
+*.sqlite
+*.sqlite3
+*.mdf
+*.ldf
+*.bak
+*.backup
+*.dump
+
+############################################################
+# TESTING & REPORTS
+############################################################
+TestResults/
+*.trx
+*.testlog
+*.coverage
+*.coverage.*
+report/
+reports/
+
+############################################################
+# CERTIFICATES & LOCAL HTTPS
+############################################################
+.aspnet/
+https/
+certificates/
+certs/
+
+############################################################
+# AI TOOLS / LOCAL SUMMARIES
+############################################################
+.codebuddy/summary.md
+.codex/
+.cursor/
+.continue/
+
+############################################################
+# TEMPORARY FILES
+############################################################
+tmp/
+temp/
+tempfiles/
+*.swp
+*.swo
+*.orig
+*.rej
+*.old
+*.bak
+*.backup
+*.stackdump
+
+############################################################
+# LOCAL CONFIGURATION / USER DATA
+############################################################
+local.settings.json
+appsettings.Development.local.json
+appsettings.Local.json
+Properties/launchSettings.local.json
