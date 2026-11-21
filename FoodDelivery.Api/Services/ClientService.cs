@@ -38,13 +38,30 @@ public sealed class ClientService : IClientService
     }
     public async Task<ServiceResult<object>> CancelOrderAsync(int clientId, int orderId, CancellationToken ct)
     {
-        var order = await _db.Orders.Include(x => x.Products).ThenInclude(x => x.Product)
-            .SingleOrDefaultAsync(x => x.Id == orderId && x.ClientId == clientId, ct);
+        await using var transaction = await _db.Database.BeginTransactionAsync(ct);
+        var order = await _db.Orders
+            .FromSqlInterpolated($"SELECT * FROM \"Orders\" WHERE \"Id\" = {orderId} AND \"ClientId\" = {clientId} FOR UPDATE")
+            .SingleOrDefaultAsync(ct);
         if (order is null) return ServiceResult<object>.Missing();
         if (order.Status != OrderStatus.Pending) return ServiceResult<object>.Conflicting("Only pending orders can be cancelled.");
+
+        var productIds = await _db.OrderProducts
+            .Where(x => x.OrderId == orderId)
+            .Select(x => x.ProductId)
+            .ToArrayAsync(ct);
+        var lockedProducts = await _db.Products
+            .FromSqlInterpolated($"SELECT * FROM \"Products\" WHERE \"Id\" = ANY ({productIds}) ORDER BY \"Id\" FOR UPDATE")
+            .ToDictionaryAsync(x => x.Id, ct);
+        await _db.Entry(order).Collection(x => x.Products).LoadAsync(ct);
+
         order.Status = OrderStatus.Cancelled;
-        foreach (var line in order.Products) line.Product.Stock += line.Quantity;
+        foreach (var line in order.Products)
+        {
+            lockedProducts[line.ProductId].Stock += line.Quantity;
+        }
+
         await _db.SaveChangesAsync(ct);
+        await transaction.CommitAsync(ct);
         return ServiceResult<object>.Success(new { order.Id, Status = order.Status.ToString() });
     }
 }

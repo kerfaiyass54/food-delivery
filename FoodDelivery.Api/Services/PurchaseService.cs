@@ -24,8 +24,12 @@ public sealed class PurchaseService : IPurchaseService
     public async Task<ServiceResult<PurchaseDto>> PurchaseAsync(int clientId, PurchaseRequest request, CancellationToken ct)
     {
         await using var tx = await _db.Database.BeginTransactionAsync(ct);
-        var client = await _db.Clients.SingleOrDefaultAsync(x => x.Id == clientId, ct);
-        var product = await _db.Products.SingleOrDefaultAsync(x => x.Id == request.ProductId, ct);
+        var client = await _db.Clients
+            .FromSqlInterpolated($"SELECT * FROM \"Clients\" WHERE \"Id\" = {clientId} FOR UPDATE")
+            .SingleOrDefaultAsync(ct);
+        var product = await _db.Products
+            .FromSqlInterpolated($"SELECT * FROM \"Products\" WHERE \"Id\" = {request.ProductId} FOR UPDATE")
+            .SingleOrDefaultAsync(ct);
         if (client is null || product is null) return ServiceResult<PurchaseDto>.Missing();
         if (product.Stock < request.Quantity) return ServiceResult<PurchaseDto>.Conflicting("Insufficient product stock.");
         var total = request.Price * request.Quantity;

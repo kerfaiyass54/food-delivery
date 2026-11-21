@@ -68,11 +68,14 @@ export class CandidatureService {
     if (!restaurantId) return;
     try {
       const base = (await this.config.get()).apiBaseUrl;
-      await firstValueFrom(
-        this.http.post(`${base}/restaurants/${restaurantId}/chefs/${candidature.chefId}`, {})
+      const updated = await firstValueFrom(
+        this.http.put<CandidatureDetailsDto>(
+          `${base}/restaurants/${restaurantId}/candidatures/${candidature.id}/accept`,
+          {}
+        )
       );
       this.candidatures.update(items =>
-        items.map(item => (item.id === candidature.id ? { ...item, status: 'accepted' } : item))
+        items.map(item => (item.id === candidature.id ? this.map(updated) : item))
       );
     } catch (error) {
       this.error.set(this.message(error, 'Unable to accept candidature.'));

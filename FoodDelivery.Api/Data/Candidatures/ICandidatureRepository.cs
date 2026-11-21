@@ -11,6 +11,8 @@ public interface ICandidatureRepository
         CancellationToken cancellationToken);
     Task<Candidature?> GetByIdAsync(int restaurantId, int candidatureId,
         CancellationToken cancellationToken);
+    Task<CandidatureDecisionStatus> AcceptAsync(int restaurantId, int candidatureId,
+        CancellationToken cancellationToken);
     Task<CandidatureDecisionStatus> RefuseAsync(int restaurantId, int candidatureId,
         CancellationToken cancellationToken);
     Task<IReadOnlyList<Candidature>> GetByChefIdAsync(int chefId, CancellationToken cancellationToken);

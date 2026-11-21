@@ -6,12 +6,16 @@ import { AppConfig } from '../../shared/models/owner.models';
 @Injectable({ providedIn: 'root' })
 export class ApiConfigService {
   private readonly http = inject(HttpClient);
-  private config?: AppConfig;
+  private configRequest?: Promise<AppConfig>;
 
-  async get(): Promise<AppConfig> {
-    if (!this.config) {
-      this.config = await firstValueFrom(this.http.get<AppConfig>('/config.json'));
+  get(): Promise<AppConfig> {
+    if (!this.configRequest) {
+      this.configRequest = firstValueFrom(this.http.get<AppConfig>('/config.json')).catch(error => {
+        this.configRequest = undefined;
+        throw error;
+      });
     }
-    return this.config;
+
+    return this.configRequest;
   }
 }
