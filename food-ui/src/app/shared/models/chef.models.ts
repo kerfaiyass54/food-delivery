@@ -13,10 +13,10 @@ export interface SearchRestaurant {
   capacity: number;
   status: string;
   nationality: string;
-  budget: number | string;
-  timeOpen?: string | null;
-  timeClose?: string | null;
-  operatingDays?: string[];
+  budget: number;
+  timeOpen: string | null;
+  timeClose: string | null;
+  operatingDays: string[];
 }
 
 export interface ChefApplication {
@@ -25,6 +25,7 @@ export interface ChefApplication {
   restaurantName: string;
   address: string;
   speciality?: string;
+  chefSpeciality?: string;
   salary: number;
   date: string;
   status: 'pending' | 'accepted' | 'refused';

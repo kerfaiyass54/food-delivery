@@ -64,6 +64,7 @@ public sealed class CandidatureRepository : ICandidatureRepository
         {
             return await _dbContext.Candidatures.AsNoTracking()
                 .Include(x => x.Chef)
+                .Include(x => x.Restaurant)
                 .Where(x => x.RestaurantId == restaurantId)
                 .OrderByDescending(x => x.Date)
                 .ToListAsync(cancellationToken);
@@ -82,6 +83,7 @@ public sealed class CandidatureRepository : ICandidatureRepository
         {
             return await _dbContext.Candidatures.AsNoTracking()
                 .Include(x => x.Chef)
+                .Include(x => x.Restaurant)
                 .SingleOrDefaultAsync(x => x.Id == candidatureId && x.RestaurantId == restaurantId,
                     cancellationToken);
         }
@@ -151,7 +153,9 @@ public sealed class CandidatureRepository : ICandidatureRepository
 
     public async Task<IReadOnlyList<Candidature>> GetByChefIdAsync(int chefId, CancellationToken cancellationToken)
     {
-        return await _dbContext.Candidatures.AsNoTracking().Include(x => x.Chef)
+        return await _dbContext.Candidatures.AsNoTracking()
+            .Include(x => x.Chef)
+            .Include(x => x.Restaurant)
             .Where(x => x.ChefId == chefId).OrderByDescending(x => x.Date).ToListAsync(cancellationToken);
     }
 

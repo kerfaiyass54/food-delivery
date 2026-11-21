@@ -4,6 +4,7 @@ namespace FoodDelivery.Api.Services;
 
 public interface IChefProfileService
 {
+    Task<ServiceResult<ChefDetailsDto>> GetAsync(int chefId, CancellationToken cancellationToken);
     Task<ServiceResult<ChefDetailsDto>> UpdateAsync(int chefId, UpdateChefProfileRequest request,
         CancellationToken cancellationToken);
 }

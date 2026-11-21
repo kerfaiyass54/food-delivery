@@ -46,7 +46,11 @@ export class ChefCandidaturesService {
 
   private mapApplication(value: ChefApplication): ChefApplication {
     const status = String(value.status).toLowerCase();
-    return { ...value, status: status === 'accepted' || status === 'refused' ? status : 'pending' };
+    return {
+      ...value,
+      speciality: value.chefSpeciality ?? value.speciality,
+      status: status === 'accepted' || status === 'refused' ? status : 'pending',
+    };
   }
   private message(error: unknown, fallback: string): string {
     return error instanceof HttpErrorResponse && error.error?.detail ? error.error.detail : fallback;

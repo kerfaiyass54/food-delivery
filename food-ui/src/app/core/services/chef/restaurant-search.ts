@@ -4,6 +4,24 @@ import { firstValueFrom } from 'rxjs';
 import { ApiConfigService } from '../api-config.service';
 import { SearchRestaurant } from '../../../shared/models/chef.models';
 
+interface RestaurantSearchDto {
+  id: number;
+  name: string;
+  address: string;
+  capacity: number;
+  status: string;
+  nationality: string | null;
+  budget: number;
+  timeOpen: string | null;
+  timeClose: string | null;
+  operatingDays: string[];
+}
+
+interface RestaurantSearchPage {
+  items: RestaurantSearchDto[];
+  totalPages: number;
+}
+
 @Injectable({ providedIn: 'root' })
 export class RestaurantSearchService {
   private readonly http = inject(HttpClient);
@@ -17,9 +35,37 @@ export class RestaurantSearchService {
     this.searchError.set(null);
     try {
       const config = await this.config.get();
-      const params = new HttpParams().set('query', query.trim());
-      const results = await firstValueFrom(this.http.get<SearchRestaurant[]>(`${config.apiBaseUrl}/restaurants/search`, { params }));
-      this.restaurants.set(results.map(item => ({ ...item, id: Number(item.id), capacity: Number(item.capacity ?? 0), budget: item.budget ?? '' })));
+      const filter = query.trim();
+      const restaurants: RestaurantSearchDto[] = [];
+      let page = 1;
+      let totalPages = 1;
+
+      while (page <= totalPages) {
+        let params = new HttpParams().set('page', page).set('pageSize', 100);
+        if (filter) params = params.set('filter', filter);
+
+        const result = await firstValueFrom(
+          this.http.get<RestaurantSearchPage>(`${config.apiBaseUrl}/restaurants`, { params })
+        );
+        restaurants.push(...result.items);
+        totalPages = result.totalPages;
+        page += 1;
+      }
+
+      this.restaurants.set(
+        restaurants.map(item => ({
+          id: item.id,
+          name: item.name,
+          address: item.address,
+          capacity: item.capacity,
+          status: item.status,
+          nationality: item.nationality ?? '',
+          budget: item.budget,
+          timeOpen: item.timeOpen,
+          timeClose: item.timeClose,
+          operatingDays: item.operatingDays,
+        }))
+      );
     } catch (error) {
       this.searchError.set(this.message(error, 'Unable to search restaurants.'));
       this.restaurants.set([]);

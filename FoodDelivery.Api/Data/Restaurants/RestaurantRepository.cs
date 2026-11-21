@@ -175,7 +175,12 @@ public sealed class RestaurantRepository : IRestaurantRepository
             (_, false) => query.OrderBy(x => x.Name),
             _ => query.OrderByDescending(x => x.Name)
         };
-        return await query.Skip((page - 1) * pageSize).Take(pageSize).ToListAsync(cancellationToken);
+        return await query
+            .Include(x => x.OperatingDays)
+            .ThenInclude(x => x.Day)
+            .Skip((page - 1) * pageSize)
+            .Take(pageSize)
+            .ToListAsync(cancellationToken);
     }
 
     public Task<int> CountSearchAsync(string? filter, CancellationToken cancellationToken) =>

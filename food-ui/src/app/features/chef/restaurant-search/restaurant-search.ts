@@ -57,8 +57,7 @@ export class RestaurantSearchComponent {
       /* the service exposes the request error on the page */
     }
   }
-  budgetLabel(value: number | string): string {
-    if (typeof value === 'string') return value || 'Budget not listed';
+  budgetLabel(value: number): string {
     return value > 0
       ? '$'.repeat(Math.max(1, Math.min(4, Math.round(value))))
       : 'Budget not listed';
