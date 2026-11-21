@@ -294,6 +294,10 @@ namespace FoodDelivery.Api.Migrations
                         .HasMaxLength(150)
                         .HasColumnType("character varying(150)");
 
+                    b.Property<decimal?>("Price")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("numeric(18,2)");
+
                     b.Property<int>("Stock")
                         .HasColumnType("integer");
 
@@ -309,6 +313,8 @@ namespace FoodDelivery.Api.Migrations
                     b.ToTable("Products");
 
                     b.HasCheckConstraint("CK_Products_Stock_NonNegative", "\"Stock\" >= 0");
+
+                    b.HasCheckConstraint("CK_Products_Price_Positive_WhenSet", "\"Price\" IS NULL OR \"Price\" > 0");
                 });
 
             modelBuilder.Entity("FoodDelivery.Api.Entities.Purchase", b =>
