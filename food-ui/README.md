@@ -57,3 +57,20 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+
+## Development identity configuration (until authentication is added)
+
+The frontend does not ship with a default owner or chef ID. Configure the development identities locally in `public/config.json` when you need to open those role-specific screens:
+
+```json
+{
+  "apiBaseUrl": "/api",
+  "ownerId": 12,
+  "chefId": 34
+}
+```
+
+Replace the example IDs with existing rows from your local database. Do not commit personal or production identity values. If an ID is omitted or invalid, the corresponding screen displays a configuration error instead of silently using ID 1.
+
+The client flow uses the ID of the client profile explicitly created in the current browser, persisted as a development profile selection in local storage. This is not authentication or authorization; browser storage can be changed by the user. Replace it with a server-validated identity when authentication is implemented.
