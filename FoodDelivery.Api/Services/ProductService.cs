@@ -32,6 +32,7 @@ public sealed class ProductService : IProductService
                 Name = name,
                 Type = request.Type.Trim(),
                 Stock = request.Quantity,
+                Price = request.Price,
                 CookDate = DateTimeOffset.UtcNow
             };
             _db.Products.Add(product);
@@ -44,6 +45,7 @@ public sealed class ProductService : IProductService
             }
 
             product.Type = request.Type.Trim();
+            product.Price = request.Price;
             product.Stock += request.Quantity;
             product.CookDate = DateTimeOffset.UtcNow;
         }
