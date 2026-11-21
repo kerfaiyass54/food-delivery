@@ -22,13 +22,12 @@ export class OwnerRestaurantService {
     this.error.set(null);
     try {
       const appConfig = await this.config.get();
-      const ownerId = this.config.requireId(appConfig.ownerId, 'ownerId');
       const response = await firstValueFrom(
         this.http.get<RestaurantDetailsDto>(
-          `${appConfig.apiBaseUrl}/owners/${ownerId}/restaurant`
+          `${appConfig.apiBaseUrl}/owners/${appConfig.ownerId}/restaurant`
         )
       );
-      this.ownerId.set(ownerId);
+      this.ownerId.set(appConfig.ownerId);
       this.restaurantApiId.set(response.id);
       this.restaurant.set(mapRestaurantDetails(response));
     } catch (error) {
@@ -48,9 +47,7 @@ export class OwnerRestaurantService {
 
   private setError(error: unknown, fallback: string): void {
     this.error.set(
-      error instanceof HttpErrorResponse && error.error?.detail
-        ? error.error.detail
-        : error instanceof Error ? error.message : fallback
+      error instanceof HttpErrorResponse && error.error?.detail ? error.error.detail : fallback
     );
   }
 }
