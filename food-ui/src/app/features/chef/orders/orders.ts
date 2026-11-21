@@ -31,7 +31,8 @@ export class ChefOrdersComponent {
     this.loading.set(true);
     this.error.set('');
     try {
-      this.chefId ||= (await this.config.get()).chefId ?? 1;
+      const config = await this.config.get();
+      this.chefId = this.config.requireId(config.chefId, 'chefId');
       this.orders.set(await this.data.getByChef(this.chefId));
     } catch (error) {
       this.error.set(this.message(error));
