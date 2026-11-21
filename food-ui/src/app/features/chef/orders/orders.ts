@@ -31,8 +31,7 @@ export class ChefOrdersComponent {
     this.loading.set(true);
     this.error.set('');
     try {
-      const config = await this.config.get();
-      this.chefId = this.config.requireId(config.chefId, 'chefId');
+      this.chefId ||= (await this.config.get()).chefId ?? 1;
       this.orders.set(await this.data.getByChef(this.chefId));
     } catch (error) {
       this.error.set(this.message(error));
@@ -45,8 +44,7 @@ export class ChefOrdersComponent {
     this.launchingId.set(order.id);
     this.error.set('');
     try {
-      const config = await this.config.get();
-      this.chefId = this.config.requireId(config.chefId, 'chefId');
+      this.chefId ||= (await this.config.get()).chefId ?? 1;
       const updated = await this.data.launch(this.chefId, order.id);
       this.orders.update(items => items.map(item => (item.id === order.id ? updated : item)));
     } catch (error) {
@@ -65,7 +63,8 @@ export class ChefOrdersComponent {
   }
 
   private message(error: unknown): string {
-    if (error instanceof HttpErrorResponse && error.error?.detail) return error.error.detail;
-    return error instanceof Error ? error.message : 'Orders could not be loaded. Please try again.';
+    return error instanceof HttpErrorResponse && error.error?.detail
+      ? error.error.detail
+      : 'Orders could not be loaded. Please try again.';
   }
 }
