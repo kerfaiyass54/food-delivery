@@ -1,6 +1,6 @@
 import { Component, computed, input, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Order } from '../../models/dashboard.model';
+import { Order } from '../../models/order-summary.model';
 import { IconComponent } from '../icon/icon';
 
 @Component({

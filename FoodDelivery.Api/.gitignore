@@ -1,1 +1,60 @@
+# Environment variables and secrets
 .env
+.env.*
+!.env.example
+
+# .NET build output
+bin/
+obj/
+[Bb]uild/
+[Dd]ebug/
+[Rr]elease/
+publish/
+artifacts/
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# JetBrains
+.idea/
+*.iml
+
+# AI tools
+.codebuddy/
+.codex/
+.cursor/
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+
+# Logs
+*.log
+
+# Test results
+TestResults/
+coverage/
+*.coverage
+*.trx
+
+# Local databases and backups
+*.db
+*.sqlite
+*.sqlite3
+*.bak
+*.backup
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.old
+
+# OS
+.DS_Store
+Thumbs.db

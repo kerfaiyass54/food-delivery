@@ -1,6 +1,6 @@
 import { Component, input } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { NavigationItem } from '../../models/dashboard.model';
+import { NavigationItem } from '../../models/navigation-item.model';
 import { IconComponent } from '../icon/icon';
 
 @Component({
@@ -12,7 +12,6 @@ import { IconComponent } from '../icon/icon';
 })
 export class SidebarNavComponent {
   items = input.required<NavigationItem[]>();
-  active = input('Overview');
   profileName = input('Sophie Laurent');
   profileRole = input('Restaurant owner');
   brandSubtitle = input('KITCHEN STUDIO');
@@ -29,6 +28,10 @@ export class SidebarNavComponent {
       settings: 'gear',
       person: 'person-vcard',
       search: 'search',
+      cart: 'cart3',
+      inventory: 'boxes',
+      orders: 'receipt-cutoff',
+      account: 'person-badge',
     };
     return icons[icon] ?? 'circle';
   }

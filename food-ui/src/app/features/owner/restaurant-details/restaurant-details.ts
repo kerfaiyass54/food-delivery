@@ -6,15 +6,9 @@ import { ConfirmOperationDialogComponent } from '../confirm-operation-dialog/con
 import { IncreaseCapacityDialogComponent } from '../increase-capacity-dialog/increase-capacity-dialog';
 import { UpdateDaysDialogComponent } from '../update-days-dialog/update-days-dialog';
 import { UpdateHoursDialogComponent } from '../update-hours-dialog/update-hours-dialog';
-import { RestaurantDetails } from '../../../shared/models/owner.models';
-
-type DialogKind = 'capacity' | 'hours' | 'days';
-interface PendingOperation {
-  kind: DialogKind;
-  title: string;
-  message: string;
-  changes: Partial<RestaurantDetails>;
-}
+import { WEEK_DAYS } from '../../../shared/constants/week-days';
+import { DialogKind } from './dialog-kind.model';
+import { PendingOperation } from './pending-operation.model';
 
 @Component({
   selector: 'app-restaurant-details',
@@ -32,6 +26,7 @@ interface PendingOperation {
 export class RestaurantDetailsComponent {
   readonly data = inject(OwnerRestaurantService);
   readonly restaurantService = inject(RestaurantService);
+  readonly weekDays = WEEK_DAYS;
   readonly activeDialog = signal<DialogKind | null>(null);
   readonly pendingOperation = signal<PendingOperation | null>(null);
 

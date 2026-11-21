@@ -10,7 +10,10 @@ public sealed record CandidatureDetailsDto(
     int ChefExperience,
     decimal Salary,
     DateTimeOffset Date,
-    string Status)
+    string Status,
+    int RestaurantId,
+    string RestaurantName,
+    string Address)
 {
     public static CandidatureDetailsDto FromEntity(Candidature candidature) => new(
         candidature.Id,
@@ -20,5 +23,8 @@ public sealed record CandidatureDetailsDto(
         candidature.Chef.Experience,
         candidature.Salary,
         candidature.Date,
-        candidature.Status.ToString());
+        candidature.Status.ToString(),
+        candidature.RestaurantId,
+        candidature.Restaurant.Name,
+        candidature.Restaurant.Address);
 }

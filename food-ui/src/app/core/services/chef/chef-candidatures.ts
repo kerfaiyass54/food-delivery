@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable, inject, signal } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { ApiConfigService } from '../api-config.service';
-import { ChefApplication } from '../../../shared/models/chef.models';
+import { ChefApplication } from '../../../shared/models/chef-application.model';
 import { ChefProfileService } from './chef-profile';
 
 @Injectable({ providedIn: 'root' })
@@ -46,7 +46,11 @@ export class ChefCandidaturesService {
 
   private mapApplication(value: ChefApplication): ChefApplication {
     const status = String(value.status).toLowerCase();
-    return { ...value, status: status === 'accepted' || status === 'refused' ? status : 'pending' };
+    return {
+      ...value,
+      speciality: value.chefSpeciality ?? value.speciality,
+      status: status === 'accepted' || status === 'refused' ? status : 'pending',
+    };
   }
   private message(error: unknown, fallback: string): string {
     return error instanceof HttpErrorResponse && error.error?.detail ? error.error.detail : fallback;

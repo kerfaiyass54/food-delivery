@@ -19,14 +19,37 @@ public sealed class ProductService : IProductService
     public async Task<ServiceResult<ProductDto>> CookAsync(int chefId, CookProductRequest request, CancellationToken ct)
     {
         if (!await _db.Chefs.AnyAsync(x => x.Id == chefId, ct)) return ServiceResult<ProductDto>.Missing();
-        var product = await _db.Products.SingleOrDefaultAsync(x => x.ChefId == chefId && x.Name == request.Name.Trim(), ct);
+        await using var transaction = await _db.Database.BeginTransactionAsync(ct);
+        var name = request.Name.Trim();
+        var product = await _db.Products
+            .FromSqlInterpolated($"SELECT * FROM \"Products\" WHERE \"ChefId\" = {chefId} AND \"Name\" = {name} FOR UPDATE")
+            .SingleOrDefaultAsync(ct);
         if (product is null)
         {
-            product = new Product { ChefId = chefId, Name = request.Name.Trim(), Type = request.Type.Trim(), Stock = request.Quantity, CookDate = DateTimeOffset.UtcNow };
+            product = new Product
+            {
+                ChefId = chefId,
+                Name = name,
+                Type = request.Type.Trim(),
+                Stock = request.Quantity,
+                CookDate = DateTimeOffset.UtcNow
+            };
             _db.Products.Add(product);
         }
-        else { product.Type = request.Type.Trim(); product.Stock += request.Quantity; product.CookDate = DateTimeOffset.UtcNow; }
+        else
+        {
+            if (product.Stock > int.MaxValue - request.Quantity)
+            {
+                return ServiceResult<ProductDto>.Conflicting("The resulting stock exceeds the supported limit.");
+            }
+
+            product.Type = request.Type.Trim();
+            product.Stock += request.Quantity;
+            product.CookDate = DateTimeOffset.UtcNow;
+        }
+
         await _db.SaveChangesAsync(ct);
+        await transaction.CommitAsync(ct);
         return ServiceResult<ProductDto>.Success(ProductDto.From(product));
     }
     public async Task<ServiceResult<IReadOnlyList<ProductDto>>> GetByChefAsync(int chefId, CancellationToken ct)

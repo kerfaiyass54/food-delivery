@@ -3,7 +3,7 @@ import { DatePipe } from '@angular/common';
 import { ConfirmOperationDialogComponent } from '../confirm-operation-dialog/confirm-operation-dialog';
 import { CandidatureDetailsDialogComponent } from './candidature-details-dialog';
 import { CandidatureService } from '../../../core/services/owner/candidature.service';
-import { Candidature } from '../../../shared/models/owner.models';
+import { Candidature } from '../../../shared/models/candidature.model';
 
 @Component({
   selector: 'app-candidatures',

@@ -4,7 +4,7 @@ import { RouterLink } from '@angular/router';
 import { ChefCandidaturesService } from '../../../core/services/chef/chef-candidatures';
 import { ChefProfileService } from '../../../core/services/chef/chef-profile';
 import { RestaurantSearchService } from '../../../core/services/chef/restaurant-search';
-import { SearchRestaurant } from '../../../shared/models/chef.models';
+import { SearchRestaurant } from '../../../shared/models/search-restaurant.model';
 import { ConfirmOperationDialogComponent } from '../../owner/confirm-operation-dialog/confirm-operation-dialog';
 
 @Component({
@@ -57,8 +57,7 @@ export class RestaurantSearchComponent {
       /* the service exposes the request error on the page */
     }
   }
-  budgetLabel(value: number | string): string {
-    if (typeof value === 'string') return value || 'Budget not listed';
+  budgetLabel(value: number): string {
     return value > 0
       ? '$'.repeat(Math.max(1, Math.min(4, Math.round(value))))
       : 'Budget not listed';

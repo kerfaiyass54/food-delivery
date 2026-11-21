@@ -74,6 +74,19 @@ public sealed class RestaurantCandidaturesController : ControllerBase
             await _candidatureService.GetChefAsync(restaurantId, candidatureId, cancellationToken), _logger);
     }
 
+    [HttpPut("{candidatureId:int}/accept")]
+    [ProducesResponseType(typeof(CandidatureDetailsDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status409Conflict)]
+    public async Task<ActionResult<CandidatureDetailsDto>> Accept(int restaurantId, int candidatureId,
+        CancellationToken cancellationToken)
+    {
+        _logger.LogInformation("Received acceptance request for candidature {CandidatureId} at restaurant {RestaurantId}",
+            candidatureId, restaurantId);
+        return ControllerResultMapper.Map(this,
+            await _candidatureService.AcceptAsync(restaurantId, candidatureId, cancellationToken), _logger);
+    }
+
     [HttpPut("{candidatureId:int}/refuse")]
     [ProducesResponseType(typeof(CandidatureDetailsDto), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]

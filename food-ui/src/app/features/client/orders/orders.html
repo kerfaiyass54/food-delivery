@@ -1,0 +1,79 @@
+<main class="owner-page commerce-page client-orders-page">
+  <header class="topbar">
+    <div class="breadcrumb">
+      <a class="breadcrumb-home" routerLink="/client/shop"><i class="bi bi-house"></i></a>
+      <span>Client space</span><i class="bi bi-chevron-right"></i><b>Orders & purchases</b>
+    </div>
+    <div class="commerce-status"><i class="bi bi-receipt-cutoff"></i> YOUR ACTIVITY</div>
+  </header>
+
+  <section class="intro commerce-intro">
+    <div>
+      <span class="section-eyebrow"><i></i> EVERY BITE, EVERY ORDER</span>
+      <h1>Your table <em>history.</em></h1>
+      <p>Keep an eye on what’s coming and revisit the things you’ve enjoyed.</p>
+    </div>
+    <div class="intro-mark history-mark" aria-hidden="true">
+      <span><i class="bi bi-journal-check"></i></span><small>YOUR STORY</small>
+    </div>
+  </section>
+
+  @if (!data.clientId()) {
+    <section class="activity-gate">
+      <span><i class="bi bi-person-plus"></i></span><h2>Start with your profile</h2>
+      <p>Create a client profile to see your orders and purchases here.</p>
+      <a routerLink="/client/profile" class="commerce-button primary-button">Create profile <i class="bi bi-arrow-right"></i></a>
+    </section>
+  } @else {
+    <section class="activity-overview">
+      <div><span class="section-eyebrow"><i></i> A QUICK LOOK</span><h2>Your recent activity</h2><p>Account #{{ data.clientId() }} · updated from your latest kitchen activity</p></div>
+      <div class="activity-counts"><span><b>{{ orders().length }}</b><small>ORDERS</small></span><span><b>{{ pendingCount() }}</b><small>IN THE KITCHEN</small></span><span><b>{{ purchases().length }}</b><small>PURCHASES</small></span></div>
+    </section>
+
+    @if (error()) {
+      <div class="commerce-alert" role="alert"><i class="bi bi-exclamation-circle"></i>{{ error() }}<button type="button" (click)="load()">Retry</button></div>
+    }
+
+    <section class="activity-card">
+      <div class="activity-heading">
+        <div><span class="section-eyebrow"><i></i> YOUR RECORD</span><h2>What’s on your plate</h2></div>
+        <button class="refresh-button" type="button" [disabled]="loading()" (click)="load()"><i class="bi bi-arrow-clockwise" [class.spinning]="loading()"></i> Refresh</button>
+      </div>
+      <div class="activity-tabs" role="tablist" aria-label="Client activity">
+        <button type="button" role="tab" [attr.aria-selected]="activeTab() === 'orders'" [class.active]="activeTab() === 'orders'" (click)="activeTab.set('orders')">Orders <span>{{ orders().length }}</span></button>
+        <button type="button" role="tab" [attr.aria-selected]="activeTab() === 'purchases'" [class.active]="activeTab() === 'purchases'" (click)="activeTab.set('purchases')">Purchases <span>{{ purchases().length }}</span></button>
+      </div>
+
+      @if (loading()) {
+        <div class="activity-loading"><span></span> Setting the table…</div>
+      } @else if (activeTab() === 'orders') {
+        @if (orders().length) {
+          <div class="activity-list">
+            @for (order of orders(); track order.id) {
+              <article class="activity-row">
+                <div class="activity-icon"><i class="bi bi-bag-heart"></i></div>
+                <div class="activity-main"><div class="activity-title"><b>Order #{{ order.id }}</b><span [class]="'activity-status ' + statusClass(order.status)"><i></i>{{ order.status }}</span></div><p>{{ order.products.length }} item(s) · Chef {{ order.chefId }} · requested for {{ order.time.slice(0, 5) }}</p><small>{{ order.date | date: 'MMM d, y · h:mm a' }}</small><div class="order-items">@for (item of order.products; track item.productId) { <span>{{ item.quantity }} × {{ item.productName }}</span> }</div></div>
+                @if (isPending(order)) { <button class="cancel-button" type="button" [disabled]="cancellingId() === order.id" (click)="cancel(order)">{{ cancellingId() === order.id ? 'Cancelling…' : 'Cancel order' }}</button> }
+              </article>
+            }
+          </div>
+        } @else {
+          <div class="activity-empty"><span><i class="bi bi-basket"></i></span><h3>No orders yet</h3><p>When you order from a chef, its progress will appear here.</p><a routerLink="/client/shop">Explore the menu <i class="bi bi-arrow-right"></i></a></div>
+        }
+      } @else {
+        @if (purchases().length) {
+          <div class="activity-list">
+            @for (purchase of purchases(); track purchase.id) {
+              <article class="activity-row purchase-row">
+                <div class="activity-icon purchase-icon"><i class="bi bi-bag-check"></i></div>
+                <div class="activity-main"><div class="activity-title"><b>Purchase #{{ purchase.id }}</b><strong>{{ purchase.price * purchase.quantity | number: '1.2-2' }}</strong></div><p>Product #{{ purchase.productId }} · {{ purchase.quantity }} unit(s) at {{ purchase.price | number: '1.2-2' }} each</p><small>{{ purchase.date | date: 'MMM d, y · h:mm a' }}</small></div>
+              </article>
+            }
+          </div>
+        } @else {
+          <div class="activity-empty"><span><i class="bi bi-bag"></i></span><h3>No purchases yet</h3><p>Products you buy from the menu will be saved in this list.</p><a routerLink="/client/shop">Browse products <i class="bi bi-arrow-right"></i></a></div>
+        }
+      }
+    </section>
+  }
+</main>

@@ -27,3 +27,19 @@ CREATE EXTENSION IF NOT EXISTS pg_trgm;
 CREATE INDEX IF NOT EXISTS "IX_Restaurants_Name_Trgm" ON "Restaurants" USING gin ("Name" gin_trgm_ops);
 CREATE INDEX IF NOT EXISTS "IX_Restaurants_Address_Trgm" ON "Restaurants" USING gin ("Address" gin_trgm_ops);
 CREATE INDEX IF NOT EXISTS "IX_Restaurants_Nationality_Trgm" ON "Restaurants" USING gin ("Nationality" gin_trgm_ops);
+
+-- Baseline indexes from AddClientsProductsPurchasesOrders.
+CREATE INDEX IF NOT EXISTS "IX_Products_ChefId_Name" ON "Products" ("ChefId", "Name");
+CREATE INDEX IF NOT EXISTS "IX_Orders_ChefId" ON "Orders" ("ChefId");
+CREATE INDEX IF NOT EXISTS "IX_Orders_ClientId" ON "Orders" ("ClientId");
+CREATE INDEX IF NOT EXISTS "IX_Purchases_ClientId" ON "Purchases" ("ClientId");
+CREATE INDEX IF NOT EXISTS "IX_Purchases_ProductId" ON "Purchases" ("ProductId");
+CREATE INDEX IF NOT EXISTS "IX_OrderProducts_ProductId" ON "OrderProducts" ("ProductId");
+
+-- Commerce feeds filter by client or chef and sort by newest first.
+CREATE INDEX IF NOT EXISTS "IX_Orders_ClientId_Date" ON "Orders" ("ClientId", "Date" DESC, "Id" DESC);
+CREATE INDEX IF NOT EXISTS "IX_Orders_ChefId_Date" ON "Orders" ("ChefId", "Date" DESC, "Id" DESC);
+CREATE INDEX IF NOT EXISTS "IX_Purchases_ClientId_Date" ON "Purchases" ("ClientId", "Date" DESC, "Id" DESC);
+
+-- ClientService lists available products by name.
+CREATE INDEX IF NOT EXISTS "IX_Products_Available_Name" ON "Products" ("Name") WHERE "Stock" > 0;

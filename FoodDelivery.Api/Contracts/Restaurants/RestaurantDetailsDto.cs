@@ -2,8 +2,6 @@ using FoodDelivery.Api.Entities;
 
 namespace FoodDelivery.Api.Contracts.Restaurants;
 
-public sealed record DayDto(int Id, string Name);
-
 public sealed record RestaurantDetailsDto(
     int Id,
     string Name,

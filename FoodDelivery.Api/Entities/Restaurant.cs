@@ -43,10 +43,3 @@ public class Restaurant
 
     public ICollection<RestaurantOffDay> OffDays { get; set; } = new List<RestaurantOffDay>();
 }
-
-public enum RestaurantStatus
-{
-    Closed = 0,
-    Repair = 1,
-    Open = 2
-}

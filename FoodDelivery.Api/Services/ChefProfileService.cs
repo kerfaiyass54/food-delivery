@@ -8,6 +8,14 @@ public sealed class ChefProfileService : IChefProfileService
     private readonly IChefRepository _repository;
     public ChefProfileService(IChefRepository repository) => _repository = repository;
 
+    public async Task<ServiceResult<ChefDetailsDto>> GetAsync(int chefId, CancellationToken cancellationToken)
+    {
+        var chef = await _repository.GetByIdAsync(chefId, cancellationToken);
+        return chef is null
+            ? ServiceResult<ChefDetailsDto>.Missing()
+            : ServiceResult<ChefDetailsDto>.Success(ChefDetailsDto.FromEntity(chef));
+    }
+
     public async Task<ServiceResult<ChefDetailsDto>> UpdateAsync(int chefId, UpdateChefProfileRequest request,
         CancellationToken cancellationToken)
     {

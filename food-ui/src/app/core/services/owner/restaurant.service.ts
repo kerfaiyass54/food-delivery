@@ -4,7 +4,9 @@ import { firstValueFrom } from 'rxjs';
 import { Observable } from 'rxjs';
 import { ApiConfigService } from '../api-config.service';
 import { OwnerRestaurantService } from './owner-restaurant.service';
-import { RestaurantDetails } from '../../../shared/models/owner.models';
+import { RestaurantDetailsDto } from '../../../shared/dto/restaurant-details.dto';
+import { WEEK_DAYS } from '../../../shared/constants/week-days';
+import { mapRestaurantDetails } from '../../../shared/mappers/restaurant.mapper';
 
 @Injectable({ providedIn: 'root' })
 export class RestaurantService {
@@ -23,10 +25,7 @@ export class RestaurantService {
   async updateDays(days: string[], offDays: string[]): Promise<void> {
     const ids = (values: string[]) =>
       values.map(
-        value =>
-          ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].indexOf(
-            value
-          ) + 1
+        value => WEEK_DAYS.indexOf(value as (typeof WEEK_DAYS)[number]) + 1
       );
     await this.update((base, id) =>
       this.http.put<RestaurantDetailsDto>(`${base}/restaurants/${id}/days`, {
@@ -58,7 +57,7 @@ export class RestaurantService {
     try {
       const config = await this.config.get();
       const response = await firstValueFrom(request(config.apiBaseUrl, id));
-      this.ownerRestaurant.restaurant.set(this.mapRestaurant(response));
+      this.ownerRestaurant.restaurant.set(mapRestaurantDetails(response));
     } catch (error) {
       this.error.set(this.message(error, 'Unable to update restaurant details.'));
       throw error;
@@ -67,45 +66,9 @@ export class RestaurantService {
     }
   }
 
-  private mapRestaurant(dto: RestaurantDetailsDto): RestaurantDetails {
-    return {
-      apiId: dto.id,
-      id: `RST-${dto.id}`,
-      name: dto.name,
-      address: dto.address,
-      capacity: dto.capacity,
-      dateOfAdd: dto.dateOfAdd,
-      status:
-        dto.status.toLowerCase() === 'open' || dto.status.toLowerCase() === 'repair'
-          ? (dto.status.toLowerCase() as 'open' | 'repair')
-          : 'closed',
-      timeOpen: dto.timeOpen?.slice(0, 5) ?? '--:--',
-      timeClose: dto.timeClose?.slice(0, 5) ?? '--:--',
-      nationality: dto.nationality ?? '',
-      budget: dto.budget > 0 ? `$${dto.budget.toFixed(0)}` : '',
-      days: dto.operatingDays.map(day => day.name),
-      offDays: dto.offDays.map(day => day.name),
-    };
-  }
-
   private message(error: unknown, fallback: string): string {
     return error instanceof HttpErrorResponse && error.error?.detail
       ? error.error.detail
       : fallback;
   }
-}
-
-interface RestaurantDetailsDto {
-  id: number;
-  name: string;
-  address: string;
-  capacity: number;
-  dateOfAdd: string;
-  status: string;
-  timeOpen: string | null;
-  timeClose: string | null;
-  nationality: string | null;
-  budget: number;
-  operatingDays: { id: number; name: string }[];
-  offDays: { id: number; name: string }[];
 }

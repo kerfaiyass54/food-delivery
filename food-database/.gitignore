@@ -1,0 +1,31 @@
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# PostgreSQL data
+data/postgres/
+postgres-data/
+pgdata/
+*.db
+*.dump
+*.backup
+*.bak
+
+# PostgreSQL logs
+*.log
+log/
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*~
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db

@@ -23,10 +23,3 @@ public class Candidature
     [Required]
     public Restaurant Restaurant { get; set; } = null!;
 }
-
-public enum CandidatureStatus
-{
-    Pending = 0,
-    Accepted = 1,
-    Refused = 2
-}

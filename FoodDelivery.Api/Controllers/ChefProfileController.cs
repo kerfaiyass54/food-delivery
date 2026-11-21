@@ -13,6 +13,13 @@ public sealed class ChefProfileController : ControllerBase
     public ChefProfileController(IChefProfileService service, ILogger<ChefProfileController> logger)
     { _service = service; _logger = logger; }
 
+    [HttpGet]
+    [ProducesResponseType(typeof(ChefDetailsDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<ChefDetailsDto>> GetProfile(int chefId,
+        CancellationToken cancellationToken) =>
+        ControllerResultMapper.Map(this, await _service.GetAsync(chefId, cancellationToken), _logger);
+
     [HttpPut("profile")]
     [ProducesResponseType(typeof(ChefDetailsDto), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
