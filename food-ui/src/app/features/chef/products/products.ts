@@ -35,8 +35,7 @@ export class ChefProductsComponent {
     this.loading.set(true);
     this.error.set('');
     try {
-      const config = await this.config.get();
-      this.chefId = this.config.requireId(config.chefId, 'chefId');
+      this.chefId ||= (await this.config.get()).chefId ?? 1;
       this.products.set(await this.data.getByChef(this.chefId));
     } catch (error) {
       this.error.set(this.message(error, 'Your products could not be loaded.'));
@@ -50,8 +49,7 @@ export class ChefProductsComponent {
     this.error.set('');
     this.success.set('');
     try {
-      const config = await this.config.get();
-      this.chefId = this.config.requireId(config.chefId, 'chefId');
+      this.chefId ||= (await this.config.get()).chefId ?? 1;
       const product = await this.data.cook(this.chefId, this.draft);
       this.products.update(items => {
         const existing = items.findIndex(item => item.id === product.id);
@@ -76,8 +74,7 @@ export class ChefProductsComponent {
     this.error.set('');
     this.success.set('');
     try {
-      const config = await this.config.get();
-      this.chefId = this.config.requireId(config.chefId, 'chefId');
+      this.chefId ||= (await this.config.get()).chefId ?? 1;
       await this.data.delete(this.chefId, product.id);
       this.products.update(items => items.filter(item => item.id !== product.id));
       this.success.set(`${product.name} was removed from your menu.`);
@@ -89,7 +86,6 @@ export class ChefProductsComponent {
   }
 
   private message(error: unknown, fallback: string): string {
-    if (error instanceof HttpErrorResponse && error.error?.detail) return error.error.detail;
-    return error instanceof Error ? error.message : fallback;
+    return error instanceof HttpErrorResponse && error.error?.detail ? error.error.detail : fallback;
   }
 }
