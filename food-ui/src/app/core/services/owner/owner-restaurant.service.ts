@@ -22,12 +22,13 @@ export class OwnerRestaurantService {
     this.error.set(null);
     try {
       const appConfig = await this.config.get();
+      const ownerId = this.config.requireId(appConfig.ownerId, 'ownerId');
       const response = await firstValueFrom(
         this.http.get<RestaurantDetailsDto>(
-          `${appConfig.apiBaseUrl}/owners/${appConfig.ownerId}/restaurant`
+          `${appConfig.apiBaseUrl}/owners/${ownerId}/restaurant`
         )
       );
-      this.ownerId.set(appConfig.ownerId);
+      this.ownerId.set(ownerId);
       this.restaurantApiId.set(response.id);
       this.restaurant.set(mapRestaurantDetails(response));
     } catch (error) {
