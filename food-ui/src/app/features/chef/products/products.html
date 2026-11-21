@@ -45,7 +45,7 @@
       @for (product of products(); track product.id; let index = $index) {
         <article class="chef-product-card" [style.--card-index]="index">
           <div class="product-top-art" [class]="'product-top-art flavor-' + (index % 4)"><span class="art-ring"></span><i class="bi bi-egg-fried"></i><span class="product-number">MENU / {{ (index + 1).toString().padStart(2, '0') }}</span><span class="stock-bubble"><b>{{ product.stock }}</b><small>IN STOCK</small></span></div>
-          <div class="chef-product-body"><span class="chef-product-type">{{ product.type }}</span><h3>{{ product.name }}</h3><p><i class="bi bi-clock-history"></i> Last cooked {{ product.cookDate | date: 'MMM d, y' }}</p><div class="chef-product-footer"><span><i class="bi bi-box-seam"></i> Product #{{ product.id }}</span><button type="button" [disabled]="deletingId() === product.id" (click)="remove(product)"><i class="bi bi-trash3"></i>{{ deletingId() === product.id ? 'Removing…' : 'Remove' }}</button></div></div>
+          <div class="chef-product-body"><span class="chef-product-type">{{ product.type }}</span><h3>{{ product.name }}</h3><p><i class="bi bi-clock-history"></i> Last cooked {{ product.cookDate | date: 'MMM d, y' }}</p><p><i class="bi bi-tag"></i> {{ product.price === null ? 'Price not set' : (product.price | number: '1.2-2') + ' per unit' }}</p><div class="chef-product-footer"><span><i class="bi bi-box-seam"></i> Product #{{ product.id }}</span><button type="button" [disabled]="deletingId() === product.id" (click)="remove(product)"><i class="bi bi-trash3"></i>{{ deletingId() === product.id ? 'Removing…' : 'Remove' }}</button></div></div>
         </article>
       }
     </section>
