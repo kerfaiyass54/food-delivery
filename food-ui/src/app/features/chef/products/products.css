@@ -17,7 +17,7 @@
 .card-kicker { color: #8fa18a; font-size: 8px; font-weight: 800; letter-spacing: 1px; }
 .cook-heading h2 { margin: 4px 0 2px; color: #354638; font-family: 'DM Serif Display', Georgia, serif; font-size: 22px; }
 .cook-heading p { margin: 0; color: #92a092; font-size: 9px; }
-.cook-form { display: grid; grid-template-columns: 1.2fr 1fr 0.6fr auto; align-items: end; gap: 10px; }
+.cook-form { display: grid; grid-template-columns: 1.2fr 1fr 0.6fr 0.8fr auto; align-items: end; gap: 10px; }
 .chef-commerce-field { display: grid; gap: 6px; color: #718071; font-size: 9px; font-weight: 700; }
 .chef-commerce-field input { min-width: 0; height: 38px; padding: 0 10px; border: 1px solid #e5ece2; border-radius: 10px; outline: 0; background: #fcfdfa; color: #3f5140; font: inherit; font-weight: 500; transition: border-color 0.2s, box-shadow 0.2s; }
 .chef-commerce-field input:focus { border-color: #a4c2a0; box-shadow: 0 0 0 3px #edf5eb; }
